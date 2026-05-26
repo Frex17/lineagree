@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Offline – Lineagree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #FAF7F2;
+      color: #2C2416;
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .emblem {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 2rem;
+      opacity: 0.85;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 600;
+      color: #B8963E;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #6B5B3E;
+      max-width: 360px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: #B8963E;
+      margin: 1.5rem auto;
+      opacity: 0.5;
+    }
+
+    button {
+      background: transparent;
+      border: 1.5px solid #B8963E;
+      color: #B8963E;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.75rem 2rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    button:hover {
+      background: #B8963E;
+      color: #FAF7F2;
+    }
+  </style>
+</head>
+<body>
+  <!-- Emblema SVG inline – sostituisci con il tuo logo se preferisci -->
+  <svg class="emblem" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="40" cy="40" r="38" stroke="#B8963E" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle"
+          font-family="Cormorant Garamond, serif" font-size="28" fill="#B8963E" font-weight="600">L</text>
+  </svg>
+
+  <h1>Sei offline</h1>
+  <div class="divider"></div>
+  <p>
+    Sembra che la connessione non sia disponibile in questo momento.<br/>
+    Riprova quando sei di nuovo connesso.
+  </p>
+  <button onclick="window.location.reload()">Riprova</button>
+</body>
+</html>

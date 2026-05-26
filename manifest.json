@@ -1,0 +1,47 @@
+{
+  "name": "Lineagree – Matchmaking di Razza",
+  "short_name": "Lineagree",
+  "description": "Matchmaking per animali di razza con pedigree verificato.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FAF7F2",
+  "theme_color": "#B8963E",
+  "lang": "it",
+  "icons": [
+    {
+      "src": "/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Cerca Match",
+      "short_name": "Match",
+      "description": "Trova il match perfetto per il tuo animale",
+      "url": "/matches.html",
+      "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96" }]
+    }
+  ]
+}
