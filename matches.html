@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lineagree — Matches</title>
+<meta name="description" content="Esplora animali di razza con pedigree certificato. Match, salva e contatta i proprietari.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8963E;--gold-l:#D4AF6A;--gold-pale:#F5EDD8;--cream:#FAF7F2;--dark:#1A1714;--dark2:#2E2A25;--muted:#7A7368;--border:rgba(184,150,62,0.2);--red:#c0392b;--red-pale:#fdf0ef}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(250,247,242,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.logo{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:300;letter-spacing:.08em;color:var(--dark);text-decoration:none}
+.logo span{color:var(--gold);font-style:italic}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:.75rem}
+.btn-lang{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all .25s;font-family:"DM Sans",sans-serif}
+.btn-lang:hover{background:var(--gold);color:white}
+.btn-cta{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.3rem;border:2px solid var(--gold);color:white;background:var(--gold);cursor:pointer;transition:all .25s;font-family:"DM Sans",sans-serif;white-space:nowrap;text-decoration:none;display:inline-block}
+.btn-cta:hover{background:var(--dark);border-color:var(--dark)}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}}
+
+/* PAGE HEADER */
+.page-header{padding:7.5rem 4rem 2.5rem;text-align:center;background:var(--cream);position:relative;overflow:hidden}
+.ph-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(184,150,62,.06) 0%,transparent 70%);pointer-events:none}
+.ph-lines{position:absolute;inset:0;opacity:.025;background-image:repeating-linear-gradient(-45deg,var(--gold) 0,var(--gold) 1px,transparent 1px,transparent 50px)}
+.ph-content{position:relative;z-index:2;animation:fadeUp .7s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.sec-tag{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.75rem}
+.ph-content h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:300;color:var(--dark);line-height:1.1}
+.ph-content h1 em{font-style:italic;color:var(--gold)}
+.ph-content p{font-size:.9rem;color:var(--muted);font-weight:300;margin-top:.6rem}
+
+/* TABS */
+.tabs{display:flex;justify-content:center;background:rgba(250,247,242,.96);backdrop-filter:blur(8px);position:sticky;top:64px;z-index:50;border-bottom:1px solid var(--border)}
+.tab-btn{font-family:"DM Sans",sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:1.1rem 2.2rem;border:none;background:transparent;color:var(--muted);cursor:pointer;transition:all .25s;border-bottom:2px solid transparent;margin-bottom:-1px;display:flex;align-items:center;gap:.5rem}
+.tab-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-btn:hover:not(.active){color:var(--dark)}
+.tab-count{font-size:.62rem;background:var(--gold-pale);color:var(--gold);padding:.15rem .45rem;min-width:1.4rem;text-align:center;transition:all .25s}
+.tab-btn.active .tab-count{background:var(--gold);color:white}
+@media(max-width:600px){.tab-btn{padding:.9rem 1.1rem;font-size:.7rem;letter-spacing:.1em}}
+
+/* VIEWS */
+.views{padding:2.5rem 4rem 6rem}
+.view{display:none;animation:fadeUp .4s ease both}
+.view.active{display:block}
+@media(max-width:900px){.views{padding:2rem 1.5rem 4rem}}
+
+/* FILTERS */
+.filters{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-bottom:2.2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.filter-group{display:flex;gap:.4rem;flex-wrap:wrap}
+.filter-sep{width:1px;background:var(--border);margin:0 .4rem;align-self:stretch}
+.filter-btn{font-size:.73rem;letter-spacing:.08em;text-transform:uppercase;padding:.4rem .9rem;border:1px solid var(--border);background:white;color:var(--muted);cursor:pointer;transition:all .2s;font-family:"DM Sans",sans-serif}
+.filter-btn.active,.filter-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-pale)}
+.filter-select{font-size:.75rem;padding:.4rem .9rem;padding-right:2.2rem;border:1px solid var(--border);background:white;color:var(--dark);cursor:pointer;outline:none;font-family:"DM Sans",sans-serif;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23B8963E' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .7rem center}
+.filters-meta{margin-left:auto;font-size:.78rem;color:var(--muted);font-weight:300}
+.filters-meta strong{color:var(--gold);font-weight:400}
+
+/* EXPLORE GRID */
+.explore-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:1.5rem}
+.animal-card{background:white;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s;position:relative;display:flex;flex-direction:column}
+.animal-card:hover{transform:translateY(-5px);box-shadow:0 20px 60px rgba(184,150,62,.14)}
+.animal-card.hidden{display:none}
+.card-photo{height:195px;display:flex;align-items:center;justify-content:center;font-size:5.5rem;position:relative;overflow:hidden;flex-shrink:0}
+.card-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(0,0,0,.12))}
+.cpb{position:absolute;top:.7rem;left:.7rem;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;background:var(--gold);color:white;padding:.25rem .6rem;z-index:2;pointer-events:none}
+.card-save{position:absolute;top:.7rem;right:.7rem;width:30px;height:30px;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;transition:all .2s;font-size:.9rem;line-height:1}
+.card-save:hover,.card-save.saved{background:var(--gold);border-color:var(--gold)}
+.card-body{padding:1.1rem 1.4rem 0;flex:1}
+.card-name{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:400;color:var(--dark);margin-bottom:.15rem}
+.card-breed{font-size:.77rem;color:var(--muted);font-weight:300;margin-bottom:.45rem}
+.card-meta{display:flex;gap:.9rem;font-size:.73rem;color:var(--muted);margin-bottom:.7rem}
+.card-badges{display:flex;gap:.3rem;flex-wrap:wrap}
+.cbadge{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;background:var(--gold-pale);color:var(--gold);padding:.2rem .5rem}
+.card-footer{display:flex;border-top:1px solid var(--border);margin-top:1rem}
+.cfa{flex:1;padding:.7rem .4rem;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;border:none;background:transparent;cursor:pointer;transition:all .2s;font-family:"DM Sans",sans-serif;color:var(--muted)}
+.cfa:hover{background:var(--gold-pale);color:var(--gold)}
+.cfa.heart:hover{background:var(--red-pale);color:var(--red)}
+.cfa+.cfa{border-left:1px solid var(--border)}
+@media(max-width:600px){.explore-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.explore-grid{grid-template-columns:1fr}}
+
+/* MATCH VIEW */
+.match-wrapper{display:flex;flex-direction:column;align-items:center;gap:1.5rem;padding:.5rem 0}
+.match-counter{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:center}
+.match-counter strong{color:var(--gold);font-weight:400}
+.match-deck-wrap{position:relative;width:100%;max-width:420px}
+.match-deck{position:relative;height:580px}
+.match-card{position:absolute;inset:0;background:white;border:1px solid var(--border);overflow:hidden;will-change:transform,opacity;transition:transform .5s cubic-bezier(.22,.68,0,1.1),opacity .45s}
+.match-card.enter{animation:cardEnter .55s cubic-bezier(.22,.68,0,1.1) both}
+@keyframes cardEnter{from{transform:translateY(-80px) scale(.95);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+.match-card.exit-skip{transform:translateY(110%) scale(.92)!important;opacity:0!important}
+.match-card.exit-like{transform:translateY(-80px) scale(1.04)!important;opacity:0!important}
+.match-photo{height:310px;display:flex;align-items:center;justify-content:center;font-size:9rem;position:relative;overflow:hidden;flex-shrink:0}
+.match-pedigree-badge{position:absolute;top:1rem;left:1rem;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:white;padding:.3rem .8rem;z-index:2}
+.match-photo-fade{position:absolute;bottom:0;left:0;right:0;height:90px;background:linear-gradient(to top,rgba(26,23,20,.55),transparent);pointer-events:none}
+.match-info{padding:1.4rem 1.8rem 1.2rem}
+.match-row1{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.25rem}
+.match-name{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:300;color:var(--dark)}
+.match-age{font-size:.88rem;color:var(--muted);font-weight:300}
+.match-breed-line{font-size:.83rem;color:var(--gold);letter-spacing:.04em;margin-bottom:.4rem}
+.match-loc{font-size:.78rem;color:var(--muted);display:flex;align-items:center;gap:.3rem;margin-bottom:1rem}
+.match-loc::before{content:"📍";font-size:.7rem}
+.match-stats-strip{display:flex;gap:2rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.mss{text-align:center;flex:1}
+.mss-v{font-family:"Cormorant Garamond",serif;font-size:1.15rem;color:var(--dark);font-weight:300;display:block}
+.mss-l{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.1rem;display:block}
+.match-action-strip{display:flex;justify-content:center;align-items:center;gap:1.8rem;padding:1.2rem 2rem}
+.mbtn{display:flex;align-items:center;justify-content:center;border-radius:50%;border:2px solid var(--border);background:white;cursor:pointer;transition:all .28s;box-shadow:0 4px 18px rgba(0,0,0,.07);font-size:1.5rem;text-decoration:none}
+.mbtn.skip{width:64px;height:64px}
+.mbtn.skip:hover{border-color:var(--red);color:var(--red);transform:scale(1.12);background:var(--red-pale)}
+.mbtn.like{width:64px;height:64px}
+.mbtn.like:hover{border-color:var(--gold);transform:scale(1.12);background:var(--gold-pale)}
+.mbtn.info{width:48px;height:48px;font-size:1.1rem;color:var(--muted)}
+.mbtn.info:hover{border-color:var(--dark);color:var(--dark)}
+/* Feedback flash */
+.feedback-flash{position:fixed;top:50%;left:50%;transform:translate(-50%,-60%) scale(.7);font-size:5.5rem;opacity:0;pointer-events:none;transition:all .35s;z-index:400}
+.feedback-flash.show{opacity:1;transform:translate(-50%,-65%) scale(1)}
+/* Done state */
+.match-done{display:none;flex-direction:column;align-items:center;text-align:center;padding:4rem 2rem;gap:1.2rem;max-width:420px;margin:0 auto}
+.match-done .done-emoji{font-size:4rem}
+.match-done h3{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:300}
+.match-done p{font-size:.9rem;color:var(--muted);line-height:1.7;font-weight:300}
+/* Next card shadow peek */
+.match-card-shadow{position:absolute;inset:4px;top:12px;background:white;border:1px solid var(--border);z-index:-1;opacity:.5;transform:scale(.97)}
+
+/* SAVED GRID */
+.saved-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:1.5rem}
+.saved-empty{text-align:center;padding:5rem 2rem;animation:fadeUp .4s ease both}
+.saved-empty .se-emoji{font-size:4rem;margin-bottom:1.2rem;display:block}
+.saved-empty h3{font-family:"Cormorant Garamond",serif;font-size:1.9rem;font-weight:300;margin-bottom:.7rem}
+.saved-empty p{font-size:.88rem;color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:1.5rem}
+
+/* PROFILE MODAL */
+.modal-ov{display:none;position:fixed;inset:0;z-index:200;background:rgba(26,23,20,.82);align-items:flex-end;justify-content:center;padding:0;backdrop-filter:blur(5px)}
+@media(min-width:700px){.modal-ov{align-items:center;padding:1.5rem}}
+.mbox{background:var(--cream);width:100%;max-width:700px;max-height:92vh;overflow-y:auto;position:relative;opacity:0;transform:translateY(40px);transition:opacity .32s,transform .32s}
+.mbox.open{opacity:1;transform:translateY(0)}
+.mbox::-webkit-scrollbar{width:4px}.mbox::-webkit-scrollbar-track{background:transparent}.mbox::-webkit-scrollbar-thumb{background:var(--border)}
+.mclose{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:.8rem 1.2rem;background:rgba(250,247,242,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(4px)}
+.mclose-tag{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.mclose button{width:34px;height:34px;border:1px solid var(--border);background:white;cursor:pointer;font-size:1rem;color:var(--muted);display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:"DM Sans",sans-serif}
+.mclose button:hover{border-color:var(--dark);color:var(--dark)}
+/* Gallery */
+.mgallery{height:290px;display:flex;align-items:center;justify-content:center;font-size:10rem;position:relative;overflow:hidden}
+.mgallery-badge{position:absolute;top:1rem;left:1rem;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;background:var(--gold);color:white;padding:.3rem .75rem;z-index:2}
+.mgallery-fade{position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to top,var(--cream),transparent);pointer-events:none}
+.mgallery-dots{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);display:flex;gap:.4rem;z-index:3}
+.mgdot{width:5px;height:5px;background:rgba(255,255,255,.4);border-radius:0;transition:background .2s}
+.mgdot.active{background:white}
+/* Modal header */
+.mheader{padding:1.6rem 2rem 1rem}
+.mh-row{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:.35rem;flex-wrap:wrap}
+.mh-name{font-family:"Cormorant Garamond",serif;font-size:2.3rem;font-weight:300;line-height:1}
+.mh-sex{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border:1px solid var(--border);color:var(--muted);white-space:nowrap;align-self:flex-start;margin-top:.3rem}
+.mh-breed{font-size:.9rem;color:var(--gold);letter-spacing:.04em;margin-bottom:.5rem}
+.mh-meta{display:flex;gap:1.5rem;font-size:.78rem;color:var(--muted);flex-wrap:wrap}
+.mh-meta span{display:flex;align-items:center;gap:.3rem}
+/* Pedigree badge in header */
+.mh-pedigree{display:inline-flex;align-items:center;gap:.5rem;margin-top:.9rem;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale);color:var(--gold);padding:.4rem .9rem;border:1px solid rgba(184,150,62,.35)}
+/* Sections */
+.msec{padding:1.2rem 2rem;border-top:1px solid var(--border)}
+.msec-title{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.msec-title::after{content:'';flex:1;height:1px;background:var(--border)}
+/* Stats */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.sgbox{background:white;padding:1rem .8rem;text-align:center}
+.sgv{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:300;color:var(--dark);display:block}
+.sgl{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem;display:block}
+/* Titles */
+.titles-list{display:flex;flex-direction:column;gap:.7rem}
+.title-item{display:flex;align-items:baseline;gap:.75rem;font-size:.84rem;line-height:1.4}
+.tiy{font-size:.68rem;color:var(--gold);letter-spacing:.06em;font-weight:500;min-width:3rem;flex-shrink:0}
+.tidot{width:5px;height:5px;background:var(--gold);flex-shrink:0;margin-top:.4rem;align-self:flex-start}
+.tin{color:var(--dark);font-weight:300}
+/* Genealogy tree */
+.gentree{display:flex;flex-direction:column;gap:.8rem}
+.gen-row{display:grid;gap:.8rem}
+.gen-row.row-1{grid-template-columns:1fr}
+.gen-row.row-2{grid-template-columns:1fr 1fr}
+.gen-row.row-4{grid-template-columns:1fr 1fr 1fr 1fr}
+.gen-node{background:white;border:1px solid var(--border);padding:.85rem 1rem;position:relative;transition:border-color .2s}
+.gen-node:hover{border-color:var(--gold)}
+.gen-node.self{background:var(--gold-pale);border-color:rgba(184,150,62,.4)}
+.gen-label{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.25rem}
+.gen-value{font-family:"Cormorant Garamond",serif;font-size:.98rem;font-weight:400;color:var(--dark);line-height:1.3}
+/* Contact section */
+.mcontact{padding:1.4rem 2rem 2rem;border-top:1px solid var(--border)}
+.mowner{display:flex;align-items:center;gap:1rem;margin-bottom:1.3rem}
+.mowner-av{width:44px;height:44px;background:var(--gold-pale);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.mowner-name{font-size:.88rem;font-weight:500;color:var(--dark)}
+.mowner-since{font-size:.72rem;color:var(--muted);margin-top:.15rem}
+.mbtn-contact{width:100%;padding:1.1rem;background:var(--gold);color:white;border:none;font-family:"DM Sans",sans-serif;font-size:.83rem;letter-spacing:.13em;text-transform:uppercase;cursor:pointer;transition:background .25s;display:block}
+.mbtn-contact:hover{background:var(--dark)}
+/* Btn primary */
+.btn-primary{font-family:"DM Sans",sans-serif;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:1rem 2.2rem;background:var(--gold);color:white;border:2px solid var(--gold);cursor:pointer;transition:all .25s;display:inline-block;text-decoration:none}
+.btn-primary:hover{background:var(--dark);border-color:var(--dark)}
+/* FOOTER */
+footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.f-logo{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:300;color:var(--cream);letter-spacing:.08em}
+.f-logo span{color:var(--gold);font-style:italic}
+.f-copy{font-size:.78rem;color:rgba(255,255,255,.3)}
+.f-links{display:flex;gap:2rem;list-style:none}
+.f-links a{font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.f-links a:hover{color:var(--gold)}
+@media(max-width:900px){footer{padding:2rem 1.5rem;flex-direction:column;text-align:center}.f-links{justify-content:center}}
+@media(max-width:600px){.stats-grid{grid-template-columns:1fr 1fr}.gen-row.row-4{grid-template-columns:1fr 1fr}.mgallery{height:220px;font-size:7rem}.mheader{padding:1.2rem 1.4rem .8rem}.msec{padding:1rem 1.4rem}.mcontact{padding:1.2rem 1.4rem 1.8rem}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">Line<span>agr</span>ee</a>
+  <ul class="nav-links">
+    <li><a href="index.html#how">Come funziona</a></li>
+    <li><a href="index.html#species">Specie</a></li>
+    <li><a href="matches.html" class="active">Matches</a></li>
+    <li><a href="index.html#blog">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#" class="btn-cta">Accedi</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="ph-bg"></div>
+  <div class="ph-lines"></div>
+  <div class="ph-content">
+    <span class="sec-tag">Matchmaking di razza</span>
+    <h1>Trova il tuo <em>match perfetto</em></h1>
+    <p>8 profili verificati · Pedigree certificati · Animali d'eccellenza</p>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab-btn active" id="tab-esplora" onclick="switchTab('esplora')">
+    Esplora <span class="tab-count" id="cnt-esplora">8</span>
+  </button>
+  <button class="tab-btn" id="tab-match" onclick="switchTab('match')">
+    Match <span class="tab-count" id="cnt-match">8</span>
+  </button>
+  <button class="tab-btn" id="tab-salvati" onclick="switchTab('salvati')">
+    Salvati <span class="tab-count" id="cnt-salvati">0</span>
+  </button>
+</div>
+
+<!-- VIEWS -->
+<div class="views">
+
+  <!-- ESPLORA -->
+  <div class="view active" id="view-esplora">
+    <div class="filters">
+      <div class="filter-group">
+        <button class="filter-btn active" onclick="filterSpecies('tutti',this)">Tutti</button>
+        <button class="filter-btn" onclick="filterSpecies('cane',this)">🐕 Cani</button>
+        <button class="filter-btn" onclick="filterSpecies('gatto',this)">🐈 Gatti</button>
+        <button class="filter-btn" onclick="filterSpecies('cavallo',this)">🐎 Cavalli</button>
+      </div>
+      <div class="filter-sep"></div>
+      <div class="filter-group">
+        <button class="filter-btn" onclick="filterSex('maschio',this)" id="fbm">♂ Maschio</button>
+        <button class="filter-btn" onclick="filterSex('femmina',this)" id="fbf">♀ Femmina</button>
+      </div>
+      <div class="filter-sep"></div>
+      <select class="filter-select" onchange="filterRegion(this.value)">
+        <option value="">Tutte le regioni</option>
+        <option value="Lombardia">Lombardia</option>
+        <option value="Lazio">Lazio</option>
+        <option value="Toscana">Toscana</option>
+        <option value="Piemonte">Piemonte</option>
+        <option value="Campania">Campania</option>
+        <option value="Emilia-Romagna">Emilia-Romagna</option>
+        <option value="Veneto">Veneto</option>
+        <option value="Liguria">Liguria</option>
+      </select>
+      <span class="filters-meta">Risultati: <strong id="results-count">8</strong></span>
+    </div>
+    <div class="explore-grid" id="explore-grid"></div>
+  </div>
+
+  <!-- MATCH -->
+  <div class="view" id="view-match">
+    <div class="match-wrapper">
+      <div class="match-counter">
+        Profilo <strong id="match-cur">1</strong> di <strong id="match-tot">8</strong>
+      </div>
+      <div class="match-deck-wrap">
+        <div class="match-deck" id="match-deck">
+          <div class="match-card-shadow" id="match-shadow"></div>
+          <div class="match-card" id="match-card"><!-- filled by JS --></div>
+        </div>
+        <div class="match-done" id="match-done">
+          <span class="done-emoji">🐾</span>
+          <h3>Hai visto tutti i profili</h3>
+          <p>Ottimo lavoro! Controlla i tuoi preferiti nella sezione <em>Salvati</em>, oppure ricomincia la sessione di matching.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:.5rem">
+            <button class="btn-primary" onclick="restartMatch()">Ricomincia</button>
+            <button class="btn-primary" style="background:transparent;color:var(--gold);border-color:var(--gold)" onclick="switchTab('salvati')">Vedi salvati</button>
+          </div>
+        </div>
+      </div>
+      <div class="match-action-strip" id="match-actions">
+        <button class="mbtn skip" onclick="handleSkip()" title="Salta">✕</button>
+        <button class="mbtn info" onclick="openProfile(getCurrentMatchId())" title="Profilo completo">⬡</button>
+        <button class="mbtn like" onclick="handleLike()" title="Salva">♥</button>
+      </div>
+      <div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);opacity:.7">
+        ✕ salta &nbsp;·&nbsp; ♥ salva nei preferiti
+      </div>
+    </div>
+  </div>
+
+  <!-- SALVATI -->
+  <div class="view" id="view-salvati">
+    <div class="saved-grid" id="saved-grid"></div>
+    <div class="saved-empty" id="saved-empty">
+      <span class="se-emoji">🌿</span>
+      <h3>Nessun preferito ancora</h3>
+      <p>Esplora i profili e usa il ♥ per salvare quelli che ti interessano.<br>Li ritroverai tutti qui.</p>
+      <button class="btn-primary" onclick="switchTab('esplora')">Esplora i profili</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- FEEDBACK FLASH -->
+<div class="feedback-flash" id="flash"></div>
+
+<!-- PROFILE MODAL -->
+<div class="modal-ov" id="profile-modal" onclick="if(event.target===this)closeProfile()">
+  <div class="mbox" id="mbox">
+    <div class="mclose">
+      <span class="mclose-tag" id="m-species-tag">Profilo animale</span>
+      <button onclick="closeProfile()">✕</button>
+    </div>
+    <div class="mgallery" id="m-gallery">
+      <div class="mgallery-badge" id="m-pedigree-badge"></div>
+      <span id="m-emoji" style="position:relative;z-index:1"></span>
+      <div class="mgallery-fade"></div>
+      <div class="mgallery-dots">
+        <div class="mgdot active"></div>
+        <div class="mgdot"></div>
+        <div class="mgdot"></div>
+      </div>
+    </div>
+    <div class="mheader">
+      <div class="mh-row">
+        <span class="mh-name" id="m-name"></span>
+        <span class="mh-sex" id="m-sex"></span>
+      </div>
+      <div class="mh-breed" id="m-breed"></div>
+      <div class="mh-meta">
+        <span id="m-age"></span>
+        <span id="m-city"></span>
+      </div>
+      <div class="mh-pedigree" id="m-pedigree">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <span id="m-pedigree-num"></span>
+      </div>
+    </div>
+    <!-- Stats -->
+    <div class="msec">
+      <div class="msec-title">Statistiche fisiche</div>
+      <div class="stats-grid">
+        <div class="sgbox"><span class="sgv" id="m-weight"></span><span class="sgl">Peso</span></div>
+        <div class="sgbox"><span class="sgv" id="m-height"></span><span class="sgl">Altezza</span></div>
+        <div class="sgbox"><span class="sgv" id="m-coat"></span><span class="sgl">Manto</span></div>
+        <div class="sgbox"><span class="sgv" id="m-titles-count"></span><span class="sgl">Titoli</span></div>
+      </div>
+    </div>
+    <!-- Titles -->
+    <div class="msec">
+      <div class="msec-title">Titoli e risultati</div>
+      <div class="titles-list" id="m-titles-list"></div>
+    </div>
+    <!-- Genealogy -->
+    <div class="msec">
+      <div class="msec-title">Albero genealogico</div>
+      <div class="gentree">
+        <div class="gen-row row-1">
+          <div class="gen-node self">
+            <span class="gen-label">Soggetto</span>
+            <span class="gen-value" id="g-self"></span>
+          </div>
+        </div>
+        <div class="gen-row row-2">
+          <div class="gen-node">
+            <span class="gen-label">Padre</span>
+            <span class="gen-value" id="g-father"></span>
+          </div>
+          <div class="gen-node">
+            <span class="gen-label">Madre</span>
+            <span class="gen-value" id="g-mother"></span>
+          </div>
+        </div>
+        <div class="gen-row row-4">
+          <div class="gen-node">
+            <span class="gen-label">N. Paterno</span>
+            <span class="gen-value" id="g-pf"></span>
+          </div>
+          <div class="gen-node">
+            <span class="gen-label">N. Paterna</span>
+            <span class="gen-value" id="g-pm"></span>
+          </div>
+          <div class="gen-node">
+            <span class="gen-label">N. Materno</span>
+            <span class="gen-value" id="g-mf"></span>
+          </div>
+          <div class="gen-node">
+            <span class="gen-label">N. Materna</span>
+            <span class="gen-value" id="g-mm"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Contact -->
+    <div class="mcontact">
+      <div class="mowner">
+        <div class="mowner-av" id="m-owner-av">👤</div>
+        <div>
+          <div class="mowner-name" id="m-owner-name"></div>
+          <div class="mowner-since" id="m-owner-since"></div>
+        </div>
+      </div>
+      <button class="mbtn-contact" onclick="alert('Funzione disponibile al lancio di Lineagree 🐾')">
+        Contatta il proprietario
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">Line<span>agr</span>ee</div>
+  <ul class="f-links">
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Termini</a></li>
+    <li><a href="#">Contatti</a></li>
+  </ul>
+  <p class="f-copy">© 2026 Lineagree. Tutti i diritti riservati.</p>
+</footer>
+
+<script>
+/* ─── DATA ─── */
+const animals = [
+  {
+    id:1, emoji:"🐕", name:"Duke", breed:"Labrador Retriever", species:"cane",
+    age:"3 anni", sex:"Maschio", city:"Milano", region:"Lombardia",
+    coat:"Dorato", weight:"32 kg", height:"58 cm",
+    pedigree:"ENCI LOI 23/12345",
+    bg:"linear-gradient(145deg,#f0dba0 0%,#c8992a 100%)",
+    titles:[{y:"2024",t:"CACIB Internazionale — Torino"},{y:"2023",t:"CAC Nazionale — Milano"},{y:"2023",t:"Best in Breed — Expo Lombardia"}],
+    badges:["Pedigree ENCI","CAC/CACIB","LOI Verificato"],
+    owner:"Marco Bianchi", ownerSince:"Allevatore dal 2015",
+    ownerEmoji:"🧑",
+    genealogy:{father:"Ch. Gold Rush di Monza",mother:"Lady Sunshine della Valle",pf:"Int. Ch. Thunder Gold",pm:"Golden Star di Bergamo",mf:"Sir Wellington Heights",mm:"Belle of the Ball"},
+    saved:false
+  },
+  {
+    id:2, emoji:"🐈", name:"Luna", breed:"Maine Coon", species:"gatto",
+    age:"2 anni", sex:"Femmina", city:"Roma", region:"Lazio",
+    coat:"Tortie argento", weight:"6 kg", height:"32 cm",
+    pedigree:"ANFI/FIFe 24/00892",
+    bg:"linear-gradient(145deg,#dde8f2 0%,#7a9bb8 100%)",
+    titles:[{y:"2024",t:"Best in Show — Roma Cat Expo"},{y:"2023",t:"Grand Champion — FIFe Italy"}],
+    badges:["Pedigree ANFI","FIFe","Grand Champion"],
+    owner:"Giulia Rossi", ownerSince:"Allevatrice dal 2018",
+    ownerEmoji:"👩",
+    genealogy:{father:"EC Silverwind Maestro",mother:"IC Moonbeam Duchess",pf:"IC Arctic Storm",pm:"Silverwind Elara",mf:"EC Thunder Prince",mm:"Moonbeam Celeste"},
+    saved:false
+  },
+  {
+    id:3, emoji:"🐎", name:"Tempesta", breed:"KWPN Warmblood Olandese", species:"cavallo",
+    age:"5 anni", sex:"Maschio", city:"Firenze", region:"Toscana",
+    coat:"Baio scuro", weight:"580 kg", height:"168 cm",
+    pedigree:"KWPN 2019/IT4421",
+    bg:"linear-gradient(145deg,#c8a882 0%,#6b3e1e 100%)",
+    titles:[{y:"2024",t:"Grand Prix — CSIO Milano"},{y:"2023",t:"Campione Nazionale CSI3*"},{y:"2022",t:"Promessa dell'Anno — FISE"}],
+    badges:["KWPN","FISE","Purosangue Sportivo"],
+    owner:"Lorenzo Ferrari", ownerSince:"Allevatore dal 2010",
+    ownerEmoji:"🧑",
+    genealogy:{father:"Vivaldi (KWPN)",mother:"Cantata TF",pf:"Jazz",pm:"Ulrike HBC",mf:"Cabochon S",mm:"Sinfonia Bella"},
+    saved:false
+  },
+  {
+    id:4, emoji:"🐕", name:"Bella", breed:"Golden Retriever", species:"cane",
+    age:"4 anni", sex:"Femmina", city:"Torino", region:"Piemonte",
+    coat:"Oro chiaro", weight:"27 kg", height:"54 cm",
+    pedigree:"ENCI LOI 22/09876",
+    bg:"linear-gradient(145deg,#f5e9bf 0%,#dba820 100%)",
+    titles:[{y:"2024",t:"Exc. 1a CACS — Expo Piemonte"},{y:"2023",t:"CAC — Torino Dog Show"},{y:"2023",t:"Best Bitch — Nord Italia Cup"}],
+    badges:["Pedigree ENCI","CACS","LOI Verificato"],
+    owner:"Francesca Conti", ownerSince:"Allevatrice dal 2012",
+    ownerEmoji:"👩",
+    genealogy:{father:"Ch. Sundance Highlander",mother:"Ch. Primrose Hill Beauty",pf:"Am. Ch. Glenfiddich Star",pm:"Sundance Melody",mf:"Ch. Primrose Legend",mm:"Radiant Rose"},
+    saved:false
+  },
+  {
+    id:5, emoji:"🐈", name:"Mochi", breed:"Ragdoll", species:"gatto",
+    age:"1 anno", sex:"Femmina", city:"Napoli", region:"Campania",
+    coat:"Colourpoint blu", weight:"4.5 kg", height:"28 cm",
+    pedigree:"ANFI/TICA 25/03311",
+    bg:"linear-gradient(145deg,#eae0f5 0%,#a890cc 100%)",
+    titles:[{y:"2025",t:"Best Kitten — TICA Italy"},{y:"2024",t:"Best New Breed — FIFe South"}],
+    badges:["Pedigree ANFI","TICA","FIFe"],
+    owner:"Sofia Esposito", ownerSince:"Allevatrice dal 2020",
+    ownerEmoji:"👩",
+    genealogy:{father:"GC Dreamland Romeo",mother:"IC Violet Mist",pf:"SGC Dreamland Zeus",pm:"Dreamland Aurora",mf:"IC Violet Storm",mm:"Pearl Princess"},
+    saved:false
+  },
+  {
+    id:6, emoji:"🐎", name:"Sahara", breed:"Purosangue Arabo", species:"cavallo",
+    age:"6 anni", sex:"Femmina", city:"Bologna", region:"Emilia-Romagna",
+    coat:"Grigio perla", weight:"420 kg", height:"152 cm",
+    pedigree:"UNIRE/WAHO 2019/BO7721",
+    bg:"linear-gradient(145deg,#eedfc0 0%,#b88e40 100%)",
+    titles:[{y:"2024",t:"Campionessa Italiana — WAHO"},{y:"2023",t:"Gold Medal — European Arabian Show"},{y:"2022",t:"Best Female — All Nations Cup"}],
+    badges:["WAHO","UNIRE","Campionessa Europea"],
+    owner:"Alessandro Moretti", ownerSince:"Allevatore dal 2008",
+    ownerEmoji:"🧑",
+    genealogy:{father:"Marwan Al Shaqab",mother:"Shaqra des Deux Rives",pf:"Al Adeed Al Shaqab",pm:"Kamar Al Nour",mf:"Sirocco des Deux Rives",mm:"Brisa de la Sierra"},
+    saved:false
+  },
+  {
+    id:7, emoji:"🐕", name:"Rex", breed:"Pastore Tedesco", species:"cane",
+    age:"2 anni", sex:"Maschio", city:"Venezia", region:"Veneto",
+    coat:"Nero focato", weight:"35 kg", height:"65 cm",
+    pedigree:"ENCI LOI 24/05544",
+    bg:"linear-gradient(145deg,#c0b8a0 0%,#4e4030 100%)",
+    titles:[{y:"2025",t:"CAC Giovani — Venezia Dog Show"},{y:"2024",t:"V1 — SV Bundessieger"}],
+    badges:["Pedigree ENCI","SV","IPO 3"],
+    owner:"Davide Ruggeri", ownerSince:"Allevatore dal 2017",
+    ownerEmoji:"🧑",
+    genealogy:{father:"V SG Nino vom Nordenwald",mother:"V Lara vom Silberblick",pf:"V Franto Hájný dvůr",pm:"Quina vom Nordenwald",mf:"V Xaro vom Grabfeld",mm:"V Nelly vom Silberblick"},
+    saved:false
+  },
+  {
+    id:8, emoji:"🐈", name:"Orion", breed:"British Shorthair", species:"gatto",
+    age:"3 anni", sex:"Maschio", city:"Genova", region:"Liguria",
+    coat:"Blue solid", weight:"7 kg", height:"30 cm",
+    pedigree:"ANFI/GCCF 23/07654",
+    bg:"linear-gradient(145deg,#d0d8e8 0%,#6882a0 100%)",
+    titles:[{y:"2024",t:"EC — FIFe Cat Show Genova"},{y:"2023",t:"Champion — GCCF Italy"}],
+    badges:["Pedigree ANFI","GCCF","FIFe EC"],
+    owner:"Elena Marini", ownerSince:"Allevatrice dal 2016",
+    ownerEmoji:"👩",
+    genealogy:{father:"EC Bluebell's Maximus",mother:"IC Silverstone Lady",pf:"IC Bluebell's Caesar",pm:"Bluebell's Venus",mf:"EC Silverstone Duke",mm:"Silverstone Grace"},
+    saved:false
+  }
+];
+
+/* ─── STATE ─── */
+let activeSpecies = 'tutti';
+let activeSex = null;
+let activeRegion = '';
+let matchIndex = 0;
+let matchOrder = animals.map((_,i)=>i);
+let isAnimating = false;
+
+/* ─── TABS ─── */
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  const view = document.getElementById('view-'+tab);
+  view.classList.add('active');
+  if(tab==='salvati') renderSaved();
+  if(tab==='match') renderMatchCard();
+}
+
+/* ─── EXPLORE ─── */
+function renderExplore() {
+  const grid = document.getElementById('explore-grid');
+  const visible = getVisible();
+  document.getElementById('results-count').textContent = visible.length;
+  document.getElementById('cnt-esplora').textContent = visible.length;
+  grid.innerHTML = visible.map(a=>cardHTML(a,'explore')).join('');
+}
+
+function getVisible() {
+  return animals.filter(a=>{
+    const sp = activeSpecies==='tutti' || a.species===activeSpecies;
+    const sx = !activeSex || a.sex.toLowerCase()===activeSex;
+    const rg = !activeRegion || a.region===activeRegion;
+    return sp && sx && rg;
+  });
+}
+
+function cardHTML(a, context) {
+  const saved = a.saved ? 'saved' : '';
+  const heart = a.saved ? '♥' : '♡';
+  return `<div class="animal-card" id="card-${a.id}">
+    <div class="card-photo" style="background:${a.bg}">
+      <div class="cpb">Pedigree</div>
+      <span style="position:relative;z-index:1">${a.emoji}</span>
+      <button class="card-save ${saved}" onclick="toggleSave(${a.id},event)" title="${a.saved?'Rimuovi dai preferiti':'Salva nei preferiti'}">${heart}</button>
+    </div>
+    <div class="card-body">
+      <div class="card-name">${a.name}</div>
+      <div class="card-breed">${a.breed}</div>
+      <div class="card-meta">
+        <span>${a.sex} · ${a.age}</span>
+        <span>📍 ${a.city}</span>
+      </div>
+      <div class="card-badges">${a.badges.slice(0,2).map(b=>`<span class="cbadge">${b}</span>`).join('')}</div>
+    </div>
+    <div class="card-footer">
+      <button class="cfa heart" onclick="toggleSave(${a.id},event)">${a.saved?'♥ Salvato':'♡ Salva'}</button>
+      <button class="cfa" onclick="openProfile(${a.id})">Profilo →</button>
+    </div>
+  </div>`;
+}
+
+function filterSpecies(sp, btn) {
+  activeSpecies = sp;
+  document.querySelectorAll('.filter-group').forEach(g=>{
+    g.querySelectorAll('.filter-btn').forEach(b=>{
+      if(['tutti','cane','gatto','cavallo'].some(s=>b.onclick&&b.onclick.toString().includes(`'${s}'`))){
+        b.classList.remove('active');
+      }
+    });
+  });
+  // simpler: just toggle the clicked btn among species buttons
+  document.querySelectorAll('[onclick*="filterSpecies"]').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderExplore();
+}
+
+function filterSex(sx, btn) {
+  if(activeSex===sx){
+    activeSex=null;
+    btn.classList.remove('active');
+  } else {
+    activeSex=sx;
+    document.querySelectorAll('[onclick*="filterSex"]').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  renderExplore();
+}
+
+function filterRegion(val) {
+  activeRegion=val;
+  renderExplore();
+}
+
+/* ─── SAVE / UNSAVE ─── */
+function toggleSave(id, e) {
+  if(e) e.stopPropagation();
+  const a = animals.find(x=>x.id===id);
+  if(!a) return;
+  a.saved = !a.saved;
+  // Update saved count
+  const savedCount = animals.filter(x=>x.saved).length;
+  document.getElementById('cnt-salvati').textContent = savedCount;
+  // Refresh current view
+  const activeView = document.querySelector('.view.active').id;
+  if(activeView==='view-esplora') renderExplore();
+  if(activeView==='view-salvati') renderSaved();
+  // Update match card save btn if showing
+  if(activeView==='view-match') {
+    const saveBtn = document.getElementById('match-save-btn');
+    if(saveBtn) { saveBtn.textContent = a.saved?'♥':'♡'; saveBtn.title=a.saved?'Rimuovi':'Salva'; }
+  }
+  flashFeedback(a.saved ? '♥' : '✕', a.saved);
+}
+
+function flashFeedback(icon, isPositive) {
+  const el = document.getElementById('flash');
+  el.textContent = icon;
+  el.style.color = isPositive ? 'var(--gold)' : 'var(--muted)';
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'), 700);
+}
+
+/* ─── SAVED VIEW ─── */
+function renderSaved() {
+  const saved = animals.filter(a=>a.saved);
+  const grid = document.getElementById('saved-grid');
+  const empty = document.getElementById('saved-empty');
+  if(saved.length===0){
+    grid.innerHTML='';
+    empty.style.display='flex';
+    empty.style.flexDirection='column';
+    empty.style.alignItems='center';
+  } else {
+    empty.style.display='none';
+    grid.innerHTML = saved.map(a=>savedCardHTML(a)).join('');
+  }
+}
+
+function savedCardHTML(a) {
+  return `<div class="animal-card">
+    <div class="card-photo" style="background:${a.bg}">
+      <div class="cpb">Preferito</div>
+      <span style="position:relative;z-index:1">${a.emoji}</span>
+    </div>
+    <div class="card-body">
+      <div class="card-name">${a.name}</div>
+      <div class="card-breed">${a.breed}</div>
+      <div class="card-meta">
+        <span>${a.sex} · ${a.age}</span>
+        <span>📍 ${a.city}</span>
+      </div>
+      <div class="card-badges">${a.badges.slice(0,2).map(b=>`<span class="cbadge">${b}</span>`).join('')}</div>
+    </div>
+    <div class="card-footer">
+      <button class="cfa heart" onclick="toggleSave(${a.id},event)">✕ Rimuovi</button>
+      <button class="cfa" onclick="openProfile(${a.id})">Profilo →</button>
+    </div>
+  </div>`;
+}
+
+/* ─── MATCH VIEW ─── */
+function getCurrentMatchId() {
+  if(matchIndex < matchOrder.length) return animals[matchOrder[matchIndex]].id;
+  return null;
+}
+
+function renderMatchCard() {
+  const deck = document.getElementById('match-deck');
+  const done = document.getElementById('match-done');
+  const actions = document.getElementById('match-actions');
+  const counter = document.querySelector('.match-counter');
+
+  if(matchIndex >= animals.length) {
+    deck.style.display='none';
+    done.style.display='flex';
+    actions.style.display='none';
+    counter.style.display='none';
+    return;
+  }
+  deck.style.display='block';
+  done.style.display='none';
+  actions.style.display='flex';
+  counter.style.display='block';
+
+  const a = animals[matchOrder[matchIndex]];
+  document.getElementById('match-cur').textContent = matchIndex+1;
+  document.getElementById('match-tot').textContent = animals.length;
+
+  // Shadow (peek of next card)
+  const shadow = document.getElementById('match-shadow');
+  shadow.style.display = matchIndex < animals.length-1 ? 'block' : 'none';
+
+  const card = document.getElementById('match-card');
+  card.innerHTML = `
+    <div class="match-photo" style="background:${a.bg}">
+      <div class="match-pedigree-badge">Pedigree certificato</div>
+      <span style="position:relative;z-index:1">${a.emoji}</span>
+      <div class="match-photo-fade"></div>
+    </div>
+    <div class="match-info">
+      <div class="match-row1">
+        <span class="match-name">${a.name}</span>
+        <span class="match-age">${a.age}</span>
+      </div>
+      <div class="match-breed-line">${a.breed}</div>
+      <div class="match-loc">${a.city}, ${a.region}</div>
+      <div class="match-stats-strip">
+        <div class="mss"><span class="mss-v">${a.weight}</span><span class="mss-l">Peso</span></div>
+        <div class="mss"><span class="mss-v">${a.height}</span><span class="mss-l">Altezza</span></div>
+        <div class="mss"><span class="mss-v">${a.coat}</span><span class="mss-l">Manto</span></div>
+        <div class="mss"><span class="mss-v">${a.titles.length}</span><span class="mss-l">Titoli</span></div>
+      </div>
+    </div>`;
+  card.className = 'match-card enter';
+}
+
+function handleLike() {
+  if(isAnimating) return;
+  const a = animals[matchOrder[matchIndex]];
+  a.saved = true;
+  const savedCount = animals.filter(x=>x.saved).length;
+  document.getElementById('cnt-salvati').textContent = savedCount;
+  animateCard('exit-like', '♥', true);
+}
+
+function handleSkip() {
+  if(isAnimating) return;
+  animateCard('exit-skip', '✕', false);
+}
+
+function animateCard(exitClass, icon, positive) {
+  isAnimating = true;
+  const card = document.getElementById('match-card');
+  card.classList.remove('enter');
+  card.classList.add(exitClass);
+  flashFeedback(icon, positive);
+  setTimeout(()=>{
+    matchIndex++;
+    isAnimating = false;
+    renderMatchCard();
+  }, 480);
+}
+
+function restartMatch() {
+  matchIndex = 0;
+  // Shuffle
+  for(let i=matchOrder.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [matchOrder[i],matchOrder[j]]=[matchOrder[j],matchOrder[i]];
+  }
+  renderMatchCard();
+}
+
+/* ─── PROFILE MODAL ─── */
+function openProfile(id) {
+  const a = animals.find(x=>x.id===id);
+  if(!a) return;
+  const speciesLabel = {cane:'Cane di razza',gatto:'Gatto di razza',cavallo:'Cavallo di razza'}[a.species]||'Animale di razza';
+  document.getElementById('m-species-tag').textContent = speciesLabel;
+  document.getElementById('m-emoji').textContent = a.emoji;
+  document.getElementById('m-gallery').style.background = a.bg;
+  document.getElementById('m-pedigree-badge').textContent = a.pedigree;
+  document.getElementById('m-name').textContent = a.name;
+  document.getElementById('m-sex').textContent = a.sex;
+  document.getElementById('m-breed').textContent = a.breed;
+  document.getElementById('m-age').textContent = '🐾 '+a.age;
+  document.getElementById('m-city').textContent = '📍 '+a.city+', '+a.region;
+  document.getElementById('m-pedigree-num').textContent = a.pedigree;
+  document.getElementById('m-weight').textContent = a.weight;
+  document.getElementById('m-height').textContent = a.height;
+  document.getElementById('m-coat').textContent = a.coat;
+  document.getElementById('m-titles-count').textContent = a.titles.length;
+  document.getElementById('m-titles-list').innerHTML = a.titles.map(t=>`
+    <div class="title-item">
+      <span class="tiy">${t.y}</span>
+      <span class="tidot"></span>
+      <span class="tin">${t.t}</span>
+    </div>`).join('');
+  // Genealogy
+  document.getElementById('g-self').textContent = a.name+' — '+a.breed;
+  document.getElementById('g-father').textContent = a.genealogy.father;
+  document.getElementById('g-mother').textContent = a.genealogy.mother;
+  document.getElementById('g-pf').textContent = a.genealogy.pf;
+  document.getElementById('g-pm').textContent = a.genealogy.pm;
+  document.getElementById('g-mf').textContent = a.genealogy.mf;
+  document.getElementById('g-mm').textContent = a.genealogy.mm;
+  // Owner
+  document.getElementById('m-owner-av').textContent = a.ownerEmoji;
+  document.getElementById('m-owner-name').textContent = a.owner;
+  document.getElementById('m-owner-since').textContent = a.ownerSince;
+
+  const ov = document.getElementById('profile-modal');
+  ov.style.display='flex';
+  document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById('mbox').classList.add('open'),10);
+}
+
+function closeProfile() {
+  const mbox = document.getElementById('mbox');
+  mbox.classList.remove('open');
+  setTimeout(()=>{
+    document.getElementById('profile-modal').style.display='none';
+    document.body.style.overflow='';
+    mbox.scrollTop=0;
+  },320);
+}
+
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeProfile(); });
+
+/* ─── KEYBOARD SHORTCUTS FOR MATCH ─── */
+document.addEventListener('keydown',e=>{
+  if(document.querySelector('#view-match.active')){
+    if(e.key==='ArrowRight'||e.key==='l') handleLike();
+    if(e.key==='ArrowLeft'||e.key==='x') handleSkip();
+  }
+});
+
+/* ─── INIT ─── */
+renderExplore();
+renderMatchCard();
+</script>
+</body>
+</html>
