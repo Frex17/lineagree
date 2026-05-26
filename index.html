@@ -2,6 +2,14 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!-- PWA -->
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#B8963E" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="Lineagree" />
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96x96.png" />
 <title>Lineagree — Il matchmaking per animali di razza</title>
 <meta name="description" content="Lineagree connette proprietari di animali di razza certificati. Profili verificati, pedigree documentati, match intelligenti per preservare la purezza della razza.">
 <meta property="og:title" content="Lineagree — Il matchmaking per animali di razza">
@@ -156,27 +164,6 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
   .steps{grid-template-columns:1fr}.step{border-right:none;border-bottom:1px solid var(--border)}.step:last-child{border-bottom:none}
   .feat-grid{grid-template-columns:1fr}
 }
-
-/* ── Fix mobile nav: EN + CTA non coprono il logo ── */
-@media(max-width:600px){
-  nav{padding:.85rem 1rem}
-  .nav-right{gap:.5rem}
-  .btn-lang{font-size:.68rem;padding:.38rem .6rem;letter-spacing:.06em;min-width:34px}
-  .btn-cta{font-size:.68rem;padding:.38rem .75rem;letter-spacing:.05em;white-space:nowrap}
-}
-@media(max-width:380px){
-  .logo{font-size:1.25rem}
-  .btn-cta{font-size:.62rem;padding:.35rem .6rem}
-}
-
-/* ── Fix griglia specie tagliata su mobile ── */
-@media(max-width:900px){
-  .sp-grid{grid-template-columns:repeat(2,1fr);max-width:580px}
-}
-@media(max-width:480px){
-  .sp-grid{grid-template-columns:1fr;max-width:360px}
-  .sp-card{padding:1.8rem 1rem}
-}
 </style>
 </head>
 <body>
@@ -328,6 +315,100 @@ function handleSignup(){
   else{inp.style.borderColor='#D85A30';inp.placeholder=lang==='it'?"Inserisci un'email valida":"Please enter a valid email";
     setTimeout(function(){inp.style.borderColor='';inp.placeholder=lang==='it'?'La tua email':'Your email';},2000);}
 }
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(reg){ console.log('[Lineagree] SW registrato:', reg.scope); })
+      .catch(function(err){ console.warn('[Lineagree] SW fallito:', err); });
+  });
+}
+</script>
+
+<style>
+#lg-install-banner{display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;padding:0 16px 16px;font-family:'DM Sans','Helvetica Neue',sans-serif;animation:lgSlideUp .35s cubic-bezier(.22,1,.36,1) both}
+#lg-install-banner.lg-visible{display:block}
+@keyframes lgSlideUp{from{transform:translateY(100%);opacity:0}to{transform:translateY(0);opacity:1}}
+.lg-card{background:#FAF7F2;border:1px solid #D4B87A;border-radius:14px;overflow:hidden;box-shadow:0 -2px 24px rgba(44,36,22,.10);max-width:480px;margin:0 auto}
+.lg-gold-bar{height:3px;background:linear-gradient(90deg,#B8963E 0%,#D4B87A 100%)}
+.lg-body{padding:16px 16px 18px}
+.lg-top-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.lg-app-icon{width:46px;height:46px;border-radius:11px;background:#B8963E;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;font-weight:600;color:#FAF7F2;line-height:1}
+.lg-meta{flex:1}
+.lg-meta strong{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:600;color:#2C2416;line-height:1.2}
+.lg-meta span{font-size:12px;color:#7A6A4A}
+.lg-close{width:28px;height:28px;border-radius:50%;background:#EDE8DF;border:none;cursor:pointer;font-size:14px;color:#7A6A4A;display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:flex-start;padding:0;line-height:1}
+.lg-close:hover{background:#DDD6C8}
+.lg-divider{height:1px;background:#E8E1D5;margin:0 0 14px}
+.lg-btn-row{display:flex;gap:8px}
+.lg-btn-install{flex:1;background:#B8963E;color:#FAF7F2;border:none;padding:11px 16px;font-family:inherit;font-size:13px;font-weight:500;letter-spacing:.06em;cursor:pointer;border-radius:7px;transition:background .15s}
+.lg-btn-install:hover{background:#A07833}
+.lg-btn-later{background:transparent;color:#7A6A4A;border:1px solid #D4B87A;padding:11px 14px;font-family:inherit;font-size:13px;cursor:pointer;border-radius:7px;white-space:nowrap;transition:background .15s}
+.lg-btn-later:hover{background:#F0EAE0}
+.lg-ios-steps{display:flex;flex-direction:column;gap:10px}
+.lg-ios-step{display:flex;align-items:flex-start;gap:10px}
+.lg-step-num{width:22px;height:22px;border-radius:50%;background:#F0EAE0;border:1px solid #D4B87A;color:#B8963E;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.lg-step-text{font-size:13px;color:#5A4A2A;line-height:1.5}
+.lg-step-text strong{color:#2C2416;font-weight:500}
+</style>
+
+<div id="lg-install-banner" role="dialog" aria-label="Installa Lineagree">
+  <div class="lg-card">
+    <div class="lg-gold-bar"></div>
+    <div class="lg-body">
+      <div class="lg-top-row">
+        <div class="lg-app-icon">L</div>
+        <div class="lg-meta">
+          <strong>Lineagree</strong>
+          <span id="lg-subtitle">Matchmaking di razza · lineagree.com</span>
+        </div>
+        <button class="lg-close" id="lg-close-btn" aria-label="Chiudi">✕</button>
+      </div>
+      <div class="lg-divider"></div>
+      <div id="lg-android-section" class="lg-btn-row">
+        <button class="lg-btn-install" id="lg-install-btn">Installa l'app</button>
+        <button class="lg-btn-later" id="lg-later-btn">Non ora</button>
+      </div>
+      <div id="lg-ios-section" style="display:none;" class="lg-ios-steps">
+        <div class="lg-ios-step">
+          <div class="lg-step-num">1</div>
+          <div class="lg-step-text">Tocca <strong>Condividi</strong> (icona □↑) nella barra in basso di Safari</div>
+        </div>
+        <div class="lg-ios-step">
+          <div class="lg-step-num">2</div>
+          <div class="lg-step-text">Scorri e tocca <strong>"Aggiungi a schermata Home"</strong>, poi <strong>Aggiungi</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var KEY='lg_banner_dismissed', DAYS=7;
+  function isDismissed(){try{var v=localStorage.getItem(KEY);if(!v)return false;var d=JSON.parse(v);if(d.forever)return true;if(d.until&&Date.now()<d.until)return true;return false;}catch(e){return false;}}
+  function dismiss(forever){try{localStorage.setItem(KEY,JSON.stringify(forever?{forever:true}:{until:Date.now()+DAYS*86400000}));}catch(e){}hideBanner();}
+  function hideBanner(){var b=document.getElementById('lg-install-banner');if(b)b.style.display='none';}
+  function showBanner(){var b=document.getElementById('lg-install-banner');if(b)b.classList.add('lg-visible');}
+  document.getElementById('lg-close-btn').addEventListener('click',function(){dismiss(false);});
+  var laterBtn=document.getElementById('lg-later-btn');
+  if(laterBtn)laterBtn.addEventListener('click',function(){dismiss(false);});
+  var isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  var isStandalone=window.navigator.standalone===true;
+  if(isIOS&&!isStandalone&&!isDismissed()){
+    document.getElementById('lg-subtitle').textContent='Installa in 2 passi veloci';
+    document.getElementById('lg-android-section').style.display='none';
+    document.getElementById('lg-ios-section').style.display='flex';
+    setTimeout(showBanner,2500);return;
+  }
+  var dp=null;
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;if(!isDismissed())setTimeout(showBanner,1500);});
+  var installBtn=document.getElementById('lg-install-btn');
+  if(installBtn)installBtn.addEventListener('click',function(){if(!dp)return;dp.prompt();dp.userChoice.then(function(c){dismiss(c.outcome==='accepted');dp=null;});});
+  window.addEventListener('appinstalled',function(){dismiss(true);});
+})();
 </script>
 </body>
 </html>
