@@ -156,6 +156,27 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
   .steps{grid-template-columns:1fr}.step{border-right:none;border-bottom:1px solid var(--border)}.step:last-child{border-bottom:none}
   .feat-grid{grid-template-columns:1fr}
 }
+
+/* ── Fix mobile nav: EN + CTA non coprono il logo ── */
+@media(max-width:600px){
+  nav{padding:.85rem 1rem}
+  .nav-right{gap:.5rem}
+  .btn-lang{font-size:.68rem;padding:.38rem .6rem;letter-spacing:.06em;min-width:34px}
+  .btn-cta{font-size:.68rem;padding:.38rem .75rem;letter-spacing:.05em;white-space:nowrap}
+}
+@media(max-width:380px){
+  .logo{font-size:1.25rem}
+  .btn-cta{font-size:.62rem;padding:.35rem .6rem}
+}
+
+/* ── Fix griglia specie tagliata su mobile ── */
+@media(max-width:900px){
+  .sp-grid{grid-template-columns:repeat(2,1fr);max-width:580px}
+}
+@media(max-width:480px){
+  .sp-grid{grid-template-columns:1fr;max-width:360px}
+  .sp-card{padding:1.8rem 1rem}
+}
 </style>
 </head>
 <body>
