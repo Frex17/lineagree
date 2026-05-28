@@ -75,6 +75,13 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 .mobile-lang-toggle{background:none;border:1px solid var(--border);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;cursor:pointer;margin:1.2rem auto 0;transition:all .2s}
 .mobile-lang-toggle:hover{background:var(--gold-pale)}
 .nav-links a.active{color:var(--gold)}
+
+.btn-lang{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all .25s;font-family:"DM Sans",sans-serif;min-width:48px}
+.btn-lang:hover{background:var(--gold);color:white}
+@media(max-width:900px){.btn-lang{display:none}}
+nav .logo{flex:1}
+nav .nav-links{flex:0 0 auto}
+nav .nav-right{flex:1;justify-content:flex-end}
 </style>
 </head>
 <body>
@@ -88,6 +95,10 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
     <li><a href="index.html" class="active">Blog</a></li>
   </ul>
   <div class="nav-right">
+    <button class="btn-lang" onclick="toggleLang()" id="btn-lang-desktop">
+      <span data-it style="display:inline">EN</span>
+      <span data-en style="display:none">IT</span>
+    </button>
     <button class="nav-burger" id="nav-burger" aria-label="Menu" onclick="toggleMobileMenu()">
       <span></span><span></span><span></span>
     </button>
