@@ -221,7 +221,12 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 
 .mobile-lang-toggle{display:flex;align-items:center;gap:.5rem;background:none;border:1px solid var(--border);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;cursor:pointer;margin:1rem auto 0;transition:all .2s}
 .mobile-lang-toggle:hover{background:var(--gold-pale)}
-.sp-card-link{text-decoration:none;display:block;}.sp-card-link .sp-card{cursor:pointer}</style>
+.sp-card-link{text-decoration:none;display:block;}.sp-card-link .sp-card{cursor:pointer}
+/* ── Nav centering ── */
+nav .logo{flex:1}
+nav .nav-links{flex:0 0 auto}
+nav .nav-right{flex:1;justify-content:flex-end}
+</style>
 </head>
 <body>
 <div class="modal-ov" id="modal" onclick="if(event.target===this)closeModal()">
@@ -245,6 +250,10 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
     <li><a href="blog/index.html">Blog</a></li>
   </ul>
   <div class="nav-right" id="nav-right">
+    <button class="btn-lang" onclick="toggleLang()" id="btn-lang-desktop">
+      <span data-it style="display:inline">EN</span>
+      <span data-en style="display:none">IT</span>
+    </button>
     <button class="nav-burger" id="nav-burger" aria-label="Menu" onclick="toggleMobileMenu()">
       <span></span><span></span><span></span>
     </button>
