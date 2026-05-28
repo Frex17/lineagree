@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Enciclopedia delle Razze — Lineagree</title>
+<meta name="description" content="Guida completa alle razze di animali con pedigree riconosciuto: cani, gatti, cavalli, conigli, uccelli e pesci.">
+<link rel="manifest" href="/manifest.json" /><meta name="theme-color" content="#B8963E" />
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96x96.png" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8963E;--gold-l:#D4AF6A;--gold-pale:#F5EDD8;--cream:#FAF7F2;--dark:#1A1714;--dark2:#2E2A25;--muted:#7A7368;--border:rgba(184,150,62,0.2)}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(250,247,242,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.logo{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:300;letter-spacing:.08em;color:var(--dark);text-decoration:none}
+.logo span{color:var(--gold);font-style:italic}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-right{display:flex;align-items:center}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:1px solid var(--border);cursor:pointer;padding:7px}
+.nav-burger span{display:block;width:100%;height:1.5px;background:var(--gold);transition:all .25s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.nav-burger{display:flex}}
+@media(max-width:600px){nav{padding:.85rem 1rem}}
+
+/* ── MOBILE MENU ── */
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--cream);flex-direction:column;justify-content:center;align-items:center;gap:0;padding-top:80px}
+.mobile-menu.open{display:flex;animation:menuFade .2s ease both}
+@keyframes menuFade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.mobile-menu a{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:300;color:var(--dark);text-decoration:none;padding:.9rem 2rem;width:100%;text-align:center;border-bottom:1px solid var(--border);transition:color .2s,background .2s}
+.mobile-menu a:first-of-type{border-top:1px solid var(--border)}
+.mobile-menu a:hover{color:var(--gold);background:var(--gold-pale)}
+.mobile-menu a.mobile-cta{background:var(--gold);color:white;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;font-family:"DM Sans",sans-serif;font-weight:500}
+.mobile-menu a.mobile-cta:hover{background:var(--dark)}
+.mobile-menu-close{position:absolute;top:1.4rem;right:1.5rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--muted)}
+.mobile-lang-toggle{background:none;border:1px solid var(--border);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;cursor:pointer;margin:1.2rem auto 0;transition:all .2s}
+.mobile-lang-toggle:hover{background:var(--gold-pale)}
+
+/* ── HERO ── */
+.hero{padding:8rem 4rem 4rem;text-align:center;border-bottom:1px solid var(--border);background:white}
+.hero-badge{display:inline-block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);padding:.4rem 1rem;margin-bottom:1.5rem;background:rgba(184,150,62,.06)}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:var(--dark);margin-bottom:.8rem;line-height:1.1}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{font-size:1rem;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.75;font-weight:300}
+@media(max-width:900px){.hero{padding:6rem 1.5rem 3rem}}
+
+/* ── SPECIES GRID ── */
+.enc-main{max-width:1100px;margin:0 auto;padding:5rem 4rem 7rem}
+@media(max-width:900px){.enc-main{padding:3rem 1.5rem 5rem}}
+.enc-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.enc-intro h2{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-weight:300}
+.enc-intro h2 em{color:var(--gold);font-style:italic}
+.enc-intro p{font-size:.88rem;color:var(--muted);max-width:400px;line-height:1.65;text-align:right}
+@media(max-width:600px){.enc-intro p{text-align:left}}
+
+.species-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:5rem}
+@media(max-width:800px){.species-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.species-grid{grid-template-columns:1fr}}
+
+.sp-enc-card{background:white;border:1px solid var(--border);overflow:hidden;transition:border-color .25s,transform .25s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.sp-enc-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 32px rgba(184,150,62,.1)}
+.sp-enc-top{padding:2.5rem 2rem 1.5rem;display:flex;align-items:center;gap:1.2rem;border-bottom:1px solid var(--border)}
+.sp-enc-emoji{font-size:2.8rem;flex-shrink:0}
+.sp-enc-meta{}
+.sp-enc-name{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:400;color:var(--dark);line-height:1.1;margin-bottom:.2rem}
+.sp-enc-ente{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.sp-enc-body{padding:1.2rem 2rem 1.5rem;flex:1;display:flex;flex-direction:column;gap:.8rem}
+.sp-enc-desc{font-size:.83rem;color:var(--muted);line-height:1.65;flex:1}
+.sp-enc-stats{display:flex;gap:.8rem;flex-wrap:wrap}
+.sp-stat{font-size:.68rem;background:var(--gold-pale);color:var(--dark);padding:.2rem .6rem;letter-spacing:.04em}
+.sp-enc-footer{padding:.8rem 2rem 1.2rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border)}
+.sp-enc-razze{font-size:.72rem;color:var(--muted)}
+.sp-enc-link{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);transition:gap .2s}
+
+/* ── INFO STRIP ── */
+.info-strip{background:var(--dark2);padding:4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;border-top:1px solid rgba(255,255,255,.06)}
+@media(max-width:800px){.info-strip{grid-template-columns:1fr;padding:3rem 1.5rem}}
+.info-strip-item{text-align:center;padding:0 1rem}
+.info-strip-item .num{font-family:"Cormorant Garamond",serif;font-size:3rem;font-weight:300;color:var(--gold-l);display:block;margin-bottom:.4rem}
+.info-strip-item .label{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:2.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.f-logo{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:300;color:var(--cream)}
+.f-logo span{color:var(--gold);font-style:italic}
+.f-copy{font-size:.78rem;color:rgba(255,255,255,.3)}
+.f-links{display:flex;gap:2rem;list-style:none}
+.f-links a{font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.f-links a:hover{color:var(--gold)}
+@media(max-width:900px){footer{padding:2rem 1.5rem;flex-direction:column;text-align:center}.f-links{justify-content:center}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/index.html">Line<span>agr</span>ee</a>
+  <ul class="nav-links">
+    <li><a href="/index.html"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a></li>
+    <li><a href="/index.html#species"><span data-it style="display:inline">Specie</span><span data-en style="display:none">Species</span></a></li>
+    <li><a href="/enciclopedia.html" class="active"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a></li>
+    <li><a href="/matches.html">Match</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-burger" id="nav-burger" aria-label="Menu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Chiudi">&#x2715;</button>
+  <button class="mobile-lang-toggle" onclick="toggleLang()">
+    <span data-it style="display:inline">🌐 English</span>
+    <span data-en style="display:none">🌐 Italiano</span>
+  </button>
+  <a href="/index.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a>
+  <a href="/index.html#species" onclick="toggleMobileMenu()"><span data-it style="display:inline">Specie</span><span data-en style="display:none">Species</span></a>
+  <a href="/enciclopedia.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a>
+  <a href="/matches.html">Match</a>
+  <a href="/blog/index.html">Blog</a>
+  <a href="/index.html#waitlist" onclick="toggleMobileMenu()" class="mobile-cta"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join the waitlist</span></a>
+</div>
+
+<section class="hero">
+  <span class="hero-badge"><span data-it style="display:inline">Enciclopedia delle Razze</span><span data-en style="display:none">Breed Encyclopedia</span></span>
+  <h1><span data-it style="display:inline">Ogni <em>razza</em>,<br>la sua storia</span><span data-en style="display:none">Every <em>breed</em>,<br>its story</span></h1>
+  <p><span data-it style="display:inline">Schede complete sulle principali razze riconosciute in Italia: origini, caratteristiche, enti certificatori e consigli per l'allevamento responsabile.</span><span data-en style="display:none">Complete profiles on the main breeds recognised in Italy: origins, characteristics, certifying bodies and responsible breeding advice.</span></p>
+</section>
+
+<div class="enc-main">
+  <div class="enc-intro">
+    <h2><span data-it style="display:inline">Scegli la tua <em>specie</em></span><span data-en style="display:none">Choose your <em>species</em></span></h2>
+    <p><span data-it style="display:inline">Ogni sezione raccoglie le razze principali con pedigree riconosciuto, aggiornate regolarmente.</span><span data-en style="display:none">Each section covers the main breeds with recognised pedigree, regularly updated.</span></p>
+  </div>
+
+  <div class="species-grid">
+
+    <a href="/specie/cani.html" class="sp-enc-card">
+      <div class="sp-enc-top">
+        <span class="sp-enc-emoji">🐕</span>
+        <div class="sp-enc-meta">
+          <div class="sp-enc-name"><span data-it style="display:inline">Cani</span><span data-en style="display:none">Dogs</span></div>
+          <div class="sp-enc-ente">ENCI · FCI</div>
+        </div>
+      </div>
+      <div class="sp-enc-body">
+        <p class="sp-enc-desc"><span data-it style="display:inline">Oltre 340 razze riconosciute dalla FCI. Dal Chihuahua al San Bernardo, ogni razza ha uno standard preciso e un pedigree certificato.</span><span data-en style="display:none">Over 340 breeds recognised by the FCI. From Chihuahua to St. Bernard, every breed has a precise standard and certified pedigree.</span></p>
+        <div class="sp-enc-stats">
+          <span class="sp-stat"><span data-it style="display:inline">340+ razze</span><span data-en style="display:none">340+ breeds</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">Pedigree LOI</span><span data-en style="display:none">LOI Pedigree</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">Test HD/ED</span><span data-en style="display:none">HD/ED tests</span></span>
+        </div>
+      </div>
+      <div class="sp-enc-footer">
+        <span class="sp-enc-razze"><span data-it style="display:inline">6 razze in evidenza</span><span data-en style="display:none">6 featured breeds</span></span>
+        <span class="sp-enc-link"><span data-it style="display:inline">Esplora →</span><span data-en style="display:none">Explore →</span></span>
+      </div>
+    </a>
+
+    <a href="/specie/gatti.html" class="sp-enc-card">
+      <div class="sp-enc-top">
+        <span class="sp-enc-emoji">🐈</span>
+        <div class="sp-enc-meta">
+          <div class="sp-enc-name"><span data-it style="display:inline">Gatti</span><span data-en style="display:none">Cats</span></div>
+          <div class="sp-enc-ente">ANFI · WCF</div>
+        </div>
+      </div>
+      <div class="sp-enc-body">
+        <p class="sp-enc-desc"><span data-it style="display:inline">Oltre 70 razze riconosciute. Dal misterioso Siamese al maestoso Maine Coon, ogni gatto di razza porta con sé storia e carattere.</span><span data-en style="display:none">Over 70 recognised breeds. From the mysterious Siamese to the majestic Maine Coon, every pedigree cat carries history and character.</span></p>
+        <div class="sp-enc-stats">
+          <span class="sp-stat"><span data-it style="display:inline">70+ razze</span><span data-en style="display:none">70+ breeds</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">Test HCM/PKD</span><span data-en style="display:none">HCM/PKD tests</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">Gruppo sanguigno</span><span data-en style="display:none">Blood group</span></span>
+        </div>
+      </div>
+      <div class="sp-enc-footer">
+        <span class="sp-enc-razze"><span data-it style="display:inline">6 razze in evidenza</span><span data-en style="display:none">6 featured breeds</span></span>
+        <span class="sp-enc-link"><span data-it style="display:inline">Esplora →</span><span data-en style="display:none">Explore →</span></span>
+      </div>
+    </a>
+
+    <a href="/specie/cavalli.html" class="sp-enc-card">
+      <div class="sp-enc-top">
+        <span class="sp-enc-emoji">🐎</span>
+        <div class="sp-enc-meta">
+          <div class="sp-enc-name"><span data-it style="display:inline">Cavalli</span><span data-en style="display:none">Horses</span></div>
+          <div class="sp-enc-ente">UNIRE · FISE</div>
+        </div>
+      </div>
+      <div class="sp-enc-body">
+        <p class="sp-enc-desc"><span data-it style="display:inline">Razze millenarie selezionate per sport, lavoro e bellezza. Il pedigree equino è tra i più antichi e rigorosi al mondo.</span><span data-en style="display:none">Ancient breeds selected for sport, work and beauty. The equine pedigree is among the oldest and most rigorous in the world.</span></p>
+        <div class="sp-enc-stats">
+          <span class="sp-stat"><span data-it style="display:inline">Passaporto UELN</span><span data-en style="display:none">UELN Passport</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">Test AIE/AVE</span><span data-en style="display:none">AIE/AVE tests</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">Microchip</span><span data-en style="display:none">Microchip</span></span>
+        </div>
+      </div>
+      <div class="sp-enc-footer">
+        <span class="sp-enc-razze"><span data-it style="display:inline">6 razze in evidenza</span><span data-en style="display:none">6 featured breeds</span></span>
+        <span class="sp-enc-link"><span data-it style="display:inline">Esplora →</span><span data-en style="display:none">Explore →</span></span>
+      </div>
+    </a>
+
+    <a href="/specie/conigli.html" class="sp-enc-card">
+      <div class="sp-enc-top">
+        <span class="sp-enc-emoji">🐇</span>
+        <div class="sp-enc-meta">
+          <div class="sp-enc-name"><span data-it style="display:inline">Conigli</span><span data-en style="display:none">Rabbits</span></div>
+          <div class="sp-enc-ente">ENCI · BRC</div>
+        </div>
+      </div>
+      <div class="sp-enc-body">
+        <p class="sp-enc-desc"><span data-it style="display:inline">Oltre 50 razze riconosciute, dal Gigante di Fiandra al minuscolo Ariete Nano. Un mondo di colori, pelo e caratteri distinti.</span><span data-en style="display:none">Over 50 recognised breeds, from the Flemish Giant to the tiny Lop. A world of colours, coats and distinct characters.</span></p>
+        <div class="sp-enc-stats">
+          <span class="sp-stat"><span data-it style="display:inline">50+ razze</span><span data-en style="display:none">50+ breeds</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">Anello LOI</span><span data-en style="display:none">LOI ring</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">Vaccini RHD</span><span data-en style="display:none">RHD vaccines</span></span>
+        </div>
+      </div>
+      <div class="sp-enc-footer">
+        <span class="sp-enc-razze"><span data-it style="display:inline">4 razze in evidenza</span><span data-en style="display:none">4 featured breeds</span></span>
+        <span class="sp-enc-link"><span data-it style="display:inline">Esplora →</span><span data-en style="display:none">Explore →</span></span>
+      </div>
+    </a>
+
+    <a href="/specie/uccelli.html" class="sp-enc-card">
+      <div class="sp-enc-top">
+        <span class="sp-enc-emoji">🦜</span>
+        <div class="sp-enc-meta">
+          <div class="sp-enc-name"><span data-it style="display:inline">Uccelli</span><span data-en style="display:none">Birds</span></div>
+          <div class="sp-enc-ente">FOI · CITES</div>
+        </div>
+      </div>
+      <div class="sp-enc-body">
+        <p class="sp-enc-desc"><span data-it style="display:inline">Canarini, pappagalli e specie esotiche con certificazione. L'ornitologia di razza è regolata da norme precise a livello europeo.</span><span data-en style="display:none">Canaries, parrots and certified exotic species. Pedigree ornithology is governed by precise regulations at European level.</span></p>
+        <div class="sp-enc-stats">
+          <span class="sp-stat"><span data-it style="display:inline">Anello FOI</span><span data-en style="display:none">FOI ring</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">CITES EU</span><span data-en style="display:none">CITES EU</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">Cert. nascita</span><span data-en style="display:none">Birth cert.</span></span>
+        </div>
+      </div>
+      <div class="sp-enc-footer">
+        <span class="sp-enc-razze"><span data-it style="display:inline">4 specie in evidenza</span><span data-en style="display:none">4 featured species</span></span>
+        <span class="sp-enc-link"><span data-it style="display:inline">Esplora →</span><span data-en style="display:none">Explore →</span></span>
+      </div>
+    </a>
+
+    <a href="/specie/pesci.html" class="sp-enc-card">
+      <div class="sp-enc-top">
+        <span class="sp-enc-emoji">🐠</span>
+        <div class="sp-enc-meta">
+          <div class="sp-enc-name"><span data-it style="display:inline">Pesci</span><span data-en style="display:none">Fish</span></div>
+          <div class="sp-enc-ente">FIPS · ZNA</div>
+        </div>
+      </div>
+      <div class="sp-enc-body">
+        <p class="sp-enc-desc"><span data-it style="display:inline">Carpe Koi, Betta e Arowana: secoli di selezione per colori, pattern e forma. Un'arte che unisce genetica e estetica.</span><span data-en style="display:none">Koi Carp, Betta and Arowana: centuries of selection for colour, pattern and form. An art combining genetics and aesthetics.</span></p>
+        <div class="sp-enc-stats">
+          <span class="sp-stat"><span data-it style="display:inline">Standard ZNA</span><span data-en style="display:none">ZNA standard</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">CITES</span><span data-en style="display:none">CITES</span></span>
+          <span class="sp-stat"><span data-it style="display:inline">70+ varietà Koi</span><span data-en style="display:none">70+ Koi varieties</span></span>
+        </div>
+      </div>
+      <div class="sp-enc-footer">
+        <span class="sp-enc-razze"><span data-it style="display:inline">4 specie in evidenza</span><span data-en style="display:none">4 featured species</span></span>
+        <span class="sp-enc-link"><span data-it style="display:inline">Esplora →</span><span data-en style="display:none">Explore →</span></span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<div class="info-strip">
+  <div class="info-strip-item">
+    <span class="num">500+</span>
+    <span class="label"><span data-it style="display:inline">Razze documentate</span><span data-en style="display:none">Documented breeds</span></span>
+  </div>
+  <div class="info-strip-item">
+    <span class="num">6</span>
+    <span class="label"><span data-it style="display:inline">Specie principali</span><span data-en style="display:none">Main species</span></span>
+  </div>
+  <div class="info-strip-item">
+    <span class="num">100%</span>
+    <span class="label"><span data-it style="display:inline">Razze con pedigree riconosciuto</span><span data-en style="display:none">Breeds with recognised pedigree</span></span>
+  </div>
+</div>
+
+<footer>
+  <div class="f-logo">Line<span>agr</span>ee</div>
+  <p class="f-copy">© 2026 Lineagree. Tutti i diritti riservati.</p>
+  <ul class="f-links">
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#"><span data-it style="display:inline">Termini</span><span data-en style="display:none">Terms</span></a></li>
+    <li><a href="#"><span data-it style="display:inline">Contatti</span><span data-en style="display:none">Contact</span></a></li>
+  </ul>
+</footer>
+
+<script>
+var lang='it';
+function toggleLang(){
+  lang=lang==='it'?'en':'it';
+  document.querySelectorAll('[data-it]').forEach(function(el){
+    el.style.display=lang==='it'?(el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'?'block':'inline'):'none';
+  });
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    el.style.display=lang==='en'?(el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'?'block':'inline'):'none';
+  });
+}
+function toggleMobileMenu(){
+  var m=document.getElementById('mobile-menu');
+  var b=document.getElementById('nav-burger');
+  var o=m.classList.contains('open');
+  if(o){m.classList.remove('open');b.classList.remove('open');document.body.style.overflow='';}
+  else{m.classList.add('open');b.classList.add('open');document.body.style.overflow='hidden';}
+}
+</script>
+</body>
+</html>
