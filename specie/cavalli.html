@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Cavalli — Lineagree</title>
+<link rel="manifest" href="/manifest.json" /><meta name="theme-color" content="#B8963E" />
+<link rel="apple-touch-icon" href="/icons/icon-152x152.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="/icons/icon-96x96.png" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8963E;--gold-l:#D4AF6A;--gold-pale:#F5EDD8;--cream:#FAF7F2;--dark:#1A1714;--dark2:#2E2A25;--muted:#7A7368;--border:rgba(184,150,62,0.2)}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(250,247,242,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.logo{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:300;letter-spacing:.08em;color:var(--dark);text-decoration:none}
+.logo span{color:var(--gold);font-style:italic}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center}
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:1px solid var(--border);cursor:pointer;padding:7px}
+.nav-burger span{display:block;width:100%;height:1.5px;background:var(--gold);transition:all .25s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.nav-burger{display:flex}}
+@media(max-width:600px){nav{padding:.85rem 1rem}}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--cream);flex-direction:column;justify-content:center;align-items:center;gap:0;padding-top:80px}
+.mobile-menu.open{display:flex;animation:menuFade .2s ease both}
+@keyframes menuFade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.mobile-menu a{font-family:"Cormorant Garamond",serif;font-size:2.2rem;font-weight:300;color:var(--dark);text-decoration:none;padding:1rem 2rem;width:100%;text-align:center;border-bottom:1px solid var(--border);transition:color .2s,background .2s}
+.mobile-menu a:first-of-type{border-top:1px solid var(--border)}
+.mobile-menu a:hover{color:var(--gold);background:var(--gold-pale)}
+.mobile-menu-close{position:absolute;top:1.4rem;right:1.5rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--muted)}
+.mobile-lang-toggle{background:none;border:1px solid var(--border);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;cursor:pointer;margin:1.2rem auto 0;transition:all .2s}
+.mobile-lang-toggle:hover{background:var(--gold-pale)}
+.hero{padding:8rem 4rem 4rem;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(184,150,62,.06) 0%,transparent 70%);pointer-events:none}
+.hero-emoji{font-size:4rem;margin-bottom:1rem;display:block}
+.sec-tag{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1rem}
+.hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero p{font-size:1rem;color:var(--muted);max-width:560px;margin:0 auto;line-height:1.75;font-weight:300}
+@media(max-width:900px){.hero{padding:6rem 1.5rem 3rem}}
+.main{max-width:1100px;margin:0 auto;padding:5rem 4rem 6rem}
+@media(max-width:900px){.main{padding:3rem 1.5rem 5rem}}
+.section-title{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:300;margin-bottom:.5rem}
+.section-title em{color:var(--gold);font-style:italic}
+.section-sub{font-size:.88rem;color:var(--muted);margin-bottom:2.5rem;line-height:1.65}
+.breed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-bottom:4rem}
+@media(max-width:800px){.breed-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.breed-grid{grid-template-columns:1fr}}
+.breed-card{background:white;border:1px solid var(--border);padding:1.5rem;transition:border-color .2s,transform .2s;cursor:default}
+.breed-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.breed-emoji{font-size:2rem;margin-bottom:.8rem;display:block}
+.breed-name{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:400;margin-bottom:.3rem}
+.breed-origin{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.breed-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+.breed-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.8rem}
+.breed-tag{font-size:.65rem;background:var(--gold-pale);color:var(--gold);padding:.2rem .5rem}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:4rem}
+@media(max-width:600px){.info-grid{grid-template-columns:1fr}}
+.info-card{background:white;border:1px solid var(--border);padding:1.5rem 2rem}
+.info-card h3{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:400;color:var(--gold);margin-bottom:.8rem}
+.info-card p{font-size:.85rem;color:var(--muted);line-height:1.7}
+.back-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-bottom:3rem;transition:color .2s}
+.back-link:hover{color:var(--gold)}
+footer{background:var(--dark);padding:2.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.f-logo{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:300;color:var(--cream)}
+.f-logo span{color:var(--gold);font-style:italic}
+.f-copy{font-size:.78rem;color:rgba(255,255,255,.3)}
+.f-links{display:flex;gap:2rem;list-style:none}
+.f-links a{font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.f-links a:hover{color:var(--gold)}
+@media(max-width:900px){footer{padding:2rem 1.5rem;flex-direction:column;text-align:center}.f-links{justify-content:center}}</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/index.html">Line<span>agr</span>ee</a>
+  <ul class="nav-links">
+    <li><a href="/index.html">Home</a></li>
+    <li><a href="/index.html#species">Specie</a></li>
+    <li><a href="/matches.html">Match</a></li>
+    <li><a href="/blog/index.html">Blog</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-burger" id="nav-burger" aria-label="Menu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-close" onclick="toggleMobileMenu()">&#x2715;</button>
+  <button class="mobile-lang-toggle" onclick="toggleLang()">🌐 EN / IT</button>
+  <a href="/index.html" onclick="toggleMobileMenu()">Home</a>
+  <a href="/index.html#species" onclick="toggleMobileMenu()">Specie</a>
+  <a href="/matches.html">Match</a>
+  <a href="/blog/index.html">Blog</a>
+</div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <span class="hero-emoji">🐎</span>
+  <span class="sec-tag">Enciclopedia · Cavalli</span>
+  <h1>Il mondo dei <em>cavalli di razza</em></h1>
+  <p>Razze millenarie selezionate per sport, lavoro e bellezza. Il pedigree equino è uno dei più antichi al mondo.</p>
+</section>
+<div class="main">
+  <a href="/index.html#species" class="back-link">← Torna alle specie</a>
+  <h2 class="section-title">Le principali <em>razze</em></h2>
+  <p class="section-sub">Una selezione delle razze più diffuse in Italia con pedigree riconosciuto.</p>
+  <div class="breed-grid"><div class="breed-card">
+      <span class="breed-emoji">🐎</span>
+      <div class="breed-name">Purosangue Inglese</div>
+      <div class="breed-origin">Inghilterra · UNIRE</div>
+      <p class="breed-desc">La razza più veloce al mondo. Selezionata per le corse piane, è base genetica di molte altre razze sportive.</p>
+      <div class="breed-tags"><span class="breed-tag">Corse</span><span class="breed-tag">Alta velocità</span><span class="breed-tag">Sportivo</span></div>
+    </div><div class="breed-card">
+      <span class="breed-emoji">🐴</span>
+      <div class="breed-name">KWPN</div>
+      <div class="breed-origin">Olanda · FISE/FEI</div>
+      <p class="breed-desc">Cavallo da sport olandese, eccellente nel dressage e nel salto ostacoli. Tra i più premiati nelle competizioni internazionali.</p>
+      <div class="breed-tags"><span class="breed-tag">Sport</span><span class="breed-tag">Dressage</span><span class="breed-tag">Salto ostacoli</span></div>
+    </div><div class="breed-card">
+      <span class="breed-emoji">🐎</span>
+      <div class="breed-name">Andaluso (PRE)</div>
+      <div class="breed-origin">Spagna · FISE</div>
+      <p class="breed-desc">Pura Raza Española: eleganza, potenza e sensibilità. Ideale per il dressage barocco e per il lavoro in libertà.</p>
+      <div class="breed-tags"><span class="breed-tag">Dressage</span><span class="breed-tag">Barocco</span><span class="breed-tag">Elegante</span></div>
+    </div><div class="breed-card">
+      <span class="breed-emoji">🐴</span>
+      <div class="breed-name">Quarter Horse</div>
+      <div class="breed-origin">USA · AIQHA</div>
+      <p class="breed-desc">La razza più diffusa al mondo. Straordinariamente versatile: western, reining, cutting e ranch work.</p>
+      <div class="breed-tags"><span class="breed-tag">Western</span><span class="breed-tag">Versatile</span><span class="breed-tag">Muscoloso</span></div>
+    </div><div class="breed-card">
+      <span class="breed-emoji">🐎</span>
+      <div class="breed-name">Trottatore Italiano</div>
+      <div class="breed-origin">Italia · UNIRE</div>
+      <p class="breed-desc">Razza italiana d'eccellenza per il trotto. Allevata e perfezionata in Italia da oltre due secoli.</p>
+      <div class="breed-tags"><span class="breed-tag">Trotto</span><span class="breed-tag">Corse</span><span class="breed-tag">Italiano</span></div>
+    </div><div class="breed-card">
+      <span class="breed-emoji">🐴</span>
+      <div class="breed-name">Haflinger</div>
+      <div class="breed-origin">Austria · FISE</div>
+      <p class="breed-desc">Robusto pony di montagna, ottimo per bambini e trekking. Riconoscibile per il mantello sauro e la criniera bionda.</p>
+      <div class="breed-tags"><span class="breed-tag">Trekking</span><span class="breed-tag">Bambini</span><span class="breed-tag">Montagna</span></div>
+    </div></div>
+  <h2 class="section-title">Tutto quello che <em>devi sapere</em></h2>
+  <p class="section-sub">Informazioni essenziali per chi vuole avvicinarsi all'allevamento di razza.</p>
+  <div class="info-grid"><div class="info-card">
+      <h3>Enti certificatori in Italia</h3>
+      <p>UNIRE gestisce il Libro Genealogico per le razze da corsa. FISE (Federazione Italiana Sport Equestri) coordina il passaporto equino obbligatorio per tutti i cavalli dell'UE.</p>
+    </div><div class="info-card">
+      <h3>Il passaporto equino</h3>
+      <p>Dal 2009 ogni cavallo nell'UE deve avere un passaporto (UELN) con microchip. Contiene vaccinazioni, trattamenti veterinari, dati del proprietario e informazioni sulla razza.</p>
+    </div><div class="info-card">
+      <h3>Test sanitari per la riproduzione</h3>
+      <p>I riproduttori devono essere negativi a: anemia infettiva equina (AIE), arterite virale equina (AVE), metrite contagiosa equina (MCE). Test obbligatori prima di ogni monta.</p>
+    </div><div class="info-card">
+      <h3>Valutazione morfologica</h3>
+      <p>I cavalli di razza vengono valutati da giudici abilitati su: tipologia, modello, andature e attitudine sportiva. Il punteggio incide sul valore riproduttivo del soggetto.</p>
+    </div></div>
+</div>
+<footer>
+  <div class="f-logo">Line<span>agr</span>ee</div>
+  <p class="f-copy">© 2026 Lineagree. Tutti i diritti riservati.</p>
+  <ul class="f-links">
+    <li><a href="#">Privacy</a></li><li><a href="#">Termini</a></li><li><a href="#">Contatti</a></li>
+  </ul>
+</footer>
+<script>
+function toggleMobileMenu(){
+  var m=document.getElementById('mobile-menu'),b=document.getElementById('nav-burger');
+  var o=m.classList.contains('open');
+  if(o){m.classList.remove('open');b.classList.remove('open');document.body.style.overflow='';}
+  else{m.classList.add('open');b.classList.add('open');document.body.style.overflow='hidden';}
+}
+function toggleLang(){}
+</script>
+</body>
+</html>
