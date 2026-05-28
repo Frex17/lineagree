@@ -939,27 +939,64 @@ function toggleMobileMenu(){
   if(isOpen){
     menu.classList.remove('open');
     burger.classList.remove('open');
-    document.body.style.overflow='';
+    document.body.style.overflow = '';
   } else {
     menu.classList.add('open');
     burger.classList.add('open');
-    document.body.style.overflow='hidden';
+    document.body.style.overflow = 'hidden';
   }
 }
 
 /* ─── WAITLIST MODAL ─── */
 function openModal(){
-  var m = document.getElementById('waitlist-modal');
-  if(m){ m.style.display='flex'; setTimeout(function(){ m.querySelector('.modal-box') && m.querySelector('.modal-box').classList.add('open'); },10); }
-  else {
-    // Mostra mini popup inline
-    var existing = document.getElementById('lg-quick-modal');
-    if(existing){ existing.remove(); return; }
-    var popup = document.createElement('div');
-    popup.id = 'lg-quick-modal';
-    popup.innerHTML = '<div style="position:fixed;inset:0;z-index:300;background:rgba(26,23,20,.7);display:flex;align-items:center;justify-content:center;padding:1rem" onclick="if(event.target===this)this.remove()"><div style="background:#FAF7F2;max-width:420px;width:100%;padding:2.5rem;position:relative"><button onclick="document.getElementById('lg-quick-modal').remove()" style="position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#7A7368">✕</button><h2 style="font-family:Cormorant Garamond,serif;font-size:1.7rem;font-weight:300;margin-bottom:.5rem">Entra in <em style='color:#B8963E'>Lineagree</em></h2><p style="font-size:.88rem;color:#7A7368;margin-bottom:1.2rem;line-height:1.6">Lascia la tua email. Ti avvisiamo al lancio con accesso prioritario.</p><input id="lgqm-email" type="email" placeholder="La tua email" style="width:100%;padding:.9rem 1rem;border:1px solid rgba(184,150,62,.3);background:white;font-family:DM Sans,sans-serif;font-size:.9rem;margin-bottom:.7rem;box-sizing:border-box"><button onclick="var e=document.getElementById('lgqm-email').value;if(e){document.getElementById('lg-quick-modal').remove();}" style="width:100%;padding:.95rem;background:#B8963E;color:white;border:none;font-family:DM Sans,sans-serif;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">Iscrivimi alla lista</button></div></div>';
-    document.body.appendChild(popup);
-  }
+  // Crea popup lista d'attesa senza innerHTML problematico
+  var existing = document.getElementById('lg-quick-modal');
+  if(existing){ existing.remove(); return; }
+
+  var overlay = document.createElement('div');
+  overlay.id = 'lg-quick-modal';
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:300;background:rgba(26,23,20,.7);display:flex;align-items:center;justify-content:center;padding:1rem';
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) overlay.remove(); });
+
+  var box = document.createElement('div');
+  box.style.cssText = 'background:#FAF7F2;max-width:420px;width:100%;padding:2.5rem;position:relative';
+
+  var closeBtn = document.createElement('button');
+  closeBtn.textContent = '✕';
+  closeBtn.style.cssText = 'position:absolute;top:1rem;right:1.2rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#7A7368';
+  closeBtn.onclick = function(){ overlay.remove(); };
+
+  var title = document.createElement('h2');
+  title.style.cssText = 'font-family:Cormorant Garamond,serif;font-size:1.7rem;font-weight:300;margin-bottom:.5rem;color:#1A1714';
+  title.innerHTML = 'Entra in <em style="color:#B8963E">Lineagree</em>';
+
+  var desc = document.createElement('p');
+  desc.style.cssText = 'font-size:.88rem;color:#7A7368;margin-bottom:1.2rem;line-height:1.6';
+  desc.textContent = 'Lascia la tua email. Ti avvisiamo al lancio con accesso prioritario.';
+
+  var input = document.createElement('input');
+  input.type = 'email';
+  input.id = 'lgqm-email';
+  input.placeholder = 'La tua email';
+  input.style.cssText = 'width:100%;padding:.9rem 1rem;border:1px solid rgba(184,150,62,.3);background:white;font-family:DM Sans,sans-serif;font-size:.9rem;margin-bottom:.7rem;box-sizing:border-box;outline:none';
+  input.addEventListener('focus', function(){ this.style.borderColor='#B8963E'; });
+
+  var submitBtn = document.createElement('button');
+  submitBtn.textContent = 'Iscrivimi alla lista';
+  submitBtn.style.cssText = 'width:100%;padding:.95rem;background:#B8963E;color:white;border:none;font-family:DM Sans,sans-serif;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer';
+  submitBtn.onclick = function(){
+    var email = document.getElementById('lgqm-email').value;
+    if(email){ overlay.remove(); }
+  };
+
+  box.appendChild(closeBtn);
+  box.appendChild(title);
+  box.appendChild(desc);
+  box.appendChild(input);
+  box.appendChild(submitBtn);
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  setTimeout(function(){ input.focus(); }, 100);
 }
 
 /* ─── INIT ─── */
