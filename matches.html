@@ -250,6 +250,11 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 @media(max-width:900px){
   .nav-burger{display:flex}
 }
+
+.mobile-lang-toggle{display:flex;align-items:center;justify-content:center;gap:.5rem;background:none;border:1px solid var(--border);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;cursor:pointer;margin:1rem auto 0;transition:all .2s;width:auto}
+.mobile-lang-toggle:hover{background:var(--gold-pale)}
+.mobile-menu-accedi{width:calc(100% - 0px);padding:1.1rem 2rem;background:var(--gold);color:white;border:none;font-family:"DM Sans",sans-serif;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-align:center;transition:background .2s}
+.mobile-menu-accedi:hover{background:var(--dark)}
 </style>
 </head>
 <body>
@@ -267,11 +272,14 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
     <button class="nav-burger" id="nav-burger" aria-label="Menu" onclick="toggleMobileMenu()">
       <span></span><span></span><span></span>
     </button>
-    <button class="btn-cta" onclick="openModal()">Accedi</button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Chiudi">&#x2715;</button>
+  <button class="mobile-lang-toggle" onclick="toggleLang()" id="mobile-lang-btn">
+    <span class="lang-it">🌐 English</span>
+    <span class="lang-en" style="display:none">🌐 Italiano</span>
+  </button>
   <a href="index.html"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a>
   <a href="index.html#how"><span data-it style="display:inline">Come funziona</span><span data-en style="display:none">How it works</span></a>
   <a href="index.html#species"><span data-it style="display:inline">Specie</span><span data-en style="display:none">Species</span></a>
@@ -288,6 +296,10 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
     <h1>Trova il tuo <em>match perfetto</em></h1>
     <p>8 profili verificati · Pedigree certificati · Animali d'eccellenza</p>
   </div>
+  <button class="mobile-menu-accedi" onclick="openModal();toggleMobileMenu()">
+    <span class="lang-it">Accedi</span>
+    <span class="lang-en" style="display:none">Sign in</span>
+  </button>
 </div>
 
 <!-- TABS -->
@@ -929,6 +941,19 @@ document.addEventListener('keydown',e=>{
   }
 });
 
+
+
+/* ─── LANG TOGGLE ─── */
+var langM = 'it';
+function toggleLang(){
+  langM = langM === 'it' ? 'en' : 'it';
+  document.querySelectorAll('.lang-it').forEach(function(el){
+    el.style.display = langM === 'it' ? '' : 'none';
+  });
+  document.querySelectorAll('.lang-en').forEach(function(el){
+    el.style.display = langM === 'en' ? '' : 'none';
+  });
+}
 
 /* ─── MOBILE MENU ─── */
 function toggleMobileMenu(){
