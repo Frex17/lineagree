@@ -54,25 +54,59 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 
 @media(max-width:900px){.hero,.main{padding:7rem 1.5rem 3rem}.grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.grid{grid-template-columns:1fr}}
+
+/* ── Hamburger ── */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:1px solid var(--border);cursor:pointer;padding:7px;flex-shrink:0}
+.nav-burger span{display:block;width:100%;height:1.5px;background:var(--gold);transition:all .25s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media(max-width:900px){.nav-burger{display:flex}.nav-links{display:none}}
+@media(max-width:600px){nav{padding:.85rem 1rem}}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--cream);flex-direction:column;justify-content:center;align-items:center;gap:0;padding-top:80px}
+.mobile-menu.open{display:flex;animation:menuFade .2s ease both}
+@keyframes menuFade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.mobile-menu a{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:300;color:var(--dark);text-decoration:none;padding:.9rem 2rem;width:100%;text-align:center;border-bottom:1px solid var(--border);transition:color .2s,background .2s}
+.mobile-menu a:first-of-type{border-top:1px solid var(--border)}
+.mobile-menu a:hover{color:var(--gold);background:var(--gold-pale)}
+.mobile-menu a.mobile-cta{background:var(--gold);color:white;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;font-family:"DM Sans",sans-serif;font-weight:500}
+.mobile-menu a.mobile-cta:hover{background:var(--dark)}
+.mobile-menu-close{position:absolute;top:1.4rem;right:1.5rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--muted)}
+.mobile-lang-toggle{background:none;border:1px solid var(--border);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;cursor:pointer;margin:1.2rem auto 0;transition:all .2s}
+.mobile-lang-toggle:hover{background:var(--gold-pale)}
+.nav-links a.active{color:var(--gold)}
 </style>
 </head>
 <body>
 <nav>
   <a class="logo" href="../index.html">Line<span>agr</span>ee</a>
   <ul class="nav-links">
-    
-    
-    
-    <li><a href="index.html">Blog</a></li>
+    <li><a href="../index.html"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a></li>
+    <li><a href="../index.html#species"><span data-it style="display:inline">Specie</span><span data-en style="display:none">Species</span></a></li>
+    <li><a href="../enciclopedia.html"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a></li>
+    <li><a href="../matches.html">Match</a></li>
+    <li><a href="index.html" class="active">Blog</a></li>
   </ul>
   <div class="nav-right">
-    <button class="btn-lang" onclick="toggleLang()">
-      <span data-it style="display:inline">EN</span>
-      <span data-en style="display:none">IT</span>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
     </button>
-    <button class="btn-cta" onclick="window.location='../index.html#waitlist'"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join the waitlist</span></button>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Chiudi">&#x2715;</button>
+  <button class="mobile-lang-toggle" onclick="toggleLang()">
+    <span data-it style="display:inline">🌐 English</span>
+    <span data-en style="display:none">🌐 Italiano</span>
+  </button>
+  <a href="../index.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a>
+  <a href="../index.html#species" onclick="toggleMobileMenu()"><span data-it style="display:inline">Specie</span><span data-en style="display:none">Species</span></a>
+  <a href="../enciclopedia.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a>
+  <a href="../matches.html"><span data-it style="display:inline">Match</span><span data-en style="display:none">Matches</span></a>
+  <a href="index.html"><span data-it style="display:inline">Blog</span><span data-en style="display:none">Blog</span></a>
+  <a href="../index.html#waitlist" onclick="toggleMobileMenu()" class="mobile-cta"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join the waitlist</span></a>
+</div>
 <div class="hero">
   <span class="hero-badge">Blog</span>
   <h1><span data-it style="display:inline">Risorse per <em>allevatori</em></span><span data-en style="display:none">Resources for <em>breeders</em></span></h1>
@@ -90,6 +124,13 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 </footer>
 <script>
 var lang='it';
+function toggleMobileMenu(){
+  var m=document.getElementById('mobile-menu');
+  var b=document.getElementById('nav-burger');
+  var o=m.classList.contains('open');
+  if(o){m.classList.remove('open');b.classList.remove('open');document.body.style.overflow='';}
+  else{m.classList.add('open');b.classList.add('open');document.body.style.overflow='hidden';}
+}
 function toggleLang(){
   lang=lang==='it'?'en':'it';
   document.querySelectorAll('[data-it]').forEach(function(el){
