@@ -259,8 +259,11 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
     <li><a href="matches.html" class="active">Matches</a></li>
     <li><a href="index.html#blog">Blog</a></li>
   </ul>
-  <div class="nav-right">
-    <a href="#" class="btn-cta">Accedi</a>
+  <div class="nav-right" id="nav-right">
+    <button class="nav-burger" id="nav-burger" aria-label="Menu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+    <button class="btn-cta" onclick="openModal()">Accedi</button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
