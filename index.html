@@ -203,6 +203,21 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 @media(max-width:900px){
   .nav-burger{display:flex}
 }
+
+/* ── Carosello match ── */
+.match-carousel-wrap{position:relative;max-width:420px;margin:0 auto}
+.match-carousel{display:flex;overflow:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0;border-radius:2px}
+.match-carousel .mc{flex:0 0 100%;scroll-snap-align:start;min-width:0;transition:none}
+.carousel-dots{display:flex;justify-content:center;gap:.5rem;margin:1.2rem 0 .8rem}
+.cdot{width:8px;height:8px;border-radius:50%;background:var(--border);border:1.5px solid var(--gold);cursor:pointer;transition:background .2s}
+.cdot.active{background:var(--gold)}
+.carousel-nav{display:flex;justify-content:center;gap:1rem;margin-bottom:.5rem}
+.carousel-prev,.carousel-next{background:none;border:1px solid var(--border);width:38px;height:38px;font-size:1rem;cursor:pointer;color:var(--gold);transition:all .2s}
+.carousel-prev:hover,.carousel-next:hover{background:var(--gold);color:white;border-color:var(--gold)}
+.explore-link{display:inline-flex;align-items:center;gap:.6rem;margin-top:2rem;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:.25rem;transition:border-color .2s,gap .2s}
+.explore-link:hover{border-color:var(--gold);gap:.9rem}
+.explore-arrow{transition:transform .2s}
+.explore-link:hover .explore-arrow{transform:translateX(4px)}
 </style>
 </head>
 <body>
@@ -234,7 +249,6 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
       <span data-it style="display:inline">EN</span>
       <span data-en style="display:none">IT</span>
     </button>
-    <button class="btn-cta" onclick="openModal()"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join the waitlist</span></button>
   </div>
 </nav>
 <!-- Mobile menu overlay -->
@@ -295,11 +309,29 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
   <span class="sec-tag"><span data-it style="display:inline">Il match</span><span data-en style="display:none">Matching</span></span>
   <h2 class="sec-title"><span data-it style="display:inline">Trova il partner <em>perfetto</em></span><span data-en style="display:none">Find the <em>perfect</em> partner</span></h2>
   <p class="sec-sub"><span data-it style="display:inline">Scorri i profili verificati, salvali o passa al prossimo.</span><span data-en style="display:none">Browse verified profiles, save them or skip.</span></p>
-  <div class="match-grid">
-<div class="mc"><div class="mc-img">🐕</div><div class="mc-body"><div class="mc-name">Artù della Valle Antica</div><div class="mc-breed"><span data-it style="display:inline">Labrador Retriever · 3 anni</span><span data-en style="display:none">Labrador Retriever · 3 years</span></div><div class="mc-loc">📍 Bologna, BO</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Pedigree ENCI</span><span data-en style="display:none">✓ ENCI Pedigree</span></span><span class="mc-badge">🏆 Best in Show 2024</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
-<div class="mc"><div class="mc-img">🐈</div><div class="mc-body"><div class="mc-name">Zaffiro di Casa Morandi</div><div class="mc-breed"><span data-it style="display:inline">Maine Coon · 2 anni</span><span data-en style="display:none">Maine Coon · 2 years</span></div><div class="mc-loc">📍 Firenze, FI</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Pedigree ANFI</span><span data-en style="display:none">✓ ANFI Pedigree</span></span><span class="mc-badge">🏆 Best Cat 2023</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
-<div class="mc"><div class="mc-img">🐴</div><div class="mc-body"><div class="mc-name">Tempesta del Vento</div><div class="mc-breed"><span data-it style="display:inline">Purosangue · 5 anni</span><span data-en style="display:none">Thoroughbred · 5 years</span></div><div class="mc-loc">📍 Siena, SI</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Studbook UNIRE</span><span data-en style="display:none">✓ UNIRE Studbook</span></span><span class="mc-badge">🥇 Derby Toscano 2023</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
+
+  <div class="match-carousel-wrap">
+    <div class="match-carousel" id="matchCarousel">
+      <div class="mc"><div class="mc-img">🐕</div><div class="mc-body"><div class="mc-name">Artù della Valle Antica</div><div class="mc-breed"><span data-it style="display:inline">Labrador Retriever · 3 anni</span><span data-en style="display:none">Labrador Retriever · 3 years</span></div><div class="mc-loc">📍 Bologna, BO</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Pedigree ENCI</span><span data-en style="display:none">✓ ENCI Pedigree</span></span><span class="mc-badge">🏆 Best in Show 2024</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
+      <div class="mc"><div class="mc-img">🐈</div><div class="mc-body"><div class="mc-name">Zaffiro di Casa Morandi</div><div class="mc-breed"><span data-it style="display:inline">Maine Coon · 2 anni</span><span data-en style="display:none">Maine Coon · 2 years</span></div><div class="mc-loc">📍 Firenze, FI</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Pedigree ANFI</span><span data-en style="display:none">✓ ANFI Pedigree</span></span><span class="mc-badge">🏆 Best Cat 2023</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
+      <div class="mc"><div class="mc-img">🐴</div><div class="mc-body"><div class="mc-name">Tempesta del Vento</div><div class="mc-breed"><span data-it style="display:inline">Purosangue · 5 anni</span><span data-en style="display:none">Thoroughbred · 5 years</span></div><div class="mc-loc">📍 Siena, SI</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Studbook UNIRE</span><span data-en style="display:none">✓ UNIRE Studbook</span></span><span class="mc-badge">🥇 Derby Toscano 2023</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
+    </div>
+    <div class="carousel-dots" id="carouselDots">
+      <span class="cdot active" onclick="goToSlide(0)"></span>
+      <span class="cdot" onclick="goToSlide(1)"></span>
+      <span class="cdot" onclick="goToSlide(2)"></span>
+    </div>
+    <div class="carousel-nav">
+      <button class="carousel-prev" onclick="prevSlide()" aria-label="Precedente">&#8592;</button>
+      <button class="carousel-next" onclick="nextSlide()" aria-label="Successivo">&#8594;</button>
+    </div>
   </div>
+
+  <a href="matches.html" class="explore-link">
+    <span data-it style="display:inline">Esplora tutti i lignaggi</span>
+    <span data-en style="display:none">Explore all lineages</span>
+    <span class="explore-arrow">&#8594;</span>
+  </a>
 </section>
 <section class="feat-sec">
   <span class="sec-tag"><span data-it style="display:inline">Funzionalità</span><span data-en style="display:none">Features</span></span>
@@ -354,6 +386,34 @@ function toggleMobileMenu(){
       document.body.style.overflow = 'hidden';
     }
   }
+  
+  var _carIdx = 0;
+  var _carTotal = 3;
+  function _updateCarousel(){
+    var c = document.getElementById('matchCarousel');
+    if(!c) return;
+    var w = c.offsetWidth;
+    c.scrollTo({left: _carIdx * w, behavior: 'smooth'});
+    var dots = document.querySelectorAll('.cdot');
+    dots.forEach(function(d,i){d.classList.toggle('active', i===_carIdx);});
+  }
+  function nextSlide(){_carIdx=(_carIdx+1)%_carTotal;_updateCarousel();}
+  function prevSlide(){_carIdx=(_carIdx-1+_carTotal)%_carTotal;_updateCarousel();}
+  function goToSlide(i){_carIdx=i;_updateCarousel();}
+  // swipe touch
+  (function(){
+    var startX=0;
+    document.addEventListener('DOMContentLoaded',function(){
+      var c=document.getElementById('matchCarousel');
+      if(!c)return;
+      c.addEventListener('touchstart',function(e){startX=e.touches[0].clientX;},{passive:true});
+      c.addEventListener('touchend',function(e){
+        var dx=e.changedTouches[0].clientX-startX;
+        if(Math.abs(dx)>40){dx<0?nextSlide():prevSlide();}
+      },{passive:true});
+    });
+  })();
+
   function toggleLang(){
   lang=lang==='it'?'en':'it';
   document.querySelectorAll('[data-it]').forEach(function(el){
