@@ -60,19 +60,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @media(max-width:900px){.views{padding:2rem 1.5rem 4rem}}
 
 /* FILTERS */
-.filters{padding:1.2rem 1.5rem 1rem;border-bottom:1px solid var(--border);background:var(--cream);position:sticky;top:64px;z-index:10;display:flex;flex-direction:column;gap:.75rem}
-.filter-row{display:flex;align-items:center;gap:.5rem;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
-.filter-row::-webkit-scrollbar{display:none}
-.filter-label{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap;min-width:fit-content;margin-right:.2rem}
-.filter-btn{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.45rem 1rem;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .18s;font-family:"DM Sans",sans-serif;flex-shrink:0;border-radius:2px}
+.filters{padding:1.4rem 1.5rem 1.2rem;border-bottom:1px solid var(--border);background:var(--cream);position:sticky;top:64px;z-index:10;display:flex;flex-direction:column;gap:1rem}
+.filter-block{display:flex;flex-direction:column;gap:.55rem}
+.filter-block-label{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.filter-row{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.filter-row-scroll{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:3px}
+.filter-row-scroll::-webkit-scrollbar{display:none}
+.filter-btn{font-size:.74rem;letter-spacing:.06em;padding:.5rem 1.1rem;border:1px solid var(--border);background:white;color:var(--muted);cursor:pointer;white-space:nowrap;transition:all .18s;font-family:"DM Sans",sans-serif;flex-shrink:0;border-radius:40px;display:inline-flex;align-items:center;gap:.35rem}
 .filter-btn:hover{border-color:var(--gold);color:var(--gold)}
 .filter-btn.active{background:var(--gold);color:white;border-color:var(--gold)}
-.filter-group{display:flex;gap:.4rem;flex-wrap:nowrap}
-.filter-divider{width:1px;height:24px;background:var(--border);align-self:center;flex-shrink:0;margin:0 .2rem}
-.filter-bottom-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.2rem;border-top:1px solid var(--border)}
-.filter-select{font-size:.78rem;padding:.4rem .8rem;border:1px solid var(--border);background:var(--cream);color:var(--dark);font-family:"DM Sans",sans-serif;cursor:pointer;outline:none;flex:1;max-width:180px;border-radius:2px}
+.filter-bottom-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.filter-select{font-size:.8rem;padding:.55rem 1rem;border:1px solid var(--border);background:white;color:var(--dark);font-family:"DM Sans",sans-serif;cursor:pointer;outline:none;flex:1;max-width:220px;border-radius:40px}
 .filter-select:focus{border-color:var(--gold)}
-.filters-meta{font-size:.78rem;color:var(--muted);white-space:nowrap}
+.filters-meta{font-size:.8rem;color:var(--muted);white-space:nowrap}
 .filters-meta strong{color:var(--gold)}
 .explore-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:1.5rem}
 .animal-card{background:white;border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s;position:relative;display:flex;flex-direction:column}
@@ -227,7 +227,7 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 @media(max-width:600px){
   nav{padding:.85rem 1rem}
   .nav-right{gap:.45rem}
-  .btn-lang{font-size:.66rem;padding:.36rem .55rem;letter-spacing:.05em;min-width:32px}
+  
   .btn-cta{font-size:.66rem;padding:.36rem .7rem;letter-spacing:.04em;white-space:nowrap}
 }
 @media(max-width:380px){
@@ -255,6 +255,9 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 .mobile-lang-toggle:hover{background:var(--gold-pale)}
 
 
+@media(max-width:900px){.btn-lang{display:none}}
+.mobile-menu a.mobile-cta{background:var(--gold);color:white;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;font-family:"DM Sans",sans-serif;font-weight:500}.mobile-menu a.mobile-cta:hover{background:var(--dark)}
+nav .logo{flex:1}nav .nav-links{flex:0 0 auto}nav .nav-right{flex:1;display:flex;justify-content:flex-end;align-items:center;gap:.75rem}
 </style>
 </head>
 <body>
@@ -263,14 +266,15 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 <nav>
   <a class="logo" href="index.html">Line<span>agr</span>ee</a>
   <ul class="nav-links">
-    <li><a href="index.html#how">Come funziona</a></li>
-    <li><a href="index.html#species">Specie</a></li>
-    <li><a href="matches.html" class="active">Matches</a></li>
+    <li><a href="index.html"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a></li>
+    <li><a href="enciclopedia.html"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a></li>
+    <li><a href="matches.html" class="active"><span data-it style="display:inline">Match</span><span data-en style="display:none">Matches</span></a></li>
     <li><a href="blog/index.html">Blog</a></li>
   </ul>
   <div class="nav-right" id="nav-right">
-    <button class="btn-lang" onclick="toggleLang()" style="display:none" id="btn-lang-desktop">
-      <span class="lang-it">EN</span><span class="lang-en" style="display:none">IT</span>
+    <button class="btn-lang" onclick="toggleLang()">
+      <span data-it style="display:inline">EN</span>
+      <span data-en style="display:none">IT</span>
     </button>
     <button class="nav-burger" id="nav-burger" aria-label="Menu" onclick="toggleMobileMenu()">
       <span></span><span></span><span></span>
@@ -279,15 +283,15 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Chiudi">&#x2715;</button>
-  <button class="mobile-lang-toggle" onclick="toggleLang()" id="mobile-lang-btn">
-    <span class="lang-it">🌐 English</span>
-    <span class="lang-en" style="display:none">🌐 Italiano</span>
+  <button class="mobile-lang-toggle" onclick="toggleLang()">
+    <span data-it style="display:inline">🌐 English</span>
+    <span data-en style="display:none">🌐 Italiano</span>
   </button>
-  <a href="index.html"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a>
-  <a href="index.html#how"><span data-it style="display:inline">Come funziona</span><span data-en style="display:none">How it works</span></a>
-  <a href="index.html#species"><span data-it style="display:inline">Specie</span><span data-en style="display:none">Species</span></a>
+  <a href="index.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a>
+  <a href="enciclopedia.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a>
+  <a href="matches.html"><span data-it style="display:inline">Match</span><span data-en style="display:none">Matches</span></a>
   <a href="blog/index.html">Blog</a>
-  <a href="#" onclick="openModal();toggleMobileMenu();return false;" style="background:var(--gold);color:white;font-size:1.1rem;letter-spacing:.12em;text-transform:uppercase;font-family:'DM Sans',sans-serif;font-weight:500"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join waitlist</span></a>
+  <a href="index.html#waitlist" onclick="toggleMobileMenu()" class="mobile-cta"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join the waitlist</span></a>
 </div>
 
 <!-- PAGE HEADER -->
@@ -295,9 +299,9 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
   <div class="ph-bg"></div>
   <div class="ph-lines"></div>
   <div class="ph-content">
-    <span class="sec-tag">Matchmaking di razza</span>
-    <h1>Trova il tuo <em>match perfetto</em></h1>
-    <p>8 profili verificati · Pedigree certificati · Animali d'eccellenza</p>
+    <span class="sec-tag"><span data-it style="display:inline">Matchmaking di razza</span><span data-en style="display:none">Pedigree matchmaking</span></span>
+    <h1><span data-it style="display:inline">Trova il tuo <em>match perfetto</em></span><span data-en style="display:none">Find your <em>perfect match</em></span></h1>
+    <p><span data-it style="display:inline">8 profili verificati · Pedigree certificati · Animali d'eccellenza</span><span data-en style="display:none">8 verified profiles · Certified pedigrees · Animals of excellence</span></p>
   </div>
 </div>
 
@@ -320,23 +324,25 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
   <!-- ESPLORA -->
   <div class="view active" id="view-esplora">
     <div class="filters">
-      <div class="filter-row">
-        <span class="filter-label">Specie</span>
-        <div class="filter-group">
-          <button class="filter-btn active" onclick="filterSpecies('tutti',this)">Tutti</button>
-          <button class="filter-btn" onclick="filterSpecies('cane',this)">🐕 Cani</button>
-          <button class="filter-btn" onclick="filterSpecies('gatto',this)">🐈 Gatti</button>
-          <button class="filter-btn" onclick="filterSpecies('cavallo',this)">🐎 Cavalli</button>
+      <div class="filter-block">
+        <span class="filter-block-label"><span data-it style="display:inline">Specie</span><span data-en style="display:none">Species</span></span>
+        <div class="filter-row filter-row-scroll">
+          <button class="filter-btn active" onclick="filterSpecies('tutti',this)"><span data-it style="display:inline">Tutti</span><span data-en style="display:none">All</span></button>
+          <button class="filter-btn" onclick="filterSpecies('cane',this)">🐕 <span data-it style="display:inline">Cani</span><span data-en style="display:none">Dogs</span></button>
+          <button class="filter-btn" onclick="filterSpecies('gatto',this)">🐈 <span data-it style="display:inline">Gatti</span><span data-en style="display:none">Cats</span></button>
+          <button class="filter-btn" onclick="filterSpecies('cavallo',this)">🐎 <span data-it style="display:inline">Cavalli</span><span data-en style="display:none">Horses</span></button>
         </div>
-        <div class="filter-divider"></div>
-        <div class="filter-group">
-          <button class="filter-btn" onclick="filterSex('maschio',this)" id="fbm">♂ M</button>
-          <button class="filter-btn" onclick="filterSex('femmina',this)" id="fbf">♀ F</button>
+      </div>
+      <div class="filter-block">
+        <span class="filter-block-label"><span data-it style="display:inline">Genere</span><span data-en style="display:none">Sex</span></span>
+        <div class="filter-row">
+          <button class="filter-btn" onclick="filterSex('maschio',this)" id="fbm">♂ <span data-it style="display:inline">Maschio</span><span data-en style="display:none">Male</span></button>
+          <button class="filter-btn" onclick="filterSex('femmina',this)" id="fbf">♀ <span data-it style="display:inline">Femmina</span><span data-en style="display:none">Female</span></button>
         </div>
       </div>
       <div class="filter-bottom-row">
         <select class="filter-select" onchange="filterRegion(this.value)">
-          <option value="">Tutte le regioni</option>
+          <option value="">🌍 Tutte le regioni</option>
           <option value="Lombardia">Lombardia</option>
           <option value="Lazio">Lazio</option>
           <option value="Toscana">Toscana</option>
@@ -346,7 +352,7 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
           <option value="Veneto">Veneto</option>
           <option value="Liguria">Liguria</option>
         </select>
-        <span class="filters-meta">Risultati: <strong id="results-count">8</strong></span>
+        <span class="filters-meta"><span data-it style="display:inline">Risultati</span><span data-en style="display:none">Results</span>: <strong id="results-count">8</strong></span>
       </div>
     </div>
     <div class="explore-grid" id="explore-grid"></div>
@@ -366,7 +372,7 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
         <div class="match-done" id="match-done">
           <span class="done-emoji">🐾</span>
           <h3>Hai visto tutti i profili</h3>
-          <p>Ottimo lavoro! Controlla i tuoi preferiti nella sezione <em>Salvati</em>, oppure ricomincia la sessione di matching.</p>
+          <p>Ottimo lavoro! Controlla i tuoi preferiti nella sezione <em><span data-it style="display:inline">Salvati</span><span data-en style="display:none">Saved</span></em>, oppure ricomincia la sessione di matching.</p>
           <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:.5rem">
             <button class="btn-primary" onclick="restartMatch()">Ricomincia</button>
             <button class="btn-primary" style="background:transparent;color:var(--gold);border-color:var(--gold)" onclick="switchTab('salvati')">Vedi salvati</button>
@@ -945,10 +951,7 @@ document.addEventListener('keydown',e=>{
 /* ─── LANG TOGGLE ─── */
 var langM = 'it';
 // Mostra btn-lang su desktop
-document.addEventListener('DOMContentLoaded', function(){
-  var btn = document.getElementById('btn-lang-desktop');
-  if(btn) btn.style.display = '';
-});
+
 function toggleLang(){
   langM = langM === 'it' ? 'en' : 'it';
   // classi lang-it / lang-en
