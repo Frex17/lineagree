@@ -107,16 +107,15 @@ nav .nav-right{flex:1;justify-content:flex-end}
 <body>
 
 <nav>
-  <a class="logo" href="/index.html">Line<span>agr</span>ee</a>
+  <a class="logo" href="index.html">Line<span>agr</span>ee</a>
   <ul class="nav-links">
-    <li><a href="/index.html"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a></li>
-    <li><a href="/index.html#species"><span data-it style="display:inline">Specie</span><span data-en style="display:none">Species</span></a></li>
-    <li><a href="/enciclopedia.html" class="active"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a></li>
-    <li><a href="/matches.html">Match</a></li>
-    <li><a href="/blog/index.html">Blog</a></li>
+    <li><a href="index.html"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a></li>
+    <li><a href="enciclopedia.html" class="active"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a></li>
+    <li><a href="matches.html"><span data-it style="display:inline">Match</span><span data-en style="display:none">Matches</span></a></li>
+    <li><a href="blog/index.html">Blog</a></li>
   </ul>
-  <div class="nav-right">
-    <button class="btn-lang" onclick="toggleLang()" id="btn-lang-desktop">
+  <div class="nav-right" id="nav-right">
+    <button class="btn-lang" onclick="toggleLang()">
       <span data-it style="display:inline">EN</span>
       <span data-en style="display:none">IT</span>
     </button>
@@ -125,19 +124,17 @@ nav .nav-right{flex:1;justify-content:flex-end}
     </button>
   </div>
 </nav>
-
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Chiudi">&#x2715;</button>
   <button class="mobile-lang-toggle" onclick="toggleLang()">
     <span data-it style="display:inline">🌐 English</span>
     <span data-en style="display:none">🌐 Italiano</span>
   </button>
-  <a href="/index.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a>
-  <a href="/index.html#species" onclick="toggleMobileMenu()"><span data-it style="display:inline">Specie</span><span data-en style="display:none">Species</span></a>
-  <a href="/enciclopedia.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a>
-  <a href="/matches.html">Match</a>
-  <a href="/blog/index.html">Blog</a>
-  <a href="/index.html#waitlist" onclick="toggleMobileMenu()" class="mobile-cta"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join the waitlist</span></a>
+  <a href="index.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a>
+  <a href="enciclopedia.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a>
+  <a href="matches.html"><span data-it style="display:inline">Match</span><span data-en style="display:none">Matches</span></a>
+  <a href="blog/index.html">Blog</a>
+  <a href="index.html#waitlist" onclick="toggleMobileMenu()" class="mobile-cta"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join the waitlist</span></a>
 </div>
 
 <section class="hero">
