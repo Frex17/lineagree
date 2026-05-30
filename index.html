@@ -169,7 +169,7 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 @media(max-width:600px){
   nav{padding:.85rem 1rem}
   .nav-right{gap:.45rem}
-  .btn-lang{font-size:.66rem;padding:.36rem .55rem;letter-spacing:.05em;min-width:32px}
+  
   .btn-cta{font-size:.66rem;padding:.36rem .7rem;letter-spacing:.04em;white-space:nowrap}
 }
 @media(max-width:380px){
@@ -226,6 +226,7 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 nav .logo{flex:1}
 nav .nav-links{flex:0 0 auto}
 nav .nav-right{flex:1;justify-content:flex-end}
+@media(max-width:900px){.btn-lang{display:none}}
 </style>
 </head>
 <body>
@@ -242,15 +243,16 @@ nav .nav-right{flex:1;justify-content:flex-end}
   </div>
 </div>
 <nav>
-  <a class="logo" href="#">Line<span>agr</span>ee</a>
+  <a class="logo" href="index.html">Line<span>agr</span>ee</a>
   <ul class="nav-links">
+    <li><a href="index.html" class="active"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a></li>
     <li><a href="#how"><span data-it style="display:inline">Come funziona</span><span data-en style="display:none">How it works</span></a></li>
-    <li><a href="#species"><span data-it style="display:inline">Specie</span><span data-en style="display:none">Species</span></a></li>
-    <li><a href="matches.html">Match</a></li>
+    <li><a href="enciclopedia.html"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a></li>
+    <li><a href="matches.html"><span data-it style="display:inline">Match</span><span data-en style="display:none">Matches</span></a></li>
     <li><a href="blog/index.html">Blog</a></li>
   </ul>
   <div class="nav-right" id="nav-right">
-    <button class="btn-lang" onclick="toggleLang()" id="btn-lang-desktop">
+    <button class="btn-lang" onclick="toggleLang()">
       <span data-it style="display:inline">EN</span>
       <span data-en style="display:none">IT</span>
     </button>
@@ -259,18 +261,18 @@ nav .nav-right{flex:1;justify-content:flex-end}
     </button>
   </div>
 </nav>
-<!-- Mobile menu overlay -->
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Chiudi">&#x2715;</button>
-  <button class="mobile-lang-toggle" onclick="toggleLang()" id="mobile-lang-btn">
+  <button class="mobile-lang-toggle" onclick="toggleLang()">
     <span data-it style="display:inline">🌐 English</span>
     <span data-en style="display:none">🌐 Italiano</span>
   </button>
+  <a href="index.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a>
   <a href="#how" onclick="toggleMobileMenu()"><span data-it style="display:inline">Come funziona</span><span data-en style="display:none">How it works</span></a>
-  <a href="#species" onclick="toggleMobileMenu()"><span data-it style="display:inline">Specie</span><span data-en style="display:none">Species</span></a>
+  <a href="enciclopedia.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a>
   <a href="matches.html"><span data-it style="display:inline">Match</span><span data-en style="display:none">Matches</span></a>
   <a href="blog/index.html">Blog</a>
-  <a href="#" onclick="openModal();toggleMobileMenu();return false;" style="background:var(--gold);color:white;font-size:1.1rem;letter-spacing:.12em;text-transform:uppercase;font-family:'DM Sans',sans-serif;font-weight:500"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join waitlist</span></a>
+  <a href="index.html#waitlist" onclick="toggleMobileMenu()" class="mobile-cta"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join the waitlist</span></a>
 </div>
 <section class="hero">
   <div class="hero-bg"></div><div class="hero-lines"></div>
