@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Come leggere un pedigree: guida per principianti — Lineagree</title>
+<meta name="description" content="Il pedigree non è solo un pezzo di carta. Impara a interpretare ogni voce, dalla discendenza ai titoli.">
+<meta property="og:title" content="Come leggere un pedigree: guida per principianti — Lineagree">
+<meta property="og:description" content="Il pedigree non è solo un pezzo di carta. Impara a interpretare ogni voce, dalla discendenza ai titoli.">
+<meta property="og:image" content="https://lineagree.com/blog/images/come-leggere-un-pedigree.jpg">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://lineagree.com/blog/come-leggere-un-pedigree.html">
+<link rel="canonical" href="https://lineagree.com/blog/come-leggere-un-pedigree.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Come leggere un pedigree: guida per principianti","description":"Il pedigree non è solo un pezzo di carta. Impara a interpretare ogni voce, dalla discendenza ai titoli.","image":"https://lineagree.com/blog/images/come-leggere-un-pedigree.jpg","publisher":{"@type":"Organization","name":"Lineagree","url":"https://lineagree.com"},"inLanguage":"it"}</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#B8963E;--gold-pale:#F5EDD8;--cream:#FAF7F2;--dark:#1A1714;--muted:#7A7368;--border:rgba(184,150,62,0.2)}
+body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--dark)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(250,247,242,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.logo{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:300;letter-spacing:.08em;color:var(--dark);text-decoration:none}
+.logo span{color:var(--gold);font-style:italic}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:.75rem}
+.btn-lang{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all .25s;font-family:"DM Sans",sans-serif;min-width:48px}
+.btn-lang:hover{background:var(--gold);color:white}
+.btn-cta{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.3rem;border:2px solid var(--gold);color:white;background:var(--gold);cursor:pointer;transition:all .25s;font-family:"DM Sans",sans-serif;white-space:nowrap}
+.btn-cta:hover{background:var(--dark);border-color:var(--dark)}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}}
+
+.art-hero{padding:10rem 4rem 3rem;text-align:center;border-bottom:1px solid var(--border)}
+.art-badge{display:inline-block;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid var(--border);padding:.4rem 1rem;margin-bottom:1.5rem;background:rgba(184,150,62,.06)}
+.art-hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:300;line-height:1.15;color:var(--dark);max-width:800px;margin:0 auto 1rem}
+.art-meta{font-size:.8rem;color:var(--muted)}
+.art-cover{width:100%;max-height:460px;overflow:hidden}
+.art-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.art-body{max-width:720px;margin:0 auto;padding:4rem 2rem 6rem}
+.art-body p{font-size:1rem;line-height:1.85;margin-bottom:1.5rem;font-weight:300}
+.art-body h2{font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:400;color:var(--dark);margin:2.5rem 0 1rem;border-left:3px solid var(--gold);padding-left:1rem}
+.back{display:inline-flex;align-items:center;gap:.4rem;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;margin-bottom:3rem;transition:color .2s}
+.back:hover{color:var(--gold)}
+
+footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.f-logo{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:300;color:var(--cream);letter-spacing:.08em}
+.f-logo span{color:var(--gold);font-style:italic}
+.f-copy{font-size:.78rem;color:rgba(255,255,255,.3)}
+.f-links{display:flex;gap:2rem;list-style:none}
+.f-links a{font-size:.78rem;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.f-links a:hover{color:var(--gold)}
+@media(max-width:900px){footer{padding:2rem 1.5rem;flex-direction:column;text-align:center}.f-links{justify-content:center}}
+
+@media(max-width:768px){nav{padding:1rem 1.5rem}.art-hero{padding:8rem 1.5rem 3rem}.art-body{padding:3rem 1.5rem 4rem}.art-cover{max-height:220px}}
+
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:1px solid var(--border);cursor:pointer;padding:7px;flex-shrink:0}
+.nav-burger span{display:block;width:100%;height:1.5px;background:var(--gold);transition:all .25s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.btn-lang{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all .25s;font-family:"DM Sans",sans-serif;min-width:48px}
+.btn-lang:hover{background:var(--gold);color:white}
+nav .logo{flex:1}
+nav .nav-links{flex:0 0 auto}
+nav .nav-right{flex:1;justify-content:flex-end;gap:.75rem}
+@media(max-width:900px){.nav-burger{display:flex}.btn-lang{display:none}.nav-links{display:none}}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--cream);flex-direction:column;justify-content:center;align-items:center;gap:0;padding-top:80px}
+.mobile-menu.open{display:flex;animation:menuFade .2s ease both}
+@keyframes menuFade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.mobile-menu a{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:300;color:var(--dark);text-decoration:none;padding:.9rem 2rem;width:100%;text-align:center;border-bottom:1px solid var(--border);transition:color .2s,background .2s}
+.mobile-menu a:first-of-type{border-top:1px solid var(--border)}
+.mobile-menu a:hover{color:var(--gold);background:var(--gold-pale)}
+.mobile-menu a.mobile-cta{background:var(--gold);color:white;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;font-family:"DM Sans",sans-serif;font-weight:500}
+.mobile-menu a.mobile-cta:hover{background:var(--dark)}
+.mobile-menu-close{position:absolute;top:1.4rem;right:1.5rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--muted)}
+.mobile-lang-toggle{background:none;border:1px solid var(--border);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;cursor:pointer;margin:1.2rem auto 0;transition:all .2s}
+.mobile-lang-toggle:hover{background:var(--gold-pale)}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="../index.html">Line<span>agr</span>ee</a>
+  <ul class="nav-links">
+    <li><a href="../index.html"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a></li>
+    <li><a href="../enciclopedia.html"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a></li>
+    <li><a href="../matches.html"><span data-it style="display:inline">Match</span><span data-en style="display:none">Matches</span></a></li>
+    <li><a href="index.html" class="active">Blog</a></li>
+  </ul>
+  <div class="nav-right" id="nav-right">
+    <button class="btn-lang" onclick="toggleLang()">
+      <span data-it style="display:inline">EN</span>
+      <span data-en style="display:none">IT</span>
+    </button>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Chiudi">&#x2715;</button>
+  <button class="mobile-lang-toggle" onclick="toggleLang()">
+    <span data-it style="display:inline">🌐 English</span>
+    <span data-en style="display:none">🌐 Italiano</span>
+  </button>
+  <a href="../index.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a>
+  <a href="../enciclopedia.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a>
+  <a href="../matches.html"><span data-it style="display:inline">Match</span><span data-en style="display:none">Matches</span></a>
+  <a href="index.html">Blog</a>
+  <a href="../index.html#waitlist" onclick="toggleMobileMenu()" class="mobile-cta"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join the waitlist</span></a>
+</div>
+<div class="art-hero">
+  <span class="art-badge"><span data-it style="display:inline">Guida &middot; 5 min</span><span data-en style="display:none">Guide &middot; 5 min</span></span>
+  <h1><span data-it style="display:inline">Come leggere un pedigree: guida per principianti</span><span data-en style="display:none">How to read a pedigree: a beginner's guide</span></h1>
+  <p class="art-meta">Lineagree Blog &middot; 2026</p>
+</div>
+<div class="art-cover">
+  <img src="images/come-leggere-un-pedigree.jpg" alt="Come leggere un pedigree: guida per principianti" loading="eager">
+</div>
+<div class="art-body">
+  <a href="index.html" class="back"><span data-it style="display:inline">&#x2190; Torna al blog</span><span data-en style="display:none">&#x2190; Back to blog</span></a>
+  <div data-it style="display:block"><p>Il pedigree è molto più di un certificato: è la carta d'identità genealogica di un animale di razza. Documenta nome, razza, data di nascita, sesso, colore del mantello e — soprattutto — l'albero genealogico che risale ad almeno tre o quattro generazioni. Imparare a leggerlo è il primo passo per chiunque voglia avvicinarsi all'allevamento consapevole o semplicemente capire il valore reale del proprio animale.</p>
+<p>In Italia il documento viene rilasciato dall'ente ufficiale di riferimento per la specie — l'ENCI per i cani, l'ANFI per i gatti, l'UNIRE per i cavalli da corsa — e ogni soggetto registrato riceve un numero di matricola univoco che lo accompagnerà per tutta la vita.</p>
+<h2>Come si legge l'albero genealogico</h2>
+<p>L'albero genealogico è organizzato in modo gerarchico. Il soggetto a cui si riferisce il pedigree compare in basso a sinistra. Spostandosi verso destra si incontrano prima i due genitori, poi i quattro nonni, quindi gli otto bisnonni, e così via a seconda di quante generazioni il documento include.</p>
+<p>Per convenzione, la linea maschile (il padre, detto "sire") è collocata nella metà superiore, mentre la linea femminile (la madre, detta "dam") occupa quella inferiore. Accanto a ogni antenato troverai spesso una serie di sigle e numeri: sono i titoli ottenuti e i punteggi morfologici assegnati durante le esposizioni ufficiali.</p>
+<h2>Titoli e sigle più comuni</h2>
+<p>I titoli raccontano la carriera espositiva di un animale e la qualità della sua linea. Tra i più diffusi: <strong>CH</strong> (Campione), <strong>INT CH</strong> (Campione Internazionale), <strong>JCH</strong> (Campione Giovane), <strong>CAC</strong> e <strong>CACIB</strong> (certificati di attitudine al campionato, nazionale e internazionale). In Italia l'ENCI conferisce il titolo di Campione solo dopo che il soggetto ha accumulato un numero minimo di CAC sotto giudici diversi.</p>
+<p>Più titoli compaiono nelle generazioni vicine al soggetto, più la linea è considerata selezionata. Attenzione però: un albero pieno di campioni non garantisce automaticamente salute o buon carattere.</p>
+<h2>Test sanitari: il vero indicatore di qualità</h2>
+<p>Un pedigree autorevole è quasi sempre accompagnato da certificati sanitari. A seconda della razza si tratta di esami per la displasia dell'anca e del gomito, test oculistici, screening cardiologici e test del DNA per le malattie ereditarie tipiche di quella popolazione.</p>
+<p>Questi documenti sono spesso più importanti dei titoli estetici: indicano che l'allevatore ha investito nella salute della linea e riduce il rischio di trasmettere patologie. Su Lineagree ogni certificato viene verificato dal nostro team prima che il profilo venga pubblicato, così chi cerca un partner per il proprio animale parte da informazioni affidabili.</p>
+<h2>Come riconoscere un pedigree autentico</h2>
+<p>Un pedigree genuino riporta sempre il logo e il timbro dell'ente emittente, un numero di registro verificabile e i dati dell'allevatore. In caso di dubbio, è possibile contattare direttamente l'ente per confermare la registrazione. Diffida di documenti senza numero di matricola o di "pedigree" rilasciati da associazioni non riconosciute a livello nazionale o internazionale.</p></div>
+  <div data-en style="display:none"><p>A pedigree is far more than a certificate: it is the genealogical identity card of a purebred animal. It documents name, breed, date of birth, sex, coat colour and — above all — the family tree going back at least three or four generations. Learning to read it is the first step for anyone approaching conscious breeding or simply wanting to understand the real value of their animal.</p>
+<p>In Italy the document is issued by the official body for the species — ENCI for dogs, ANFI for cats, UNIRE for racehorses — and every registered animal receives a unique registration number that stays with it for life.</p>
+<h2>How to read the family tree</h2>
+<p>The family tree is organised hierarchically. The animal the pedigree refers to appears at bottom left. Moving right you find first the two parents, then the four grandparents, then the eight great-grandparents, and so on depending on how many generations the document includes.</p>
+<p>By convention, the male line (the sire) is placed in the upper half, while the female line (the dam) occupies the lower one. Next to each ancestor you'll often find a series of abbreviations and numbers: these are the titles earned and morphological scores awarded during official shows.</p>
+<h2>Most common titles and abbreviations</h2>
+<p>Titles tell the show career of an animal and the quality of its line. Among the most common: <strong>CH</strong> (Champion), <strong>INT CH</strong> (International Champion), <strong>JCH</strong> (Junior Champion), <strong>CAC</strong> and <strong>CACIB</strong> (championship aptitude certificates, national and international). In Italy ENCI awards the Champion title only after an animal has accumulated a minimum number of CACs under different judges.</p>
+<p>The more titles appear in generations close to the animal, the more selected the line is considered. Be careful though: a tree full of champions does not automatically guarantee health or good temperament.</p>
+<h2>Health tests: the real quality indicator</h2>
+<p>An authoritative pedigree is almost always accompanied by health certificates. Depending on the breed these are exams for hip and elbow dysplasia, eye tests, cardiac screening and DNA tests for hereditary diseases typical of that population.</p>
+<p>These documents are often more important than aesthetic titles: they show the breeder has invested in the line's health and reduce the risk of transmitting pathologies. On Lineagree every certificate is verified by our team before the profile is published, so those seeking a partner for their animal start from reliable information.</p>
+<h2>How to recognise an authentic pedigree</h2>
+<p>A genuine pedigree always bears the logo and stamp of the issuing body, a verifiable registration number and the breeder's details. If in doubt, you can contact the body directly to confirm registration. Be wary of documents without a registration number or "pedigrees" issued by associations not recognised nationally or internationally.</p></div>
+</div>
+<footer>
+  <div class="f-logo">Line<span>agr</span>ee</div>
+  <ul class="f-links">
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#"><span data-it style="display:inline">Termini</span><span data-en style="display:none">Terms</span></a></li>
+    <li><a href="#"><span data-it style="display:inline">Contatti</span><span data-en style="display:none">Contact</span></a></li>
+  </ul>
+  <p class="f-copy"><span data-it style="display:inline">© 2026 Lineagree. Tutti i diritti riservati.</span><span data-en style="display:none">© 2026 Lineagree. All rights reserved.</span></p>
+</footer>
+<script>
+function toggleMobileMenu(){
+  var m=document.getElementById('mobile-menu');
+  var b=document.getElementById('nav-burger');
+  var o=m.classList.contains('open');
+  if(o){m.classList.remove('open');b.classList.remove('open');document.body.style.overflow='';}
+  else{m.classList.add('open');b.classList.add('open');document.body.style.overflow='hidden';}
+}
+var lang='it';
+function toggleLang(){
+  lang=lang==='it'?'en':'it';
+  document.querySelectorAll('[data-it]').forEach(function(el){
+    el.style.display=lang==='it'?(el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'?'block':'inline'):'none';
+  });
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    el.style.display=lang==='en'?(el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'?'block':'inline'):'none';
+  });
+}
+</script>
+</body>
+</html>
