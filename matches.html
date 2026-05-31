@@ -280,6 +280,10 @@ nav .nav-right{flex:1;display:flex;justify-content:flex-end;align-items:center;g
 .mobile-menu a.mobile-cta{background:var(--gold)!important;color:white!important;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;font-family:"DM Sans",sans-serif;font-weight:500;margin-top:.5rem}
 .mobile-menu a.mobile-cta:hover{background:var(--dark)!important}
 .mobile-menu-close{position:absolute;top:1.4rem;right:1.5rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--muted)}
+
+.btn-cta-nav{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.2rem;border:1px solid var(--gold);background:var(--gold);color:white;text-decoration:none;transition:all .25s;font-family:"DM Sans",sans-serif;white-space:nowrap}
+.btn-cta-nav:hover{background:var(--dark);border-color:var(--dark)}
+@media(max-width:900px){.btn-cta-nav{display:none}}
 </style>
 </head>
 <body>
@@ -298,6 +302,7 @@ nav .nav-right{flex:1;display:flex;justify-content:flex-end;align-items:center;g
       <span data-it style="display:inline">EN</span>
       <span data-en style="display:none">IT</span>
     </button>
+    <a href="index.html#waitlist" class="btn-cta-nav"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join the waitlist</span></a>
     <button class="nav-burger" id="nav-burger" aria-label="Menu" onclick="toggleMobileMenu()">
       <span></span><span></span><span></span>
     </button>
@@ -1034,10 +1039,12 @@ renderMatchCard();
 
 function applyLang(l){
   document.querySelectorAll('[data-it]').forEach(function(el){
-    el.style.display = l==='it' ? (el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'||el.tagName==='SECTION'||el.tagName==='ARTICLE' ? 'block' : 'inline') : 'none';
+    if(l==='it'){ el.style.display = (el.tagName==='DIV'||el.tagName==='SECTION'||el.tagName==='ARTICLE') ? 'block' : 'inline'; }
+    else { el.style.display = 'none'; }
   });
   document.querySelectorAll('[data-en]').forEach(function(el){
-    el.style.display = l==='en' ? (el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'||el.tagName==='SECTION'||el.tagName==='ARTICLE' ? 'block' : 'inline') : 'none';
+    if(l==='en'){ el.style.display = (el.tagName==='DIV'||el.tagName==='SECTION'||el.tagName==='ARTICLE') ? 'block' : 'inline'; }
+    else { el.style.display = 'none'; }
   });
   document.querySelectorAll('.lang-it').forEach(function(el){ el.style.display = l==='it' ? '' : 'none'; });
   document.querySelectorAll('.lang-en').forEach(function(el){ el.style.display = l==='en' ? '' : 'none'; });
@@ -1135,7 +1142,7 @@ if ('serviceWorker' in navigator) {
 </div>
 
 <script>
-(function(){a
+(function(){
   var KEY='lg_banner_dismissed', DAYS=7;
   function isDismissed(){try{var v=localStorage.getItem(KEY);if(!v)return false;var d=JSON.parse(v);if(d.forever)return true;if(d.until&&Date.now()<d.until)return true;return false;}catch(e){return false;}}
   function dismiss(forever){try{localStorage.setItem(KEY,JSON.stringify(forever?{forever:true}:{until:Date.now()+DAYS*86400000}));}catch(e){}hideBanner();}
