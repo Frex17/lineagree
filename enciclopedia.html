@@ -22,26 +22,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links a{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--gold)}
 .nav-right{display:flex;align-items:center}
-.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:1px solid var(--border);cursor:pointer;padding:7px}
+
 .nav-burger span{display:block;width:100%;height:1.5px;background:var(--gold);transition:all .25s}
-.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.nav-burger.open span:nth-child(2){opacity:0}
-.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.nav-burger{display:flex}}
+
+
+
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}}
 @media(max-width:600px){nav{padding:.85rem 1rem}}
 
 /* ── MOBILE MENU ── */
-.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--cream);flex-direction:column;justify-content:center;align-items:center;gap:0;padding-top:80px}
-.mobile-menu.open{display:flex;animation:menuFade .2s ease both}
-@keyframes menuFade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-.mobile-menu a{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:300;color:var(--dark);text-decoration:none;padding:.9rem 2rem;width:100%;text-align:center;border-bottom:1px solid var(--border);transition:color .2s,background .2s}
-.mobile-menu a:first-of-type{border-top:1px solid var(--border)}
-.mobile-menu a:hover{color:var(--gold);background:var(--gold-pale)}
-.mobile-menu a.mobile-cta{background:var(--gold);color:white;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;font-family:"DM Sans",sans-serif;font-weight:500}
-.mobile-menu a.mobile-cta:hover{background:var(--dark)}
-.mobile-menu-close{position:absolute;top:1.4rem;right:1.5rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--muted)}
-.mobile-lang-toggle{background:none;border:1px solid var(--border);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;cursor:pointer;margin:1.2rem auto 0;transition:all .2s}
-.mobile-lang-toggle:hover{background:var(--gold-pale)}
+
+
+to{opacity:1;transform:translateY(0)}}
+
+
+
+
+
+
+
+
 
 /* ── HERO ── */
 .hero{padding:8rem 4rem 4rem;text-align:center;border-bottom:1px solid var(--border);background:white}
@@ -96,12 +96,34 @@ footer{background:var(--dark);padding:2.5rem 4rem;display:flex;justify-content:s
 .f-links a:hover{color:var(--gold)}
 @media(max-width:900px){footer{padding:2rem 1.5rem;flex-direction:column;text-align:center}.f-links{justify-content:center}}
 
-.btn-lang{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all .25s;font-family:"DM Sans",sans-serif;min-width:48px}
+
+
+@media(max-width:900px){}
+
+
+
+
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:1px solid var(--border);cursor:pointer;padding:7px;flex-shrink:0}
+.nav-burger span{display:block;width:100%;height:1.5px;background:var(--gold);transition:all .25s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.btn-lang{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all .25s;font-family:"DM Sans",sans-serif;min-width:44px;flex-shrink:0}
 .btn-lang:hover{background:var(--gold);color:white}
-@media(max-width:900px){.btn-lang{display:none}}
 nav .logo{flex:1}
 nav .nav-links{flex:0 0 auto}
-nav .nav-right{flex:1;justify-content:flex-end}
+nav .nav-right{flex:1;display:flex;justify-content:flex-end;align-items:center;gap:.6rem}
+@media(max-width:900px){.nav-burger{display:flex}.nav-links{display:none}}
+@media(max-width:600px){nav{padding:.85rem 1rem}.btn-lang{font-size:.68rem;padding:.4rem .7rem;min-width:38px}}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--cream);flex-direction:column;justify-content:center;align-items:center;gap:0;padding-top:80px}
+.mobile-menu.open{display:flex;animation:menuFade .2s ease both}
+@keyframes menuFade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.mobile-menu a{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:300;color:var(--dark);text-decoration:none;padding:.9rem 2rem;width:100%;text-align:center;border-bottom:1px solid var(--border);transition:color .2s,background .2s}
+.mobile-menu a:first-of-type{border-top:1px solid var(--border)}
+.mobile-menu a:hover{color:var(--gold);background:var(--gold-pale)}
+.mobile-menu a.mobile-cta{background:var(--gold)!important;color:white!important;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;font-family:"DM Sans",sans-serif;font-weight:500;margin-top:.5rem}
+.mobile-menu a.mobile-cta:hover{background:var(--dark)!important}
+.mobile-menu-close{position:absolute;top:1.4rem;right:1.5rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -126,10 +148,6 @@ nav .nav-right{flex:1;justify-content:flex-end}
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Chiudi">&#x2715;</button>
-  <button class="mobile-lang-toggle" onclick="toggleLang()">
-    <span data-it style="display:inline">🌐 English</span>
-    <span data-en style="display:none">🌐 Italiano</span>
-  </button>
   <a href="index.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a>
   <a href="enciclopedia.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a>
   <a href="matches.html"><span data-it style="display:inline">Match</span><span data-en style="display:none">Matches</span></a>
@@ -312,23 +330,43 @@ nav .nav-right{flex:1;justify-content:flex-end}
 </footer>
 
 <script>
-var lang='it';
-function toggleLang(){
-  lang=lang==='it'?'en':'it';
+
+
+
+
+
+function applyLang(l){
   document.querySelectorAll('[data-it]').forEach(function(el){
-    el.style.display=lang==='it'?(el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'?'block':'inline'):'none';
+    el.style.display = l==='it' ? (el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'||el.tagName==='SECTION'||el.tagName==='ARTICLE' ? 'block' : 'inline') : 'none';
   });
   document.querySelectorAll('[data-en]').forEach(function(el){
-    el.style.display=lang==='en'?(el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'?'block':'inline'):'none';
+    el.style.display = l==='en' ? (el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'||el.tagName==='SECTION'||el.tagName==='ARTICLE' ? 'block' : 'inline') : 'none';
   });
+  document.querySelectorAll('.lang-it').forEach(function(el){ el.style.display = l==='it' ? '' : 'none'; });
+  document.querySelectorAll('.lang-en').forEach(function(el){ el.style.display = l==='en' ? '' : 'none'; });
+}
+function getLang(){
+  try{ return localStorage.getItem('lg_lang') || 'it'; }catch(e){ return 'it'; }
+}
+function setLang(l){
+  try{ localStorage.setItem('lg_lang', l); }catch(e){}
+}
+function toggleLang(){
+  var l = getLang()==='it' ? 'en' : 'it';
+  setLang(l);
+  applyLang(l);
 }
 function toggleMobileMenu(){
   var m=document.getElementById('mobile-menu');
   var b=document.getElementById('nav-burger');
+  if(!m||!b)return;
   var o=m.classList.contains('open');
   if(o){m.classList.remove('open');b.classList.remove('open');document.body.style.overflow='';}
   else{m.classList.add('open');b.classList.add('open');document.body.style.overflow='hidden';}
 }
+// Applica lingua salvata al caricamento
+document.addEventListener('DOMContentLoaded', function(){ applyLang(getLang()); });
+
 </script>
 </body>
 </html>
