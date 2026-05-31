@@ -205,9 +205,9 @@ to{opacity:1;transform:translateY(0)}}
 }
 
 /* ── Carosello match ── */
-.match-carousel-wrap{position:relative;max-width:420px;margin:0 auto}
-.match-carousel{display:flex;overflow:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0;border-radius:2px}
-.match-carousel .mc{flex:0 0 100%;scroll-snap-align:start;min-width:0;transition:none}
+.match-carousel-wrap{position:relative;max-width:1100px;margin:0 auto}
+.match-carousel{display:flex;overflow:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:1rem;border-radius:2px}
+.match-carousel .mc{flex:0 0 calc(33.333% - .67rem);scroll-snap-align:start;min-width:0;transition:none}
 .carousel-dots{display:flex;justify-content:center;gap:.5rem;margin:1.2rem 0 .8rem}
 .cdot{width:8px;height:8px;border-radius:50%;background:var(--border);border:1.5px solid var(--gold);cursor:pointer;transition:background .2s}
 .cdot.active{background:var(--gold)}
@@ -249,6 +249,11 @@ nav .nav-right{flex:1;display:flex;justify-content:flex-end;align-items:center;g
 .mobile-menu a.mobile-cta{background:var(--gold)!important;color:white!important;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;font-family:"DM Sans",sans-serif;font-weight:500;margin-top:.5rem}
 .mobile-menu a.mobile-cta:hover{background:var(--dark)!important}
 .mobile-menu-close{position:absolute;top:1.4rem;right:1.5rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--muted)}
+
+.btn-cta-nav{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.2rem;border:1px solid var(--gold);background:var(--gold);color:white;text-decoration:none;transition:all .25s;font-family:"DM Sans",sans-serif;white-space:nowrap}
+.btn-cta-nav:hover{background:var(--dark);border-color:var(--dark)}
+@media(max-width:900px){.btn-cta-nav{display:none}}
+@media(max-width:768px){.match-carousel .mc{flex:0 0 100%}.match-carousel-wrap{max-width:420px}}
 </style>
 </head>
 <body>
@@ -278,6 +283,7 @@ nav .nav-right{flex:1;display:flex;justify-content:flex-end;align-items:center;g
       <span data-it style="display:inline">EN</span>
       <span data-en style="display:none">IT</span>
     </button>
+    <a href="#waitlist" class="btn-cta-nav"><span data-it style="display:inline">Unisciti alla lista</span><span data-en style="display:none">Join the waitlist</span></a>
     <button class="nav-burger" id="nav-burger" aria-label="Menu" onclick="toggleMobileMenu()">
       <span></span><span></span><span></span>
     </button>
@@ -347,11 +353,14 @@ nav .nav-right{flex:1;display:flex;justify-content:flex-end;align-items:center;g
       <div class="mc"><div class="mc-img">🐕</div><div class="mc-body"><div class="mc-name">Artù della Valle Antica</div><div class="mc-breed"><span data-it style="display:inline">Labrador Retriever · 3 anni</span><span data-en style="display:none">Labrador Retriever · 3 years</span></div><div class="mc-loc">📍 Bologna, BO</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Pedigree ENCI</span><span data-en style="display:none">✓ ENCI Pedigree</span></span><span class="mc-badge">🏆 Best in Show 2024</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
       <div class="mc"><div class="mc-img">🐈</div><div class="mc-body"><div class="mc-name">Zaffiro di Casa Morandi</div><div class="mc-breed"><span data-it style="display:inline">Maine Coon · 2 anni</span><span data-en style="display:none">Maine Coon · 2 years</span></div><div class="mc-loc">📍 Firenze, FI</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Pedigree ANFI</span><span data-en style="display:none">✓ ANFI Pedigree</span></span><span class="mc-badge">🏆 Best Cat 2023</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
       <div class="mc"><div class="mc-img">🐴</div><div class="mc-body"><div class="mc-name">Tempesta del Vento</div><div class="mc-breed"><span data-it style="display:inline">Purosangue · 5 anni</span><span data-en style="display:none">Thoroughbred · 5 years</span></div><div class="mc-loc">📍 Siena, SI</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Studbook UNIRE</span><span data-en style="display:none">✓ UNIRE Studbook</span></span><span class="mc-badge">🥇 Derby Toscano 2023</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
+    
+      <div class="mc"><div class="mc-img">🐈</div><div class="mc-body"><div class="mc-name">Aria di Villa Reale</div><div class="mc-breed"><span data-it style="display:inline">Maine Coon · 2 anni</span><span data-en style="display:none">Maine Coon · 2 years</span></div><div class="mc-loc">📍 Roma, RM</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Pedigree ANFI</span><span data-en style="display:none">✓ ANFI Pedigree</span></span><span class="mc-badge">🏆 Best Cat 2024</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
+      <div class="mc"><div class="mc-img">🐎</div><div class="mc-body"><div class="mc-name">Califfo del Maestrale</div><div class="mc-breed"><span data-it style="display:inline">Purosangue Arabo · 4 anni</span><span data-en style="display:none">Arabian · 4 years</span></div><div class="mc-loc">📍 Firenze, FI</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Studbook UNIRE</span><span data-en style="display:none">✓ UNIRE Studbook</span></span><span class="mc-badge">🥇 Campione Regionale</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
+      <div class="mc"><div class="mc-img">🐕</div><div class="mc-body"><div class="mc-name">Nala dei Tre Laghi</div><div class="mc-breed"><span data-it style="display:inline">Golden Retriever · 3 anni</span><span data-en style="display:none">Golden Retriever · 3 years</span></div><div class="mc-loc">📍 Torino, TO</div><div class="mc-badges"><span class="mc-badge"><span data-it style="display:inline">✓ Pedigree ENCI</span><span data-en style="display:none">✓ ENCI Pedigree</span></span><span class="mc-badge">🏆 Best in Breed</span></div></div><div class="mc-btns"><button class="mbtn skip"><span data-it style="display:inline">✕ Passa</span><span data-en style="display:none">✕ Skip</span></button><button class="mbtn save"><span data-it style="display:inline">☆ Salva</span><span data-en style="display:none">☆ Save</span></button><button class="mbtn like"><span data-it style="display:inline">❤ Mi piace</span><span data-en style="display:none">❤ Like</span></button></div></div>
     </div>
     <div class="carousel-dots" id="carouselDots">
       <span class="cdot active" onclick="goToSlide(0)"></span>
       <span class="cdot" onclick="goToSlide(1)"></span>
-      <span class="cdot" onclick="goToSlide(2)"></span>
     </div>
     <div class="carousel-nav">
       <button class="carousel-prev" onclick="prevSlide()" aria-label="Precedente">&#8592;</button>
@@ -514,10 +523,12 @@ if ('serviceWorker' in navigator) {
 
 function applyLang(l){
   document.querySelectorAll('[data-it]').forEach(function(el){
-    el.style.display = l==='it' ? (el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'||el.tagName==='SECTION'||el.tagName==='ARTICLE' ? 'block' : 'inline') : 'none';
+    if(l==='it'){ el.style.display = (el.tagName==='DIV'||el.tagName==='SECTION'||el.tagName==='ARTICLE') ? 'block' : 'inline'; }
+    else { el.style.display = 'none'; }
   });
   document.querySelectorAll('[data-en]').forEach(function(el){
-    el.style.display = l==='en' ? (el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'||el.tagName==='SECTION'||el.tagName==='ARTICLE' ? 'block' : 'inline') : 'none';
+    if(l==='en'){ el.style.display = (el.tagName==='DIV'||el.tagName==='SECTION'||el.tagName==='ARTICLE') ? 'block' : 'inline'; }
+    else { el.style.display = 'none'; }
   });
   document.querySelectorAll('.lang-it').forEach(function(el){ el.style.display = l==='it' ? '' : 'none'; });
   document.querySelectorAll('.lang-en').forEach(function(el){ el.style.display = l==='en' ? '' : 'none'; });
@@ -544,6 +555,32 @@ function toggleMobileMenu(){
 // Applica lingua salvata al caricamento
 document.addEventListener('DOMContentLoaded', function(){ applyLang(getLang()); });
 
+
+// ── Carosello match (3 alla volta) ──
+(function(){
+  var idx=0;
+  function perView(){ return window.innerWidth<=768 ? 1 : 3; }
+  function totalSlides(){
+    var c=document.getElementById('matchCarousel');
+    if(!c) return 0;
+    var n=c.querySelectorAll('.mc').length;
+    return Math.max(1, Math.ceil(n/perView()));
+  }
+  window.updateCarousel=function(){
+    var c=document.getElementById('matchCarousel');
+    if(!c) return;
+    var pv=perView();
+    var cardW=c.querySelector('.mc') ? c.querySelector('.mc').offsetWidth : 0;
+    var gap=16;
+    c.scrollTo({left: idx*pv*(cardW+gap), behavior:'smooth'});
+    var dots=document.querySelectorAll('.cdot');
+    dots.forEach(function(d,i){ d.classList.toggle('active', i===idx); });
+  };
+  window.nextSlide=function(){ var t=totalSlides(); idx=(idx+1)%t; updateCarousel(); };
+  window.prevSlide=function(){ var t=totalSlides(); idx=(idx-1+t)%t; updateCarousel(); };
+  window.goToSlide=function(i){ idx=i; updateCarousel(); };
+  window.addEventListener('resize', function(){ idx=0; updateCarousel(); });
+})();
 </script>
 </body>
 </html>
