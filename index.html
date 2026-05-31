@@ -32,8 +32,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-links a{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--gold)}
 .nav-right{display:flex;align-items:center;gap:.75rem}
-.btn-lang{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all .25s;font-family:"DM Sans",sans-serif;min-width:48px}
-.btn-lang:hover{background:var(--gold);color:white}
+
+
 .btn-cta{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1.3rem;border:2px solid var(--gold);color:white;background:var(--gold);cursor:pointer;transition:all .25s;font-family:"DM Sans",sans-serif;white-space:nowrap}
 .btn-cta:hover{background:var(--dark);border-color:var(--dark)}
 @media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}}
@@ -187,21 +187,21 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 }
 
 /* ── Hamburger menu ── */
-.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:1px solid var(--border);cursor:pointer;padding:7px;flex-shrink:0}
+
 .nav-burger span{display:block;width:100%;height:1.5px;background:var(--gold);transition:all .25s}
-.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.nav-burger.open span:nth-child(2){opacity:0}
-.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--cream);flex-direction:column;justify-content:center;align-items:center;gap:0;padding-top:80px;animation:menuFade .2s ease both}
-.mobile-menu.open{display:flex}
-@keyframes menuFade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
-.mobile-menu a{font-family:"Cormorant Garamond",serif;font-size:2.2rem;font-weight:300;color:var(--dark);text-decoration:none;letter-spacing:.05em;padding:1rem 2rem;width:100%;text-align:center;border-bottom:1px solid var(--border);transition:color .2s,background .2s}
-.mobile-menu a:first-child{border-top:1px solid var(--border)}
-.mobile-menu a:hover{color:var(--gold);background:var(--gold-pale)}
+
+
+
+
+
+to{opacity:1;transform:translateY(0)}}
+
+
+
 .mobile-menu a em{font-style:italic;color:var(--gold)}
-.mobile-menu-close{position:absolute;top:1.4rem;right:1.5rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--muted)}
+
 @media(max-width:900px){
-  .nav-burger{display:flex}
+  
 }
 
 /* ── Carosello match ── */
@@ -219,14 +219,36 @@ footer{background:var(--dark);padding:3rem 4rem;display:flex;justify-content:spa
 .explore-arrow{transition:transform .2s}
 .explore-link:hover .explore-arrow{transform:translateX(4px)}
 
-.mobile-lang-toggle{display:flex;align-items:center;gap:.5rem;background:none;border:1px solid var(--border);color:var(--gold);font-family:"DM Sans",sans-serif;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:.6rem 1.4rem;cursor:pointer;margin:1rem auto 0;transition:all .2s}
-.mobile-lang-toggle:hover{background:var(--gold-pale)}
+
+
 .sp-card-link{text-decoration:none;display:block;}.sp-card-link .sp-card{cursor:pointer}
 /* ── Nav centering ── */
+
+
+
+@media(max-width:900px){}
+
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:1px solid var(--border);cursor:pointer;padding:7px;flex-shrink:0}
+.nav-burger span{display:block;width:100%;height:1.5px;background:var(--gold);transition:all .25s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.btn-lang{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:.5rem 1rem;border:1px solid var(--gold);color:var(--gold);background:transparent;cursor:pointer;transition:all .25s;font-family:"DM Sans",sans-serif;min-width:44px;flex-shrink:0}
+.btn-lang:hover{background:var(--gold);color:white}
 nav .logo{flex:1}
 nav .nav-links{flex:0 0 auto}
-nav .nav-right{flex:1;justify-content:flex-end}
-@media(max-width:900px){.btn-lang{display:none}}
+nav .nav-right{flex:1;display:flex;justify-content:flex-end;align-items:center;gap:.6rem}
+@media(max-width:900px){.nav-burger{display:flex}.nav-links{display:none}}
+@media(max-width:600px){nav{padding:.85rem 1rem}.btn-lang{font-size:.68rem;padding:.4rem .7rem;min-width:38px}}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;background:var(--cream);flex-direction:column;justify-content:center;align-items:center;gap:0;padding-top:80px}
+.mobile-menu.open{display:flex;animation:menuFade .2s ease both}
+@keyframes menuFade{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.mobile-menu a{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:300;color:var(--dark);text-decoration:none;padding:.9rem 2rem;width:100%;text-align:center;border-bottom:1px solid var(--border);transition:color .2s,background .2s}
+.mobile-menu a:first-of-type{border-top:1px solid var(--border)}
+.mobile-menu a:hover{color:var(--gold);background:var(--gold-pale)}
+.mobile-menu a.mobile-cta{background:var(--gold)!important;color:white!important;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;font-family:"DM Sans",sans-serif;font-weight:500;margin-top:.5rem}
+.mobile-menu a.mobile-cta:hover{background:var(--dark)!important}
+.mobile-menu-close{position:absolute;top:1.4rem;right:1.5rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -263,10 +285,6 @@ nav .nav-right{flex:1;justify-content:flex-end}
 </nav>
 <div class="mobile-menu" id="mobile-menu">
   <button class="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Chiudi">&#x2715;</button>
-  <button class="mobile-lang-toggle" onclick="toggleLang()">
-    <span data-it style="display:inline">🌐 English</span>
-    <span data-en style="display:none">🌐 Italiano</span>
-  </button>
   <a href="index.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Home</span><span data-en style="display:none">Home</span></a>
   <a href="#how" onclick="toggleMobileMenu()"><span data-it style="display:inline">Come funziona</span><span data-en style="display:none">How it works</span></a>
   <a href="enciclopedia.html" onclick="toggleMobileMenu()"><span data-it style="display:inline">Enciclopedia</span><span data-en style="display:none">Encyclopedia</span></a>
@@ -385,64 +403,8 @@ nav .nav-right{flex:1;justify-content:flex-end}
   <p class="f-copy"><span data-it style="display:inline">© 2026 Lineagree. Tutti i diritti riservati.</span><span data-en style="display:none">© 2026 Lineagree. All rights reserved.</span></p>
 </footer>
 <script>
-var lang='it';
-function toggleMobileMenu(){
-    var menu = document.getElementById('mobile-menu');
-    var burger = document.getElementById('nav-burger');
-    var isOpen = menu.classList.contains('open');
-    if(isOpen){
-      menu.classList.remove('open');
-      burger.classList.remove('open');
-      document.body.style.overflow = '';
-    } else {
-      menu.classList.add('open');
-      burger.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-  }
-  
-  var _carIdx = 0;
-  var _carTotal = 3;
-  function _updateCarousel(){
-    var c = document.getElementById('matchCarousel');
-    if(!c) return;
-    var w = c.offsetWidth;
-    c.scrollTo({left: _carIdx * w, behavior: 'smooth'});
-    var dots = document.querySelectorAll('.cdot');
-    dots.forEach(function(d,i){d.classList.toggle('active', i===_carIdx);});
-  }
-  function nextSlide(){_carIdx=(_carIdx+1)%_carTotal;_updateCarousel();}
-  function prevSlide(){_carIdx=(_carIdx-1+_carTotal)%_carTotal;_updateCarousel();}
-  function goToSlide(i){_carIdx=i;_updateCarousel();}
-  // swipe touch
-  (function(){
-    var startX=0;
-    document.addEventListener('DOMContentLoaded',function(){
-      var c=document.getElementById('matchCarousel');
-      if(!c)return;
-      c.addEventListener('touchstart',function(e){startX=e.touches[0].clientX;},{passive:true});
-      c.addEventListener('touchend',function(e){
-        var dx=e.changedTouches[0].clientX-startX;
-        if(Math.abs(dx)>40){dx<0?nextSlide():prevSlide();}
-      },{passive:true});
-    });
-  })();
 
-  function toggleLang(){
-  lang=lang==='it'?'en':'it';
-  document.querySelectorAll('[data-it]').forEach(function(el){
-    el.style.display=lang==='it'?(el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'?'block':'inline'):'none';
-  });
-  document.querySelectorAll('[data-en]').forEach(function(el){
-    el.style.display=lang==='en'?(el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'?'block':'inline'):'none';
-  });
-}
 
-function openModal(){
-  var o=document.getElementById('modal');
-  o.style.display='flex';document.body.style.overflow='hidden';
-  setTimeout(function(){var b=document.getElementById('mbox');b.style.opacity='1';b.style.transform='scale(1)';},10);
-}
 function closeModal(){
   var b=document.getElementById('mbox');b.style.opacity='0';b.style.transform='scale(0.95)';
   setTimeout(function(){document.getElementById('modal').style.display='none';document.body.style.overflow='';},250);
@@ -548,6 +510,40 @@ if ('serviceWorker' in navigator) {
   if(installBtn)installBtn.addEventListener('click',function(){if(!dp)return;dp.prompt();dp.userChoice.then(function(c){dismiss(c.outcome==='accepted');dp=null;});});
   window.addEventListener('appinstalled',function(){dismiss(true);});
 })();
+
+
+function applyLang(l){
+  document.querySelectorAll('[data-it]').forEach(function(el){
+    el.style.display = l==='it' ? (el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'||el.tagName==='SECTION'||el.tagName==='ARTICLE' ? 'block' : 'inline') : 'none';
+  });
+  document.querySelectorAll('[data-en]').forEach(function(el){
+    el.style.display = l==='en' ? (el.tagName==='DIV'||el.tagName==='P'||el.tagName==='H1'||el.tagName==='H2'||el.tagName==='SECTION'||el.tagName==='ARTICLE' ? 'block' : 'inline') : 'none';
+  });
+  document.querySelectorAll('.lang-it').forEach(function(el){ el.style.display = l==='it' ? '' : 'none'; });
+  document.querySelectorAll('.lang-en').forEach(function(el){ el.style.display = l==='en' ? '' : 'none'; });
+}
+function getLang(){
+  try{ return localStorage.getItem('lg_lang') || 'it'; }catch(e){ return 'it'; }
+}
+function setLang(l){
+  try{ localStorage.setItem('lg_lang', l); }catch(e){}
+}
+function toggleLang(){
+  var l = getLang()==='it' ? 'en' : 'it';
+  setLang(l);
+  applyLang(l);
+}
+function toggleMobileMenu(){
+  var m=document.getElementById('mobile-menu');
+  var b=document.getElementById('nav-burger');
+  if(!m||!b)return;
+  var o=m.classList.contains('open');
+  if(o){m.classList.remove('open');b.classList.remove('open');document.body.style.overflow='';}
+  else{m.classList.add('open');b.classList.add('open');document.body.style.overflow='hidden';}
+}
+// Applica lingua salvata al caricamento
+document.addEventListener('DOMContentLoaded', function(){ applyLang(getLang()); });
+
 </script>
 </body>
 </html>
