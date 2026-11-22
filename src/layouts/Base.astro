@@ -2,7 +2,8 @@
 import '../styles/global.css';
 interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+// build.format 'file' yields /x.html; Vercel cleanUrls serves /x, so canonical must match.
+const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site);
 ---
 <!doctype html>
 <html lang="it">
