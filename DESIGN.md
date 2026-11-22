@@ -124,7 +124,7 @@ Density is low and confident. Large green regions carry the page; plates are the
 
 This is the owners' format. The breeders' "Ring d'expo" format (show-ring rosettes, armband numbers) is a future variant held in PRODUCT.md; it is not part of this system and nothing here should anticipate it.
 
-Blog, species, encyclopedia and offline pages are built in this system (src/pages/blog, src/pages/specie, src/pages/enciclopedia.astro, src/pages/offline.astro; content in src/data/content.json). The old swipe demo (matches.html) was removed; matching lives in the app.
+Blog, species and encyclopedia pages are built in this system (src/pages/blog, src/pages/specie, src/pages/enciclopedia.astro; content in src/data/content.json). The old swipe demo (matches.html) was removed; matching lives in the app.
 
 **Key Characteristics:**
 - Green field, white enamel plates, black lettering; nothing else carries large area.

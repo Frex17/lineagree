@@ -34,3 +34,12 @@ test('stores lowercased email in Supabase', async () => {
   assert.equal(sent.url, 'https://db.example/rest/v1/waitlist');
   assert.deepEqual(JSON.parse(sent.opts.body), { email: 'anna@esempio.it' });
 });
+
+test('plain form post redirects back to the page', async () => {
+  globalThis.fetch = async () => ({ ok: true });
+  const res = mockRes();
+  res.end = function () { return this; };
+  await handler({ method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' }, body: { email: 'anna@esempio.it' } }, res);
+  assert.equal(res.code, 303);
+  assert.equal(res.headers.Location, '/#lista');
+});

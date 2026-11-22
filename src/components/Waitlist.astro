@@ -36,7 +36,7 @@ const { id } = Astro.props;
 </style>
 
 <script>
-  const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  import { validEmail } from '../../api/waitlist.js';
   document.querySelectorAll<HTMLFormElement>('form[data-waitlist]').forEach((form) => {
     const input = form.querySelector('input')!;
     const btn = form.querySelector('button')!;
@@ -46,7 +46,7 @@ const { id } = Astro.props;
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = input.value.trim();
-      if (!EMAIL.test(email)) {
+      if (!validEmail(email)) {
         input.setAttribute('aria-invalid', 'true');
         say("Questa email non sembra valida: controlla e riprova.", 'error');
         input.focus();

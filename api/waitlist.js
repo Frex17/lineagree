@@ -28,5 +28,10 @@ export default async function handler(req, res) {
     body: JSON.stringify({ email: email.trim().toLowerCase() }),
   });
   if (!r.ok) return res.status(502).json({ error: 'store_failed' });
+  // Plain HTML form post (no JavaScript): send the visitor back to the page instead of raw JSON.
+  if (String(req.headers?.['content-type']).startsWith('application/x-www-form-urlencoded')) {
+    res.setHeader('Location', '/#lista');
+    return res.status(303).end();
+  }
   return res.status(201).json({ ok: true });
 }
