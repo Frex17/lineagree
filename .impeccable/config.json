@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/pages/index.astro"
+        ],
+        "createdAt": "2026-11-22T18:22:15.443Z",
+        "reason": "claude: only hit is .trail::after, the dashed route line under the step plates on a non-rounded list (direction contract: stops along a route), not an accent bar on a box"
+      }
+    ]
+  }
+}

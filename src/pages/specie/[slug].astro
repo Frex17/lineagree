@@ -1,0 +1,92 @@
+---
+import Base from '../../layouts/Base.astro';
+import Waitlist from '../../components/Waitlist.astro';
+import content from '../../data/content.json';
+import Dots from '../../components/Dots.astro';
+
+export function getStaticPaths() {
+  return Object.entries(content.species).map(([slug, sp]) => ({ params: { slug }, props: { slug, sp } }));
+}
+const { slug, sp } = Astro.props;
+const atLaunch = slug === 'cani' || slug === 'gatti';
+const card = content.encyclopedia.find((c) => c.slug === slug);
+---
+<Base title={`${sp.title} · Enciclopedia Lineagree`} description={sp.intro}>
+  <section class="head wrap">
+    <div class="board plate screws">
+      <a class="back" href="/enciclopedia">Enciclopedia delle razze</a>
+      <h1>{sp.title}</h1>
+      <p class="intro">{sp.intro}</p>
+      {card && <p class="ente">Enti: <Dots text={card.ente} /></p>}
+      <p class:list={['status', atLaunch && 'live']}>
+        {atLaunch ? "Disponibile nell'app al lancio" : "Nell'app più avanti: per ora solo guida"}
+      </p>
+    </div>
+  </section>
+
+  <section class="breeds wrap" aria-labelledby="breeds-title">
+    <h2 id="breeds-title">Le razze principali</h2>
+    <ul class="grid" role="list">
+      {sp.breeds.map((b) => (
+        <li class="breed plate">
+          <h3>{b.name}</h3>
+          <p class="origin"><Dots text={b.origin} /></p>
+          <p>{b.desc}</p>
+          <ul class="tags" role="list">{b.tags.map((t) => <li>{t}</li>)}</ul>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="info wrap" aria-labelledby="info-title">
+    <div class="board plate screws">
+      <h2 id="info-title">Quello che devi sapere</h2>
+      <dl>
+        {sp.info.map((i) => <div><dt>{i.h}</dt><dd>{i.p}</dd></div>)}
+      </dl>
+    </div>
+  </section>
+
+  {atLaunch && (
+    <section class="cta wrap" aria-labelledby="cta-title">
+      <h2 id="cta-title">Hai un animale con pedigree? Entra in lista per l'app.</h2>
+      <div class="cta-form"><Waitlist id="specie" /></div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .head { padding-top: calc(var(--u) * 3); }
+  .board { padding: calc(var(--u) * 5); }
+  .head .board { max-width: 860px; }
+  .board h1 { font-size: clamp(2.25rem, 5.2vw, 4.5rem); margin-top: calc(var(--u) * 2); }
+  .back { font-weight: 800; color: var(--field); }
+  .intro { font-size: 1.25rem; margin: calc(var(--u) * 2) 0 0; max-width: 60ch; }
+  .ente { margin: calc(var(--u) * 1.5) 0 0; font-weight: 700; color: var(--ink-soft); }
+  .status { display: inline-block; margin: calc(var(--u) * 2.5) 0 0; font-weight: 800; font-size: 0.9375rem; padding: 4px 12px 2px; border: 2px solid var(--ink); border-radius: 999px; }
+  .status.live { background: var(--field); border-color: var(--field); color: #fff; }
+
+  .breeds { padding-top: calc(var(--u) * 10); }
+  .breeds > h2, .cta h2 { font-size: clamp(2rem, 4vw, 3.25rem); }
+  .grid { list-style: none; padding: 0; margin: calc(var(--u) * 4) 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: calc(var(--u) * 3); }
+  .breed { padding: calc(var(--u) * 3.5) calc(var(--u) * 3) calc(var(--u) * 3); display: grid; gap: var(--u); align-content: start; }
+  .breed h3 { font-size: 1.5rem; }
+  .breed p { margin: 0; color: var(--ink-soft); }
+  .breed .origin { font-weight: 700; color: var(--ink); font-size: 0.9375rem; }
+  .tags { list-style: none; padding: 0; margin: var(--u) 0 0; display: flex; flex-wrap: wrap; gap: var(--u); }
+  .tags li { font-size: 0.875rem; font-weight: 700; background: #e7f1ea; color: var(--field-deep); padding: 3px 10px 1px; border-radius: 6px; }
+
+  .info { padding-top: calc(var(--u) * 10); }
+  .info h2 { font-size: clamp(1.875rem, 3.4vw, 2.75rem); }
+  .info dl { margin: calc(var(--u) * 4) 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(var(--u) * 4) calc(var(--u) * 6); }
+  .info dt { font-weight: 900; font-size: 1.25rem; }
+  .info dd { margin: var(--u) 0 0; color: var(--ink-soft); max-width: 56ch; }
+
+  .cta { padding-top: calc(var(--u) * 10); display: grid; gap: calc(var(--u) * 3); }
+  .cta h2 { max-width: 22ch; }
+  .cta-form { max-width: 640px; }
+  @media (max-width: 720px) {
+    .board { padding: calc(var(--u) * 3.5) calc(var(--u) * 2.5); }
+    .info dl { grid-template-columns: 1fr; }
+  }
+</style>

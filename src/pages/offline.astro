@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Sei offline · Lineagree" description="La connessione non è disponibile.">
+  <section class="off wrap">
+    <div class="board plate screws">
+      <h1>Sei offline.</h1>
+      <p>La connessione non è disponibile in questo momento. Riprova quando sei di nuovo connesso.</p>
+      <button class="btn" type="button" onclick="location.reload()">Riprova</button>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .off { padding-top: calc(var(--u) * 6); }
+  .board { padding: calc(var(--u) * 6) calc(var(--u) * 5); max-width: 640px; display: grid; gap: calc(var(--u) * 2.5); justify-items: start; }
+  .board h1 { font-size: clamp(2.25rem, 5.2vw, 4.5rem); }
+  .board p { margin: 0; color: var(--ink-soft); font-size: 1.0625rem; }
+</style>

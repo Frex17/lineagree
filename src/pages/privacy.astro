@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Privacy · Lineagree" description="Come Lineagree tratta i dati raccolti con la lista d'attesa.">
+  <article class="legal wrap plate">
+    <h1>Privacy</h1>
+    <p class="draft">Bozza da far rivedere a un consulente prima del lancio.</p>
+    <h2>Cosa raccogliamo</h2>
+    <p>Solo l'indirizzo email che inserisci nel modulo della lista d'attesa, con la data di iscrizione.</p>
+    <h2>Perché</h2>
+    <p>Per avvisarti quando l'app Lineagree è disponibile. Non usiamo l'email per altro e non la cediamo a terzi.</p>
+    <h2>Dove sono i dati</h2>
+    <p>In un database gestito da un fornitore esterno (Supabase), su server nell'Unione Europea (Irlanda).</p>
+    <h2>Titolare del trattamento</h2>
+    <p>[Da completare: nome del titolare ed email di contatto per le richieste sulla privacy.]</p>
+    <h2>I tuoi diritti</h2>
+    <p>Puoi chiedere in ogni momento di vedere, correggere o cancellare la tua email. Ogni email che ti inviamo contiene un link per uscire dalla lista.</p>
+  </article>
+</Base>
+
+<style>
+  .legal { max-width: 760px; padding: calc(var(--u) * 6) calc(var(--u) * 5); margin-top: calc(var(--u) * 4); }
+  .legal h1 { font-size: clamp(2.25rem, 5.2vw, 4.5rem); }
+  .legal h2 { font-size: 1.5rem; margin: calc(var(--u) * 4) 0 var(--u); }
+  .legal p { margin: 0; max-width: 68ch; color: var(--ink-soft); }
+  .draft { margin-top: calc(var(--u) * 2) !important; font-weight: 800; color: #b0231a !important; }
+  @media (max-width: 520px) { .legal { padding: calc(var(--u) * 4) calc(var(--u) * 2.5); } }
+</style>

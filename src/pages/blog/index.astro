@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import content from '../../data/content.json';
+import Dots from '../../components/Dots.astro';
+const posts = content.posts;
+---
+<Base title="Blog · Lineagree" description="Guide su pedigree, enti di registrazione e accoppiamento responsabile per proprietari di animali di razza.">
+  <section class="blog wrap" aria-labelledby="blog-title">
+    <div class="board plate screws">
+      <h1 id="blog-title">Blog: da leggere prima di partire.</h1>
+      <p class="sub">Guide pratiche su pedigree, enti e accoppiamento responsabile.</p>
+    </div>
+    <ol class="list" role="list">
+      {posts.map((p) => (
+        <li>
+          <a class="post plate" href={`/blog/${p.slug}`}>
+            <img src={`/blog/images/${p.slug}.jpg`} alt="" width="1200" height="630" loading="lazy" />
+            <span class="txt">
+              <span class="meta"><Dots text={p.badge} /></span>
+              <span class="t">{p.title}</span>
+              <span class="ex">{p.excerpt}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .blog { padding-top: calc(var(--u) * 3); }
+  .board { padding: calc(var(--u) * 5); max-width: 860px; }
+  .board h1 { font-size: clamp(2.25rem, 5.2vw, 4.5rem); }
+  .sub { margin: calc(var(--u) * 2) 0 0; font-size: 1.25rem; color: var(--ink-soft); }
+  .list { list-style: none; padding: 0; margin: calc(var(--u) * 6) 0 0; display: grid; gap: calc(var(--u) * 3); }
+  .post { display: grid; grid-template-columns: 280px 1fr; gap: calc(var(--u) * 3); padding: calc(var(--u) * 2); text-decoration: none; transition: transform 200ms var(--ease); }
+  .post:hover { transform: translateX(6px); }
+  .post:hover .t { color: var(--field); }
+  .post img { width: 100%; height: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: calc(var(--u) * 0.75); }
+  .txt { display: grid; gap: var(--u); align-content: center; padding-right: calc(var(--u) * 2); }
+  .meta { font-weight: 700; font-size: 0.9375rem; color: var(--ink-soft); }
+  .t { font-weight: 900; font-size: 1.5rem; line-height: 1.15; }
+  .ex { color: var(--ink-soft); max-width: 62ch; }
+  @media (max-width: 720px) {
+    .post { grid-template-columns: 1fr; }
+    .txt { padding: 0 var(--u) var(--u); }
+    .board { padding: calc(var(--u) * 3.5) calc(var(--u) * 2.5); }
+  }
+</style>

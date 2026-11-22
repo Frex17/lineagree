@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Termini · Lineagree" description="Termini d'uso del sito Lineagree e della lista d'attesa.">
+  <article class="legal wrap plate">
+    <h1>Termini</h1>
+    <p class="draft">Bozza da far rivedere a un consulente prima del lancio.</p>
+    <h2>Il servizio</h2>
+    <p>Lineagree mette in contatto proprietari di animali con pedigree. Non vende animali, non gestisce pagamenti e non è parte degli accordi tra proprietari.</p>
+    <h2>Pedigree</h2>
+    <p>Al lancio il pedigree è dichiarato dal proprietario. Il badge "Pedigree caricato" indica solo che è stata caricata una foto del documento, non che sia stata controllata.</p>
+    <h2>Chi può usarlo</h2>
+    <p>Solo persone maggiorenni residenti in Italia.</p>
+    <h2>Comportamento</h2>
+    <p>Puoi segnalare e bloccare altri utenti. Rimuoviamo i profili che violano queste regole o la legge sul benessere animale.</p>
+  </article>
+</Base>
+
+<style>
+  .legal { max-width: 760px; padding: calc(var(--u) * 6) calc(var(--u) * 5); margin-top: calc(var(--u) * 4); }
+  .legal h1 { font-size: clamp(2.25rem, 5.2vw, 4.5rem); }
+  .legal h2 { font-size: 1.5rem; margin: calc(var(--u) * 4) 0 var(--u); }
+  .legal p { margin: 0; max-width: 68ch; color: var(--ink-soft); }
+  .draft { margin-top: calc(var(--u) * 2) !important; font-weight: 800; color: #b0231a !important; }
+  @media (max-width: 520px) { .legal { padding: calc(var(--u) * 4) calc(var(--u) * 2.5); } }
+</style>
