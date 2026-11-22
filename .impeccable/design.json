@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-22T00:00:00Z",
+  "title": "Design System: Lineagree",
+  "extensions": {
+    "colorMeta": {
+      "field": { "role": "primary", "displayName": "Park-Sign Green", "canonical": "#0e6b3a", "tonalRamp": ["#03200f", "#063a1d", "#0a5229", "#0e6b3a", "#3d8b5f", "#78b08f", "#b5d6c2", "#e9f3ec"] },
+      "field-deep": { "role": "primary", "displayName": "Deep Forest Green", "canonical": "#0a5229", "tonalRamp": ["#021a0b", "#052e16", "#0a5229", "#1d6a3e", "#4a8a65", "#82b097", "#bcd6c6", "#ecf4ef"] },
+      "blaze": { "role": "secondary", "displayName": "CAI Blaze Red", "canonical": "#d52b1e", "tonalRamp": ["#3d0905", "#6b120b", "#9c1c12", "#d52b1e", "#e45a4f", "#ee8c84", "#f6c0bb", "#fdeceb"] },
+      "tip": { "role": "tertiary", "displayName": "Signpost Yellow", "canonical": "#f2c200", "tonalRamp": ["#3a2e00", "#665100", "#9a7a00", "#c9a200", "#f2c200", "#f7d64d", "#fbe899", "#fef8e0"] },
+      "plate": { "role": "neutral", "displayName": "Enamel White", "canonical": "#ffffff", "tonalRamp": ["#1a1c1b", "#3b403d", "#626a65", "#8f9792", "#b9c0bb", "#d9e0db", "#eff3f0", "#ffffff"] },
+      "plate-edge": { "role": "neutral", "displayName": "Plate Seam", "canonical": "#d9e4dc" },
+      "ink": { "role": "neutral", "displayName": "Sign Lettering", "canonical": "#16191b", "tonalRamp": ["#0a0c0d", "#16191b", "#2b302f", "#46504a", "#6a736d", "#9aa29d", "#cdd3cf", "#f2f4f3"] },
+      "ink-soft": { "role": "neutral", "displayName": "Weathered Lettering", "canonical": "#46504a" },
+      "field-ink": { "role": "neutral", "displayName": "Green-Tinted Light", "canonical": "#e9f3ec" },
+      "field-soft": { "role": "neutral", "displayName": "Green-Tinted Soft", "canonical": "#cfe6d7" },
+      "pole": { "role": "neutral", "displayName": "Pole Steel", "canonical": "#6e756f" },
+      "error": { "role": "neutral", "displayName": "Error Red", "canonical": "#b0231a" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline, always on its own enamel plate." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles on the green field, max 20ch." },
+      "headline-board": { "displayName": "Headline Board", "purpose": "Titles inside a large enamel board." },
+      "title": { "displayName": "Title", "purpose": "Plate names, step and intent titles." },
+      "lede": { "displayName": "Lede", "purpose": "Hero lede, max 34ch." },
+      "body": { "displayName": "Body", "purpose": "Running text, 46 to 68ch, tabular figures." },
+      "meta": { "displayName": "Meta", "purpose": "Breed/registry lines, captions, badges, form messages." },
+      "label-cap": { "displayName": "Label Cap", "purpose": "Signpost place-name cap only." }
+    },
+    "shadows": [
+      { "name": "plate", "value": "0 2px 3px rgb(6 38 20 / 0.35), 0 10px 24px -8px rgb(6 38 20 / 0.45)", "purpose": "Enamel plates and the waitlist form." },
+      { "name": "arrow", "value": "drop-shadow(0 2px 2px rgb(6 38 20 / 0.35)) drop-shadow(0 10px 14px rgb(6 38 20 / 0.3))", "purpose": "filter on clip-path arrow plates." },
+      { "name": "plate-border", "value": "inset 0 0 0 3px #ffffff, inset 0 0 0 5px #16191b", "purpose": "Stamped inner border of every enamel plate, combined with the plate shadow." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Default ease-out for hovers and the plate turning back." },
+      { "name": "turn-out", "value": "260ms cubic-bezier(0.55, 0, 1, 0.45)", "purpose": "Plate turns to edge-on (rotateY 90deg) before the face swaps." },
+      { "name": "turn-in", "value": "420ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Plate turns back with the new face. Reduced motion: instant swap." },
+      { "name": "hover", "value": "180ms", "purpose": "Button background and 1px lift; species arrows shift 6px right over 200ms." }
+    ],
+    "breakpoints": [
+      { "name": "phone", "value": "520px" },
+      { "name": "nav-collapse", "value": "640px" },
+      { "name": "stack", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid ink button; the waitlist submit.",
+      "html": "<button class=\"ds-btn\">Entra in lista</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; font-family: Overpass, system-ui, sans-serif; font-weight: 800; font-size: 1.0625rem; border: 0; border-radius: 6px; background: #16191b; color: #fff; cursor: pointer; transition: background 180ms cubic-bezier(0.16,1,0.3,1), transform 180ms cubic-bezier(0.16,1,0.3,1); } .ds-btn:hover { background: #000; transform: translateY(-1px); } .ds-btn:active { transform: translateY(0); } .ds-btn:focus-visible { outline: 3px solid #f2c200; outline-offset: 3px; }"
+    },
+    {
+      "name": "Enamel Plate",
+      "kind": "card",
+      "refersTo": "enamel-plate",
+      "description": "White sign plate with stamped inner border and screw heads; holds headlines and boards.",
+      "html": "<div class=\"ds-field\"><div class=\"ds-plate\"><h2>Il pedigree prima di tutto.</h2></div></div>",
+      "css": ".ds-field { background: #0e6b3a; padding: 32px; } .ds-plate { position: relative; background: #fff; color: #16191b; border-radius: 10px; padding: 40px 32px 32px; box-shadow: 0 2px 3px rgb(6 38 20 / 0.35), 0 10px 24px -8px rgb(6 38 20 / 0.45), inset 0 0 0 3px #fff, inset 0 0 0 5px #16191b; font-family: Overpass, system-ui, sans-serif; } .ds-plate h2 { margin: 0; font-weight: 900; font-size: 2rem; line-height: 1.02; letter-spacing: -0.02em; } .ds-plate::before, .ds-plate::after { content: ''; position: absolute; top: 12px; width: 7px; height: 7px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #cfd6d1, #7d877f); } .ds-plate::before { left: 12px; } .ds-plate::after { right: 12px; }"
+    },
+    {
+      "name": "Arrow Plate",
+      "kind": "card",
+      "refersTo": "arrow-plate",
+      "description": "Pointed plate for anything that leads somewhere: steps, intents, species links.",
+      "html": "<div class=\"ds-field\"><a class=\"ds-arrow\" href=\"#\"><strong>Cani</strong><span>Pedigree ENCI, LOI e LOR</span></a></div>",
+      "css": ".ds-field { background: #0e6b3a; padding: 32px; } .ds-arrow { display: inline-grid; gap: 2px; min-width: 280px; background: #fff; color: #16191b; text-decoration: none; font-family: Overpass, system-ui, sans-serif; padding: 20px 48px 20px 24px; clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 50%, calc(100% - 32px) 100%, 0 100%); filter: drop-shadow(0 2px 2px rgb(6 38 20 / 0.35)) drop-shadow(0 10px 14px rgb(6 38 20 / 0.3)); transition: transform 200ms cubic-bezier(0.16,1,0.3,1); } .ds-arrow:hover { transform: translateX(6px); } .ds-arrow:focus-visible { outline: 3px solid #f2c200; outline-offset: 3px; } .ds-arrow strong { font-size: 2rem; font-weight: 900; line-height: 1.05; } .ds-arrow span { color: #46504a; font-weight: 600; }"
+    },
+    {
+      "name": "Signpost Plate",
+      "kind": "custom",
+      "description": "Signature profile plate with yellow tip; active state shows the blaze and a red km figure.",
+      "html": "<div class=\"ds-field\"><button class=\"ds-sign\" aria-pressed=\"true\"><span class=\"ds-main\"><span class=\"ds-name\">Luna <svg viewBox=\"0 0 30 21\" width=\"24\" height=\"17\" aria-hidden=\"true\"><rect width=\"30\" height=\"7\" fill=\"#d52b1e\"/><rect y=\"7\" width=\"30\" height=\"7\" fill=\"#fff\"/><rect y=\"14\" width=\"30\" height=\"7\" fill=\"#d52b1e\"/></svg></span><span class=\"ds-breed\">Golden Retriever, ENCI LOI</span><span class=\"ds-wants\">Cerca: una cucciolata</span></span><span class=\"ds-km\"><b>8</b> km<span>Monza</span></span></button></div>",
+      "css": ".ds-field { background: #0e6b3a; padding: 32px; } .ds-sign { position: relative; width: 400px; max-width: 100%; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; min-height: 80px; padding: 10px 60px 10px 20px; border: 0; background: #fff; color: #16191b; font-family: Overpass, system-ui, sans-serif; text-align: left; cursor: pointer; clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 50%, calc(100% - 40px) 100%, 0 100%); } .ds-sign::after { content: ''; position: absolute; top: 0; bottom: 0; right: 0; width: 22px; background: #f2c200; } .ds-sign:hover:not([aria-pressed='true']) { background: #f3f7f4; } .ds-sign:focus-visible { outline: 3px solid #f2c200; outline-offset: 3px; } .ds-main { display: grid; gap: 2px; } .ds-name { display: flex; align-items: center; gap: 8px; font-weight: 900; font-size: 1.5rem; line-height: 1; } .ds-breed { font-weight: 700; font-size: 0.9375rem; } .ds-wants { font-size: 0.875rem; color: #46504a; } .ds-km { display: grid; text-align: right; font-weight: 700; font-size: 0.875rem; line-height: 1.1; } .ds-km b { font-size: 2rem; font-weight: 900; line-height: 1; } .ds-sign[aria-pressed='true'] .ds-km b { color: #d52b1e; } .ds-km span { color: #46504a; font-weight: 600; }"
+    },
+    {
+      "name": "Email Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Waitlist email input, 2px ink border.",
+      "html": "<input class=\"ds-input\" type=\"email\" placeholder=\"nome@esempio.it\" />",
+      "css": ".ds-input { min-height: 48px; min-width: 260px; padding: 0 14px; font-family: Overpass, system-ui, sans-serif; font-size: 1.0625rem; border: 2px solid #16191b; border-radius: 6px; background: #fff; color: #16191b; } .ds-input::placeholder { color: #5b655f; } .ds-input:focus-visible { outline: 3px solid #f2c200; outline-offset: 3px; }"
+    },
+    {
+      "name": "Status Badges",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Pills that say exactly what was checked; never arrows.",
+      "html": "<span class=\"ds-badge\">Pedigree caricato</span> <span class=\"ds-badge ds-badge-ok\">Verificato</span>",
+      "css": ".ds-badge { display: inline-block; font-family: Overpass, system-ui, sans-serif; font-weight: 800; font-size: 0.9375rem; padding: 4px 12px 2px; border: 2px solid #16191b; border-radius: 999px; color: #16191b; background: #fff; } .ds-badge-ok { background: #0e6b3a; border-color: #0e6b3a; color: #fff; }"
+    },
+    {
+      "name": "Site Navigation",
+      "kind": "nav",
+      "description": "Brand on a small plate, text links on green, CTA as a small arrow plate.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-brand\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" aria-hidden=\"true\"><path d=\"M3 6h13l5 6-5 6H3z\" fill=\"#0e6b3a\"/></svg>Lineagree</a><span class=\"ds-links\"><a href=\"#\">Come funziona</a><a href=\"#\">Blog</a><a class=\"ds-cta\" href=\"#\">Entra in lista</a></span></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; background: #0e6b3a; font-family: Overpass, system-ui, sans-serif; } .ds-brand { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px 6px; background: #fff; color: #16191b; border-radius: 10px; box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 5px #16191b; font-weight: 900; font-size: 1.25rem; text-decoration: none; } .ds-links { display: flex; gap: 20px; align-items: center; } .ds-links a { color: #e9f3ec; font-weight: 700; text-decoration: none; } .ds-links a:hover { text-decoration: underline; } .ds-links .ds-cta { background: #fff; color: #16191b; padding: 8px 32px 8px 16px; clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%); } .ds-links .ds-cta:hover { background: #f2c200; text-decoration: none; } .ds-links a:focus-visible { outline: 3px solid #f2c200; outline-offset: 3px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Cartelli di sentiero",
+    "overview": "Every match is a trail sign: breed, purpose and kilometres toward another pedigree animal. The page is a park-sign green field. Content sits on white enamel plates lettered in heavy black, and the plates that point somewhere are cut as arrows. The system borrows the material honesty of Italian mountain signage: few colours, each with one job, flat graphic objects with a little real weight under them.\n\nDensity is low and confident. Large green regions carry the page; plates are the only containers. One 8px module sizes every plate, gap and padding, so a plate on the signpost, a step on the trail and the waitlist form read as the same object at different scales. Motion is reserved for one authored moment: a plate turning on the post as a match lands.\n\nThis is the owners' format. The breeders' \"Ring d'expo\" format (show-ring rosettes, armband numbers) is a future variant held in PRODUCT.md; it is not part of this system and nothing here should anticipate it.\n\nThe static pages under `public/` (blog, specie, enciclopedia, matches, offline) predate this system and are pending migration. Do not derive tokens or patterns from them.",
+    "keyCharacteristics": [
+      "Green field, white enamel plates, black lettering; nothing else carries large area.",
+      "Arrow-shaped plates for anything that points: links, steps, intents, the form.",
+      "CAI red-white-red blaze only on the active match.",
+      "Trail-sign yellow only on arrow tips, focus and selection.",
+      "One 8px grid module everywhere.",
+      "Overpass at weight 900 for every heading."
+    ],
+    "rules": [
+      { "name": "The Blaze Rule", "body": "Blaze red marks the active match and nothing else. If a screen has no active match, it has no blaze.", "section": "colors" },
+      { "name": "The Hardware Rule", "body": "Yellow and pole grey are sign hardware, not palette. They never fill a section or a content plate, and never carry text; the nav CTA's yellow hover is the one plate-sized use.", "section": "colors" },
+      { "name": "The Lettering Rule", "body": "Every h1 to h3 is Overpass 900, line-height 1.02, -0.02em, balanced wrap. Hierarchy comes from size, never from a second face or a lighter weight.", "section": "typography" },
+      { "name": "The Drawn Dot Rule", "body": "Inline separators are a drawn 4px dot, not a typed middot; Overpass sets the middot too high.", "section": "typography" },
+      { "name": "The Green Shadow Rule", "body": "Shadows are tinted with the field's own dark green, never neutral black.", "section": "elevation" },
+      { "name": "The Arrow Means Direction Rule", "body": "A plate is cut as an arrow only when it leads somewhere or represents a step along the way. Status (pedigree caricato, verificato) is a pill, because a badge reports what was checked; it does not point.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do size every gap, padding and plate dimension from the 8px module.",
+      "Do put content on white enamel or arrow plates; let the green field carry the space between them.",
+      "Do cut a plate as an arrow when it leads somewhere or marks a step; keep status as a pill.",
+      "Do label synthetic profiles as examples (\"profili di esempio\").",
+      "Do keep secondary text on green in the tinted soft green at 4.5:1 or better."
+    ],
+    "donts": [
+      "Don't use blaze red for anything except the active match.",
+      "Don't use signpost yellow or pole grey as section or content-plate backgrounds, or as text colours.",
+      "Don't introduce a second typeface or set headings below weight 900.",
+      "Don't add motion beyond the plate turn and small hover shifts; the turn must have a no-motion fallback.",
+      "Don't use neutral black shadows; shadows are field-tinted."
+    ]
+  }
+}

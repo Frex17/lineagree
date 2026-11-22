@@ -1,0 +1,566 @@
+{
+  "species": {
+    "cani": {
+      "title": "Il mondo dei cani di razza",
+      "intro": "La FCI riconosce oltre 360 razze di cani, ognuna con la sua storia, il suo carattere e uno standard preciso.",
+      "breeds": [
+        {
+          "name": "Labrador Retriever",
+          "origin": "Canada · ENCI/FCI",
+          "desc": "Docile, intelligente e instancabile. È tra le razze più diffuse al mondo, sia in famiglia sia come cane da lavoro.",
+          "tags": [
+            "Taglia grande",
+            "Pelo corto",
+            "Alta energia"
+          ]
+        },
+        {
+          "name": "Barboncino",
+          "origin": "Francia · ENCI/FCI",
+          "desc": "Molto intelligente e considerato ipoallergenico. Esiste in quattro taglie: toy, miniatura, medio e grande.",
+          "tags": [
+            "Ipoallergenico",
+            "Alta intelligenza",
+            "Pelo riccio"
+          ]
+        },
+        {
+          "name": "Pastore Tedesco",
+          "origin": "Germania · ENCI/FCI",
+          "desc": "Fedele e coraggioso, è un cane versatile: lavora in utilità, difesa e come cane guida, ed è anche un ottimo cane da compagnia.",
+          "tags": [
+            "Taglia grande",
+            "Lavoro",
+            "Difesa"
+          ]
+        },
+        {
+          "name": "Golden Retriever",
+          "origin": "Scozia · ENCI/FCI",
+          "desc": "Amichevole e paziente, va d'accordo con tutta la famiglia. È molto usato come cane guida e nella pet therapy.",
+          "tags": [
+            "Taglia grande",
+            "Famiglia",
+            "Pelo lungo"
+          ]
+        },
+        {
+          "name": "Bulldog Francese",
+          "origin": "Francia · ENCI/FCI",
+          "desc": "Compatto, giocoso e affettuoso. Ha bisogno di poco movimento e per questo si adatta bene alla vita in appartamento.",
+          "tags": [
+            "Taglia piccola",
+            "Appartamento",
+            "Pelo corto"
+          ]
+        },
+        {
+          "name": "Beagle",
+          "origin": "Inghilterra · ENCI/FCI",
+          "desc": "Curioso e allegro, ha un olfatto eccezionale. Nasce come cane da caccia ed è un buon compagno per chi ama stare all'aperto.",
+          "tags": [
+            "Taglia media",
+            "Segugio",
+            "Alta energia"
+          ]
+        }
+      ],
+      "info": [
+        {
+          "h": "Ente certificatore in Italia",
+          "p": "In Italia i pedigree dei cani di razza li rilascia l'ENCI (Ente Nazionale della Cinofilia Italiana), affiliato alla FCI (Fédération Cynologique Internationale)."
+        },
+        {
+          "h": "Cosa contiene un pedigree",
+          "p": "Nome del cane, numero di registro LOI, genitori, nonni e antenati delle generazioni precedenti, allevatore, proprietario, data di nascita, colore e taglia dichiarata."
+        },
+        {
+          "h": "Test di salute richiesti",
+          "p": "Dipende dalla razza: displasia dell'anca (HD) e del gomito (ED), esami oculistici (protocollo ECVO), controlli cardiologici e test del DNA per le malattie genetiche della razza."
+        },
+        {
+          "h": "Come trovare un buon allevatore",
+          "p": "Cerca allevatori iscritti all'ENCI con cuccioli registrati LOI, che fanno i test di salute previsti per la razza e ti lasciano visitare l'allevamento e conoscere i genitori."
+        }
+      ]
+    },
+    "cavalli": {
+      "title": "Il mondo dei cavalli di razza",
+      "intro": "Razze millenarie, selezionate per lo sport, il lavoro e la bellezza. Il pedigree equino è uno dei più antichi al mondo.",
+      "breeds": [
+        {
+          "name": "Purosangue Inglese",
+          "origin": "Inghilterra · MASAF",
+          "desc": "È la razza più veloce sulle distanze classiche delle corse. Selezionato per le corse in piano, è alla base di molte altre razze sportive.",
+          "tags": [
+            "Corse",
+            "Alta velocità",
+            "Sportivo"
+          ]
+        },
+        {
+          "name": "KWPN",
+          "origin": "Olanda · KWPN",
+          "desc": "Cavallo da sport olandese, eccelle nel dressage e nel salto ostacoli ed è tra i più premiati nelle gare internazionali.",
+          "tags": [
+            "Sport",
+            "Dressage",
+            "Salto ostacoli"
+          ]
+        },
+        {
+          "name": "Andaluso (PRE)",
+          "origin": "Spagna · ANCCE",
+          "desc": "Pura Raza Española: elegante, potente e sensibile. Adatto al dressage barocco e al lavoro in libertà.",
+          "tags": [
+            "Dressage",
+            "Barocco",
+            "Elegante"
+          ]
+        },
+        {
+          "name": "Quarter Horse",
+          "origin": "USA · AQHA/AIQH",
+          "desc": "Ha il registro di razza più grande al mondo ed è il più veloce sulle brevi distanze, intorno al quarto di miglio. Molto versatile, si usa nel western, nel reining, nel cutting e nel lavoro in ranch.",
+          "tags": [
+            "Western",
+            "Versatile",
+            "Muscoloso"
+          ]
+        },
+        {
+          "name": "Trottatore Italiano",
+          "origin": "Italia · MASAF",
+          "desc": "Razza italiana per le corse al trotto, allevata e migliorata in Italia dalla seconda metà dell'Ottocento; il libro genealogico esiste dal 1896.",
+          "tags": [
+            "Trotto",
+            "Corse",
+            "Italiano"
+          ]
+        },
+        {
+          "name": "Haflinger",
+          "origin": "Austria · ANACRHAI",
+          "desc": "Pony di montagna robusto, adatto ai bambini e al trekking. Si riconosce dal mantello sauro e dalla criniera bionda.",
+          "tags": [
+            "Trekking",
+            "Bambini",
+            "Montagna"
+          ]
+        }
+      ],
+      "info": [
+        {
+          "h": "Enti certificatori in Italia",
+          "p": "I libri genealogici del Purosangue Inglese e del Trottatore Italiano li tiene oggi il MASAF, che ha raccolto le funzioni della vecchia UNIRE. L'anagrafe equina è nella Banca Dati Nazionale del Ministero della Salute."
+        },
+        {
+          "h": "Il passaporto equino",
+          "p": "Dal 1° luglio 2009 ogni cavallo nell'UE deve avere un passaporto valido per tutta la vita, e i nati dal 2009 anche un microchip. Lo rilasciano enti autorizzati, le ASL o veterinari autorizzati, e riporta vaccinazioni, trattamenti veterinari, dati del proprietario e informazioni sulla razza."
+        },
+        {
+          "h": "Test sanitari per la riproduzione",
+          "p": "Ogni anno, prima della stagione di monta, gli stalloni vengono controllati per l'arterite virale equina (AVE) e la metrite contagiosa equina (MCE). Per le fattrici e per l'anemia infettiva equina (AIE) le regole cambiano secondo la razza e la Regione."
+        },
+        {
+          "h": "Valutazione morfologica",
+          "p": "Giudici abilitati valutano tipo, modello, andature e attitudine sportiva. Il punteggio incide sul valore del cavallo come riproduttore."
+        }
+      ]
+    },
+    "conigli": {
+      "title": "Il mondo dei conigli di razza",
+      "intro": "Lo standard italiano dell'ANCI riconosce 43 razze di conigli, ognuna con caratteristiche ben definite.",
+      "breeds": [
+        {
+          "name": "Ariete Nano",
+          "origin": "Olanda · ANCI",
+          "desc": "Orecchie cadenti e corpo compatto. È docile e affettuoso, adatto alle famiglie con bambini.",
+          "tags": [
+            "Nano",
+            "Pelo corto",
+            "Docile"
+          ]
+        },
+        {
+          "name": "Angora Inglese",
+          "origin": "Turchia · ANCI",
+          "desc": "Si riconosce dal mantello lunghissimo e soffice, che va spazzolato ogni giorno.",
+          "tags": [
+            "Pelo lunghissimo",
+            "Toelettatura",
+            "Esposizione"
+          ]
+        },
+        {
+          "name": "Rex",
+          "origin": "Francia · ANCI",
+          "desc": "Ha un pelo cortissimo e morbido come velluto. Taglia media, carattere tranquillo e molto socievole.",
+          "tags": [
+            "Velluto",
+            "Taglia media",
+            "Sociale"
+          ]
+        },
+        {
+          "name": "Gigante di Fiandra",
+          "origin": "Belgio · ANCI",
+          "desc": "È una delle razze più grandi e può superare i 7 kg. Nonostante la taglia è calmo e amichevole.",
+          "tags": [
+            "Taglia gigante",
+            "Calmo",
+            "Raro"
+          ]
+        }
+      ],
+      "info": [
+        {
+          "h": "Ente certificatore",
+          "p": "In Italia il libro genealogico dei conigli lo tiene l'ANCI (Associazione Nazionale Coniglicoltori Italiani), che cura anche gli standard di razza. L'ENCI si occupa solo di cani."
+        },
+        {
+          "h": "Caratteristiche del pedigree",
+          "p": "Riporta razza, colore del mantello, peso standard, nomi dei genitori e dei nonni e i risultati nelle esposizioni. Il coniglio iscritto si riconosce dal tatuaggio nell'orecchio, che è l'identificazione ufficiale."
+        },
+        {
+          "h": "Alimentazione di razza",
+          "p": "La base è il fieno di qualità (circa l'80% della dieta), poi pellet specifici per la razza, verdure fresche e acqua sempre disponibile. Cereali e frutta vanno dati con moderazione."
+        },
+        {
+          "h": "Salute e prevenzione",
+          "p": "La vaccinazione contro mixomatosi e malattia emorragica virale (RHD) non è obbligatoria per legge, ma il Ministero della Salute la indica come base della prevenzione. Per i conigli che non devono riprodursi è consigliata la sterilizzazione."
+        }
+      ]
+    },
+    "gatti": {
+      "title": "Il mondo dei gatti di razza",
+      "intro": "Il numero di razze feline dipende dalla federazione: la TICA ne riconosce oltre 70, la FIFe circa 50. Ognuna ha la sua storia e le sue caratteristiche.",
+      "breeds": [
+        {
+          "name": "Maine Coon",
+          "origin": "USA · ANFI/WCF",
+          "desc": "La razza più grande tra i gatti domestici. Ha un mantello folto e un carattere dolce e giocoso, quasi da cane.",
+          "tags": [
+            "Taglia grande",
+            "Pelo semi-lungo",
+            "Docile"
+          ]
+        },
+        {
+          "name": "Ragdoll",
+          "origin": "USA · ANFI/WCF",
+          "desc": "Famoso perché si rilassa completamente quando lo prendi in braccio. Adatto alle famiglie con bambini.",
+          "tags": [
+            "Taglia grande",
+            "Pelo lungo",
+            "Tranquillo"
+          ]
+        },
+        {
+          "name": "British Shorthair",
+          "origin": "Inghilterra · ANFI/WCF",
+          "desc": "Robusto, tranquillo e indipendente. È il classico gatto inglese, con pelo folto e occhi grandi e rotondi.",
+          "tags": [
+            "Taglia media",
+            "Pelo corto",
+            "Indipendente"
+          ]
+        },
+        {
+          "name": "Persiano",
+          "origin": "Persia · ANFI/WCF",
+          "desc": "Elegante e silenzioso. Il mantello va curato ogni giorno.",
+          "tags": [
+            "Taglia media",
+            "Pelo lunghissimo",
+            "Tranquillo"
+          ]
+        },
+        {
+          "name": "Siamese",
+          "origin": "Thailandia · ANFI/WCF",
+          "desc": "Vocale, curioso e molto legato a chi se ne prende cura. È una delle razze più antiche e riconoscibili.",
+          "tags": [
+            "Taglia media",
+            "Pelo corto",
+            "Sociale"
+          ]
+        },
+        {
+          "name": "Norvegese delle Foreste",
+          "origin": "Norvegia · ANFI/WCF",
+          "desc": "Robusto e resistente al freddo, con un doppio mantello che respinge l'acqua. Ottimo arrampicatore e cacciatore.",
+          "tags": [
+            "Taglia grande",
+            "Pelo lungo",
+            "Attivo"
+          ]
+        }
+      ],
+      "info": [
+        {
+          "h": "Enti certificatori in Italia",
+          "p": "I principali enti per i gatti di razza in Italia sono ANFI (Associazione Nazionale Felina Italiana) e WCF Italia. I loro pedigree sono riconosciuti a livello internazionale."
+        },
+        {
+          "h": "Cosa contiene un pedigree felino",
+          "p": "Nome del gatto, numero di registro, razza, colore e disegno del mantello, albero genealogico su 4 o 5 generazioni ed eventuali risultati nelle esposizioni."
+        },
+        {
+          "h": "Test genetici importanti",
+          "p": "PKD (rene policistico) per i Persiani, HCM (cardiomiopatia ipertrofica) per Maine Coon e Ragdoll; per tutti i riproduttori, gruppo sanguigno e FIV/FeLV."
+        },
+        {
+          "h": "Frequenza degli accoppiamenti",
+          "p": "Le regole ANFI/FIFe ammettono al massimo 3 cucciolate in 24 mesi per ogni gatta; una quarta solo con l'autorizzazione scritta del veterinario. Dopo il parto devono passare almeno 90 giorni prima di un nuovo accoppiamento."
+        }
+      ]
+    },
+    "pesci": {
+      "title": "Il mondo dei pesci di razza",
+      "intro": "Carpe Koi, Betta, Arowana e altre specie selezionate da secoli per colore e forma.",
+      "breeds": [
+        {
+          "name": "Carpa Koi",
+          "origin": "Giappone · ZNA",
+          "desc": "In Giappone è simbolo di fortuna e lunga vita. Selezionata da secoli per colori e disegno, può vivere più di 30 anni.",
+          "tags": [
+            "Laghetto",
+            "30+ anni",
+            "Colori"
+          ]
+        },
+        {
+          "name": "Pesce Combattente (Betta)",
+          "origin": "Tailandia · IBC",
+          "desc": "Famoso per le pinne ampie e i colori vivaci. Esistono decine di varietà riconosciute di pinna e di colore.",
+          "tags": [
+            "Acquario",
+            "Solitario",
+            "Colorato"
+          ]
+        },
+        {
+          "name": "Arowana Asiatica",
+          "origin": "Asia · CITES",
+          "desc": "Detto \"drago d'acqua\", è tra i pesci ornamentali più costosi al mondo ed è protetto dalla CITES.",
+          "tags": [
+            "CITES",
+            "Raro",
+            "Alto valore"
+          ]
+        },
+        {
+          "name": "Discus",
+          "origin": "Amazzonia",
+          "desc": "Chiamato il \"re dell'acquario\" per la forma rotonda e i colori. Richiede le cure di un acquariofilo esperto.",
+          "tags": [
+            "Avanzato",
+            "Colori",
+            "Amazzonico"
+          ]
+        }
+      ],
+      "info": [
+        {
+          "h": "Certificazione e tracciabilità",
+          "p": "Per le specie CITES, come l'Arowana asiatica, serve il certificato di provenienza da allevamento. In Europa la materia è regolata dal Regolamento CE 338/97."
+        },
+        {
+          "h": "Valutazione delle carpe Koi",
+          "p": "Si valutano corpo, colori principali, disegno, qualità della pelle ed equilibrio generale. I concorsi ZNA (Zen Nippon Airinkai) sono il riferimento mondiale."
+        },
+        {
+          "h": "Parametri acqua per la riproduzione",
+          "p": "Ogni specie ha i suoi valori di pH, temperatura, durezza e ossigeno disciolto. La qualità dell'acqua è il fattore che più incide su salute e riproduzione."
+        },
+        {
+          "h": "Associazioni in Italia",
+          "p": "In Italia non c'è una federazione che regoli l'acquariofilia di razza. Le mostre le organizzano associazioni di appassionati, come l'Italian Koi Association per le Koi e l'Associazione Italiana Betta; per i Betta lo standard internazionale è quello dell'IBC."
+        }
+      ]
+    },
+    "uccelli": {
+      "title": "Il mondo degli uccelli di razza",
+      "intro": "Pappagalli, canarini e uccelli da voliera, ognuno con standard precisi.",
+      "breeds": [
+        {
+          "name": "Pappagallo Cenerino",
+          "origin": "Africa · CITES",
+          "desc": "È considerato il pappagallo più intelligente. Può imparare centinaia di parole e imitare suoni complessi.",
+          "tags": [
+            "Alta intelligenza",
+            "Imitazione",
+            "Longevo"
+          ]
+        },
+        {
+          "name": "Ara Macao",
+          "origin": "America Centrale · CITES",
+          "desc": "Grande, vivace e coloratissimo, è il pappagallo più riconoscibile. Può vivere oltre 50 anni.",
+          "tags": [
+            "Taglia grande",
+            "Colorato",
+            "50+ anni"
+          ]
+        },
+        {
+          "name": "Canarino di Colore",
+          "origin": "Isole Canarie · FOI",
+          "desc": "Selezionato per le mutazioni di colore, molte delle quali riconosciute dalla FOI.",
+          "tags": [
+            "Canto",
+            "Colore",
+            "Esposizione"
+          ]
+        },
+        {
+          "name": "Parrocchetto Ondulato",
+          "origin": "Australia · FOI",
+          "desc": "Il pappagallo da compagnia più diffuso al mondo. Socievole, facile da allevare e longevo.",
+          "tags": [
+            "Taglia piccola",
+            "Sociale",
+            "Facile cura"
+          ]
+        }
+      ],
+      "info": [
+        {
+          "h": "Documentazione CITES",
+          "p": "Pappagalli e molte specie esotiche sono protetti dalla Convenzione CITES. Per tenerli legalmente serve la documentazione che ne provi la provenienza da un allevamento certificato UE."
+        },
+        {
+          "h": "Ente certificatore in Italia",
+          "p": "La FOI (Federazione Ornicoltori Italiani) è l'ente ufficiale per canarini, esotici e ibridi. Per i pappagalli si fa riferimento ai club di razza e ai registri CITES."
+        },
+        {
+          "h": "Anellatura e identificazione",
+          "p": "Gli uccelli di specie CITES nati in cattività devono avere un anello chiuso, messo nei primi giorni di vita, che non si può più togliere quando la zampa è cresciuta (Regolamento CE 865/2006). Nelle mostre FOI l'uccello va identificato con anellino inamovibile o microchip."
+        },
+        {
+          "h": "Esposizioni ornitologiche",
+          "p": "Nelle mostre FOI i giudici valutano tipo, posizione, piumaggio, colore e salute. I soggetti premiati valgono di più come riproduttori."
+        }
+      ]
+    }
+  },
+  "encyclopedia": [
+    {
+      "slug": "cani",
+      "name": "Cani",
+      "ente": "ENCI · FCI",
+      "desc": "La FCI riconosce oltre 360 razze, dal Chihuahua al San Bernardo, ognuna con il suo standard e il suo pedigree.",
+      "stats": [
+        "360+ razze",
+        "Pedigree LOI",
+        "Test HD/ED"
+      ]
+    },
+    {
+      "slug": "gatti",
+      "name": "Gatti",
+      "ente": "ANFI · WCF",
+      "desc": "Oltre 70 razze per la TICA, circa 50 per la FIFe, dal Siamese al Maine Coon, ognuna con la sua storia e il suo carattere.",
+      "stats": [
+        "70+ razze",
+        "Test HCM/PKD",
+        "Gruppo sanguigno"
+      ]
+    },
+    {
+      "slug": "cavalli",
+      "name": "Cavalli",
+      "ente": "MASAF · FISE",
+      "desc": "Razze millenarie selezionate per lo sport, il lavoro e la bellezza, con uno dei pedigree più antichi e rigorosi al mondo.",
+      "stats": [
+        "Passaporto UELN",
+        "Test AVE/MCE",
+        "Microchip"
+      ]
+    },
+    {
+      "slug": "conigli",
+      "name": "Conigli",
+      "ente": "ANCI",
+      "desc": "43 razze nello standard italiano, dal Gigante di Fiandra all'Ariete Nano, con colori, pelo e caratteri diversi.",
+      "stats": [
+        "43 razze ANCI",
+        "Tatuaggio auricolare",
+        "Vaccini RHD"
+      ]
+    },
+    {
+      "slug": "uccelli",
+      "name": "Uccelli",
+      "ente": "FOI · CITES",
+      "desc": "Canarini, pappagalli e specie esotiche, con regole europee precise su certificazione e provenienza.",
+      "stats": [
+        "Anello chiuso",
+        "CITES EU",
+        "Cert. nascita"
+      ]
+    },
+    {
+      "slug": "pesci",
+      "name": "Pesci",
+      "ente": "IKA · ZNA",
+      "desc": "Carpe Koi, Betta e Arowana, selezionati da secoli per colore, disegno e forma.",
+      "stats": [
+        "Standard ZNA",
+        "CITES",
+        "100+ varietà Koi"
+      ]
+    }
+  ],
+  "posts": [
+    {
+      "slug": "allevamento-selettivo-responsabile",
+      "title": "Allevamento selettivo responsabile: cosa significa davvero",
+      "badge": "Etica · 4 min",
+      "description": "Cosa vuol dire, in pratica, scegliere i riproduttori pensando alla salute della razza.",
+      "excerpt": "Allevare in modo responsabile vuol dire scegliere i riproduttori pensando alla salute, al temperamento e al benessere dei cuccioli che verranno. A volte significa rinunciare a un guadagno immediato, o a un accoppiamento…",
+      "body": "<p>Allevare in modo responsabile vuol dire scegliere i riproduttori pensando alla salute, al temperamento e al benessere dei cuccioli che verranno. A volte significa rinunciare a un guadagno immediato, o a un accoppiamento che piacerebbe a noi, se non fa bene all'animale o alla razza.</p> <h2>La salute prima dell'estetica</h2> <p>Il primo criterio è la salute. Nella scelta dei riproduttori contano prima i test genetici, le certificazioni sanitarie e la valutazione del temperamento. La bellezza morfologica, che in un animale di razza ha comunque il suo peso, viene dopo.</p> <p>Un allevatore responsabile non accoppia mai due soggetti portatori della stessa malattia genetica, anche se entrambi sono campioni. Preferisce linee con una longevità documentata e poche patologie ereditarie, anche quando questo vuol dire rinunciare a un accoppiamento che sulla carta sembrava prestigioso.</p> <h2>Varietà genetica e coefficiente di consanguineità</h2> <p>L'endogamia eccessiva è uno dei rischi più seri per una razza. Accoppiare più volte soggetti stretti parenti per \"fissare\" un tratto estetico impoverisce il patrimonio genetico: aumentano le malattie e i problemi di fertilità, e gli animali diventano meno vitali.</p> <p>Per questo un buon allevatore tiene d'occhio il <strong>coefficiente di consanguineità (COI)</strong> e cerca di mantenerlo basso, anche andando a cercare partner in altre linee o in zone lontane.</p> <h2>La trasparenza</h2> <p>Un allevatore serio dice quali patologie genetiche sono note nella sua linea, condivide i risultati dei test anche quando non sono perfetti e dà informazioni complete a chi prende un cucciolo o cerca un accoppiamento. Così anche gli altri possono scegliere sapendo cosa fanno, e con il tempo migliora la salute dell'intera razza.</p> <h2>Il benessere per tutta la vita</h2> <p>La responsabilità continua dopo la nascita dei cuccioli. C'è la cura della madre, il rispetto dei tempi naturali tra una cucciolata e l'altra, la socializzazione dei piccoli e la ricerca di una famiglia adatta per ognuno. E c'è la disponibilità a riprendere l'animale, in qualsiasi momento della sua vita, se la nuova famiglia non può più tenerlo.</p> <h2>E Lineagree?</h2> <p>Lineagree vuole rendere più semplice questo modo di fare. Ogni profilo indica ente e numero di registro del pedigree, ogni proprietario dichiara cosa cerca e ci si parla direttamente in chat. Al lancio il pedigree è dichiarato dal proprietario con una foto del documento; la verifica da parte di un moderatore arriverà in seguito.</p>"
+    },
+    {
+      "slug": "carpe-koi-pedigree-acqua",
+      "title": "Carpe Koi: il pedigree dell'acqua",
+      "badge": "Specie · 5 min",
+      "description": "Oltre 100 varietà e più di due secoli di selezione: come si valuta una Koi e da cosa dipende il suo valore.",
+      "excerpt": "Le carpe Koi, in giapponese Nishikigoi (\"carpa broccato\"), sono il risultato di oltre due secoli di selezione artificiale. I pesci colorati che oggi vediamo nei laghetti discendono da comuni carpe da allevamento, scelte…",
+      "body": "<p>Le carpe Koi, in giapponese Nishikigoi (\"carpa broccato\"), sono il risultato di oltre due secoli di selezione artificiale. I pesci colorati che oggi vediamo nei laghetti discendono da comuni carpe da allevamento, scelte generazione dopo generazione per il colore e il disegno. La prima esposizione pubblica si tenne a Tokyo nel 1914, e da lì la passione per le Koi si è diffusa in tutto il mondo.</p> <h2>Le varietà principali</h2> <p>La ZNA conta almeno 100 varietà, che nelle mostre raggruppa in 17 classi, ognuna con standard precisi di colore, disegno e qualità della pelle. Le più famose formano il \"Gosanke\", il trio nobile: il <strong>Kohaku</strong> (bianco con macchie rosse), il <strong>Sanke</strong> (bianco con rosso e piccole macchie nere) e lo <strong>Showa</strong> (nero con rosso e bianco). Tra le altre ci sono il <strong>Goshiki</strong>, lo <strong>Shusui</strong> con le scaglie a specchio, l'<strong>Asagi</strong> dai toni azzurri e lo <strong>Yamabuki Ogon</strong>, tutto dorato.</p> <p>Nel giudizio contano l'equilibrio e la nitidezza del disegno, l'intensità e l'uniformità dei colori, la qualità della pelle e la forma del corpo.</p> <h2>Che cosa vuol dire pedigree per una Koi</h2> <p>Le Koi non hanno un libro genealogico formale come cani, gatti e cavalli. Il loro valore dipende soprattutto dall'allevamento di provenienza. Le grandi farm giapponesi, come <strong>Sakai Fish Farm</strong>, <strong>Dainichi</strong> e <strong>Marusho</strong>, sono conosciute in tutto il mondo, e una Koi che viene da lì ha un valore riconosciuto anche all'estero.</p> <p>Quando l'allevatore documenta con foto e certificati di vendita che un pesce discende da un esemplare campione, quella documentazione fa le veci del pedigree: dice da quale linea viene il pesce e ne giustifica il prezzo, che per i soggetti migliori può essere molto alto.</p> <h2>La qualità dell'acqua</h2> <p>Senza un ambiente adatto nemmeno la genetica migliore si esprime. La qualità dell'acqua è il fattore più importante per la salute, il colore e la riproduzione delle Koi, e pH, temperatura, durezza e ossigeno disciolto vanno controllati con regolarità. In un'acqua buona i colori risaltano; in un'acqua scadente si rovina anche l'esemplare più pregiato.</p> <h2>Le Koi e Lineagree</h2> <p>Con secoli di selezione, varietà codificate e un mercato internazionale che premia la qualità, le Koi meritano la stessa cura che riserviamo alle razze di cani e gatti. Al lancio Lineagree parte proprio da cani e gatti; più avanti vogliamo accogliere anche le Koi, con la stessa attenzione a provenienza, varietà e documentazione.</p>"
+    },
+    {
+      "slug": "come-leggere-un-pedigree",
+      "title": "Come leggere un pedigree: guida per principianti",
+      "badge": "Guida · 5 min",
+      "description": "Cosa c'è scritto in un pedigree e come si legge, dall'albero genealogico ai titoli.",
+      "excerpt": "Il pedigree è la carta d'identità genealogica di un animale di razza. Riporta nome, razza, data di nascita, sesso e colore del mantello e, soprattutto, l'albero genealogico, che risale di diverse generazioni.…",
+      "body": "<p>Il pedigree è la carta d'identità genealogica di un animale di razza. Riporta nome, razza, data di nascita, sesso e colore del mantello e, soprattutto, l'albero genealogico, che risale di diverse generazioni. Saperlo leggere serve a chi vuole avvicinarsi all'allevamento, ma anche a chi vuole semplicemente capire meglio il proprio animale.</p> <p>In Italia il pedigree è rilasciato dall'ente di riferimento per ogni specie: l'ENCI per i cani, l'ANFI per i gatti, il MASAF per i cavalli da corsa. Ogni animale registrato riceve un numero di matricola che lo accompagna per tutta la vita.</p> <h2>Come si legge l'albero genealogico</h2> <p>L'animale a cui si riferisce il pedigree compare a sinistra. Andando verso destra si trovano i due genitori, poi i quattro nonni, gli otto bisnonni e così via, a seconda di quante generazioni riporta il documento.</p> <p>Di solito la linea paterna (il padre, in inglese \"sire\") sta nella metà superiore e quella materna (la madre, \"dam\") nella metà inferiore. Accanto a ogni antenato trovi spesso sigle e numeri: sono i titoli e i punteggi morfologici ottenuti nelle esposizioni ufficiali.</p> <h2>Titoli e sigle più comuni</h2> <p>I titoli raccontano la carriera espositiva di un animale e quanto è selezionata la sua linea. I più diffusi sono <strong>CH</strong> (Campione), <strong>INT CH</strong> (Campione Internazionale), <strong>JCH</strong> (Campione Giovane), <strong>CAC</strong> e <strong>CACIB</strong> (certificati di attitudine al campionato, nazionale e internazionale). In Italia l'ENCI assegna il titolo di Campione solo quando il soggetto ha raccolto un numero minimo di CAC sotto giudici diversi.</p> <p>Più titoli ci sono nelle generazioni vicine, più la linea è considerata selezionata. Un albero pieno di campioni però non garantisce né la salute né un buon carattere.</p> <h2>I test sanitari</h2> <p>Un buon pedigree è quasi sempre accompagnato da certificati sanitari. A seconda della razza si tratta di esami per la displasia dell'anca e del gomito, test oculistici, controlli cardiologici e test del DNA per le malattie ereditarie tipiche di quella razza.</p> <p>Spesso questi documenti contano più dei titoli di bellezza, perché mostrano che chi ha allevato quella linea ha investito nella sua salute, e riducono il rischio di trasmettere malattie. Su Lineagree, al lancio, il proprietario indica ente e numero di registro e carica una foto del pedigree: il badge \"Pedigree caricato\" dice esattamente questo. Più avanti arriverà la verifica da parte di un moderatore, con il suo badge.</p> <h2>Come riconoscere un pedigree autentico</h2> <p>Un pedigree vero porta il logo e il timbro dell'ente che lo ha rilasciato, un numero di registro verificabile e i dati dell'allevatore. Se hai dubbi puoi contattare l'ente e chiedere conferma della registrazione. Diffida dei documenti senza numero di matricola e dei \"pedigree\" rilasciati da associazioni che non sono riconosciute a livello nazionale o internazionale.</p>"
+    },
+    {
+      "slug": "distanza-geografica-accoppiamento",
+      "title": "Perché la distanza geografica conta nell'accoppiamento selettivo",
+      "badge": "Genetica · 4 min",
+      "description": "Quanto lontano cercare il partner per il tuo animale: le ragioni pratiche e quelle genetiche.",
+      "excerpt": "Quando si cerca un partner per il proprio animale di razza si guardano soprattutto pedigree, titoli e test sanitari, e la distanza finisce in fondo alla lista, come un dettaglio logistico. Invece pesa sia sul benessere…",
+      "body": "<p>Quando si cerca un partner per il proprio animale di razza si guardano soprattutto pedigree, titoli e test sanitari, e la distanza finisce in fondo alla lista, come un dettaglio logistico. Invece pesa sia sul benessere degli animali sia sulla genetica della cucciolata.</p> <h2>Lo stress del viaggio</h2> <p>Un viaggio lungo stressa qualsiasi animale. Nei cani e nei gatti lo stress da trasporto può alterare per qualche tempo l'equilibrio ormonale e, nelle femmine, ridurre le probabilità che l'accoppiamento e l'impianto vadano a buon fine. Nei cavalli il problema è ancora più evidente: un lungo spostamento richiede soste programmate, acqua sempre a disposizione e tempo per recuperare prima della monta.</p> <p>Meno strada vuol dire meno stress, e un animale tranquillo ha più probabilità che l'accoppiamento riesca.</p> <h2>La genetica</h2> <p>Qui il discorso è meno ovvio. Gli animali della stessa zona tendono a condividere più geni, perché spesso discendono dalle poche linee diffuse in quell'area. Accoppiare due soggetti molto vicini può quindi alzare, senza volerlo, il coefficiente di consanguineità.</p> <p>Un partner che viene da un'altra zona può portare variabilità genetica, e con essa un rischio più basso di malattie ereditarie. Gli allevatori esperti lo sanno e valutano caso per caso quanto lontano spingersi.</p> <h2>Il compromesso</h2> <p>Una distanza giusta per tutti non esiste: dipende dalla specie, da quanto è rara la razza e da quante linee compatibili ci sono in giro. Per una razza molto diffusa ha senso restare vicini; per una razza rara può valere la pena cercare più lontano pur di trovare la combinazione giusta.</p> <h2>Come funzionerà su Lineagree</h2> <p>Nell'app vedrai per ogni animale la distanza in km dalla tua città e potrai decidere fin dove cercare. Così sei tu a pesare genetica, vicinanza e praticità, invece di affidarti al caso o all'unico allevatore che conosci in zona.</p>"
+    },
+    {
+      "slug": "enci-anfi-unire-enti-riconoscimento",
+      "title": "ENCI, ANFI, MASAF: quali enti riconoscono il tuo animale?",
+      "badge": "Normativa · 6 min",
+      "description": "Quali enti tengono i libri genealogici in Italia, specie per specie.",
+      "excerpt": "In Italia non c'è un unico ente per tutti gli animali di razza. Ogni specie ha il suo, che tiene il libro genealogico e rilascia il pedigree. Sapere qual è serve a capire se un documento è autentico e riconosciuto.",
+      "body": "<p>In Italia non c'è un unico ente per tutti gli animali di razza. Ogni specie ha il suo, che tiene il libro genealogico e rilascia il pedigree. Sapere qual è serve a capire se un documento è autentico e riconosciuto.</p> <h2>ENCI: i cani</h2> <p>L'Ente Nazionale della Cinofilia Italiana è l'organismo ufficiale per i cani di razza in Italia. È affiliato alla FCI (Fédération Cynologique Internationale), quindi i suoi pedigree valgono anche all'estero. Gestisce il Libro Origini Italiano (LOI) e il Registro Supplementare Riconosciuto (RSR), organizza le esposizioni ufficiali e assegna i titoli di campionato. Ogni cane registrato riceve un numero LOI.</p> <h2>ANFI: i gatti</h2> <p>L'Associazione Nazionale Felina Italiana è affiliata alla FIFe (Fédération Internationale Féline) ed è il riferimento principale per i gatti di razza in Italia. Rilascia pedigree riconosciuti a livello internazionale, cura gli standard di razza e organizza le esposizioni feline. Accanto ad ANFI c'è anche WCF Italia, anch'essa riconosciuta a livello internazionale.</p> <h2>MASAF e anagrafe equina: i cavalli</h2> <p>Per i cavalli le competenze sono divise. I libri genealogici del Purosangue Inglese e del Trottatore Italiano li tiene oggi il MASAF, che ha raccolto le funzioni della vecchia UNIRE. L'anagrafe equina è invece nella Banca Dati Nazionale del Ministero della Salute, e il passaporto lo rilasciano enti autorizzati, le ASL o veterinari autorizzati; è obbligatorio in tutta l'Unione Europea dal 1° luglio 2009. La FISE (Federazione Italiana Sport Equestri) si occupa degli sport equestri.</p> <h2>AIA: bovini, ovini e altre specie da reddito</h2> <p>I libri genealogici delle specie da reddito, come bovini e ovini, li tengono le associazioni nazionali di razza, per esempio l'ANAFIBJ per la Frisona e l'ASSO.NA.PA. per ovini e caprini. L'Associazione Italiana Allevatori offre controlli e servizi. Anche qui la registrazione certifica la purezza della razza e ne protegge il valore.</p> <h2>FOI: gli uccelli</h2> <p>La Federazione Ornicoltori Italiani è l'ente di riferimento per canarini, esotici e ibridi. Per le specie protette dalla CITES, come molti pappagalli, serve anche una documentazione che ne provi la provenienza legale.</p> <h2>Su Lineagree</h2> <p>Su Lineagree ogni profilo indica l'ente che ha rilasciato il pedigree e il numero di registro. Chi cerca un partner sa così con quale documento ha a che fare e, se vuole, può controllarlo presso l'ente.</p>"
+    },
+    {
+      "slug": "profilo-perfetto-lineagree",
+      "title": "Come preparare il profilo perfetto su Lineagree",
+      "badge": "Consigli · 3 min",
+      "description": "Foto, descrizione e documenti: come presentare bene il tuo animale.",
+      "excerpt": "Un profilo completo, con buone foto e una descrizione precisa, attira più contatti e contatti più seri. Ecco come prepararlo.",
+      "body": "<p>Un profilo completo, con buone foto e una descrizione precisa, attira più contatti e contatti più seri. Ecco come prepararlo.</p> <h2>Le foto</h2> <p>Le foto sono la prima cosa che vede chi cerca un partner, quindi vale la pena dedicarci qualche minuto. La foto principale dovrebbe essere un ritratto frontale in luce naturale diffusa, come quella del mattino o del tardo pomeriggio. Evita il flash diretto: appiattisce i colori del mantello e può dare riflessi strani negli occhi.</p> <p>Aggiungi una foto di profilo che mostri la struttura e due viste di tre quarti, una davanti e una dietro. Per cani e cavalli aiuta anche una foto in stazione, cioè nella posizione usata nelle valutazioni, che mostra la conformazione. Scegli uno sfondo semplice, come un prato o un muro neutro, così l'attenzione resta sull'animale.</p> <h2>La descrizione</h2> <p>Una buona descrizione è precisa. Scrivi la razza esatta e l'eventuale varietà, la linea di sangue, i titoli, i test sanitari fatti con le date e se l'animale è disponibile per un accoppiamento. Più sei preciso, più attiri persone serie e meno richieste fuori tema ricevi.</p> <p>Non esagerare e non nascondere niente. Se il tuo animale ha una caratteristica particolare o un risultato sanitario da segnalare, scrivilo. Chi ha esperienza apprezza l'onestà più di una presentazione gonfiata.</p> <h2>I documenti</h2> <p>Carica il pedigree, i certificati sanitari aggiornati e gli eventuali diplomi delle esposizioni. Al lancio il pedigree su Lineagree è dichiarato dal proprietario con una foto del documento, e il badge lo dice chiaramente. Più avanti un moderatore controllerà numero e foto, e solo allora il profilo riceverà il badge \"Verificato\".</p> <h2>Tieni il profilo aggiornato</h2> <p>Aggiorna le foto man mano che l'animale cresce, aggiungi i nuovi titoli quando arrivano e indica chiaramente se in questo momento è disponibile o no. Un profilo aggiornato fa capire che sei una persona seria, che è poi quello che cerchi anche negli altri.</p>"
+    }
+  ]
+}

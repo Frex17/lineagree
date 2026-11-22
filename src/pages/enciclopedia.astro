@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/Base.astro';
+import content from '../data/content.json';
+import Dots from '../components/Dots.astro';
+const cards = content.encyclopedia;
+---
+<Base title="Enciclopedia delle razze · Lineagree" description="Schede sulle principali razze con pedigree riconosciute in Italia: origini, caratteristiche ed enti certificatori.">
+  <section class="head wrap">
+    <div class="board plate screws">
+      <h1>Ogni razza, la sua storia.</h1>
+      <p>Schede sulle principali razze riconosciute in Italia: origini, caratteristiche ed enti che rilasciano il pedigree.</p>
+    </div>
+  </section>
+
+  <section class="list wrap" aria-labelledby="list-title">
+    <h2 id="list-title">Scegli la specie</h2>
+    <ul role="list">
+      {cards.map((c, i) => (
+        <li>
+          <a class:list={['sp', 'arrow', i % 2 === 1 && 'left']} href={`/specie/${c.slug}`}>
+            <span class="top"><strong>{c.name}</strong><span class="ente"><Dots text={c.ente} /></span></span>
+            <span class="desc">{c.desc}</span>
+            <span class="stats">{c.stats.map((s, j) => <>{j > 0 && <span class="sep"> · </span>}{s}</>)}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .head { padding-top: calc(var(--u) * 3); }
+  .board { padding: calc(var(--u) * 5); max-width: 860px; }
+  .board h1 { font-size: clamp(2.25rem, 5.2vw, 4.5rem); }
+  .board p { margin: calc(var(--u) * 2) 0 0; font-size: 1.25rem; color: var(--ink-soft); max-width: 58ch; }
+  .list { padding-top: calc(var(--u) * 10); }
+  .list h2 { font-size: clamp(2rem, 4vw, 3.25rem); }
+  .list ul { list-style: none; padding: 0; margin: calc(var(--u) * 4) 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(var(--u) * 2.5) calc(var(--u) * 4); }
+  .sp {
+    display: grid; gap: var(--u); height: 100%; text-decoration: none;
+    padding-block: calc(var(--u) * 3); padding-left: calc(var(--u) * 3);
+    filter: drop-shadow(0 2px 2px rgb(6 38 20 / 0.35)) drop-shadow(0 10px 14px rgb(6 38 20 / 0.3));
+    transition: transform 200ms var(--ease);
+  }
+  .sp:hover { transform: translateX(6px); }
+  .sp.left { padding-left: calc(var(--point) + var(--u) * 2); }
+  .sp.left:hover { transform: translateX(-6px); }
+  .top { display: flex; align-items: baseline; gap: calc(var(--u) * 1.5); flex-wrap: wrap; }
+  .top strong { font-size: 2rem; font-weight: 900; line-height: 1; }
+  .ente { font-weight: 700; color: var(--field); }
+  .desc { color: var(--ink-soft); }
+  .stats { font-weight: 700; font-size: 0.9375rem; }
+  @media (max-width: 720px) {
+    .list ul { grid-template-columns: 1fr; }
+    .board { padding: calc(var(--u) * 3.5) calc(var(--u) * 2.5); }
+  }
+</style>

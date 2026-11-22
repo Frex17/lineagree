@@ -1,0 +1,73 @@
+---
+interface Props { id: string; }
+const { id } = Astro.props;
+---
+<form class="waitlist arrow" data-waitlist action="/api/waitlist" method="post" novalidate>
+  <label for={`${id}-email`}>La tua email per l'accesso anticipato all'app</label>
+  <div class="row">
+    <input id={`${id}-email`} name="email" type="email" autocomplete="email" inputmode="email"
+      placeholder="nome@esempio.it" required aria-describedby={`${id}-msg`} />
+    <button class="btn" type="submit">Entra in lista</button>
+  </div>
+  <p id={`${id}-msg`} class="msg" role="status" aria-live="polite">Niente spam: ti scriviamo solo quando l'app è pronta.</p>
+</form>
+
+<style>
+  .waitlist {
+    display: grid; gap: var(--u);
+    padding-block: calc(var(--u) * 2.5);
+    padding-left: calc(var(--u) * 3);
+    box-shadow: var(--shadow);
+  }
+  label { font-weight: 800; font-size: 1.0625rem; }
+  .row { display: flex; gap: var(--u); flex-wrap: wrap; }
+  input {
+    flex: 1 1 14rem; min-width: 0; min-height: 48px;
+    font: inherit; font-size: 1.0625rem;
+    padding: 0 calc(var(--u) * 1.75);
+    border: 2px solid var(--ink); border-radius: calc(var(--u) * 0.75);
+    background: #fff; color: var(--ink);
+  }
+  input::placeholder { color: #5b655f; }
+  input[aria-invalid="true"] { border-color: #b0231a; }
+  .msg { margin: 0; font-size: 0.9375rem; color: var(--ink-soft); }
+  .msg[data-state="error"] { color: #b0231a; font-weight: 700; }
+  .msg[data-state="ok"] { color: var(--field); font-weight: 800; }
+</style>
+
+<script>
+  const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  document.querySelectorAll<HTMLFormElement>('form[data-waitlist]').forEach((form) => {
+    const input = form.querySelector('input')!;
+    const btn = form.querySelector('button')!;
+    const msg = form.querySelector('.msg') as HTMLElement;
+    const say = (text: string, state: string) => { msg.textContent = text; msg.dataset.state = state; };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = input.value.trim();
+      if (!EMAIL.test(email)) {
+        input.setAttribute('aria-invalid', 'true');
+        say("Questa email non sembra valida: controlla e riprova.", 'error');
+        input.focus();
+        return;
+      }
+      input.removeAttribute('aria-invalid');
+      btn.disabled = true;
+      say('Invio in corso…', 'loading');
+      try {
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        form.querySelector('.row')!.remove();
+        say("Sei in lista. Ti scriviamo appena l'app è sugli store.", 'ok');
+      } catch {
+        btn.disabled = false;
+        say("Non siamo riusciti a salvare l'email. Riprova tra poco.", 'error');
+      }
+    });
+  });
+</script>

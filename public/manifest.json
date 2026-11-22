@@ -40,7 +40,7 @@
       "name": "Cerca Match",
       "short_name": "Match",
       "description": "Trova il match perfetto per il tuo animale",
-      "url": "/matches.html",
+      "url": "/matches",
       "icons": [{ "src": "/icons/icon-96x96.png", "sizes": "96x96" }]
     }
   ]
