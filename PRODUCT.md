@@ -42,7 +42,7 @@ Unlike Facebook groups and classified ads, every Lineagree profile is built arou
 - Free at launch. A premium plan for breeders is a later phase. No advertising.
 - Safety: report and block users, 18+ only.
 - The site keeps: landing, blog (6 Italian articles), species pages, encyclopedia, PWA manifest. The waitlist must actually store emails (today it stores nothing). Privacy and Terms pages must exist (today the links are `#`).
-- The current matches.html is a demo with 8 hard-coded animals; it is not real data.
+- The old matches.html demo (8 hard-coded animals) was removed; real matching will live in the app.
 
 ## Brand Commitments
 

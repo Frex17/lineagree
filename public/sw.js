@@ -3,14 +3,13 @@
 //  Strategia: Cache-First per asset statici, Network-First per HTML
 // ============================================================
 
-const CACHE_NAME = 'lineagree-v2';
+const CACHE_NAME = 'lineagree-v3';
 const OFFLINE_URL = '/offline';
 
 // Asset da pre-cachare all'installazione
 const PRECACHE_ASSETS = [
   '/',
   '/enciclopedia',
-  '/matches',
   '/offline',
   '/manifest.json',
   '/icons/icon-192x192.png',
