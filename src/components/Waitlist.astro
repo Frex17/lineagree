@@ -62,8 +62,11 @@ const { id } = Astro.props;
           body: JSON.stringify({ email }),
         });
         if (!res.ok) throw new Error(String(res.status));
-        // Every form on the page is done, so the second one does not invite a duplicate sign-up.
+        // Close this form, plus untouched ones so they don't invite a duplicate sign-up.
+        // A form with its own email typed or in flight stays as it is.
         document.querySelectorAll<HTMLFormElement>('form[data-waitlist]').forEach((f) => {
+          const i = f.querySelector('input');
+          if (f !== form && (!i || i.value.trim() || f.querySelector('button')?.disabled)) return;
           f.querySelector('.row')?.remove();
           const m = f.querySelector('.msg') as HTMLElement;
           m.textContent = "Sei in lista. Ti scriviamo appena l'app è sugli store.";
