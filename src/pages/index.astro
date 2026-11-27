@@ -66,7 +66,7 @@ const posts = [
         </ul>
         <div id="lista" class="form-mount"><Waitlist id="hero" /></div>
       </div>
-      <figcaption><Dots text="Profili di esempio · tocca un cartello." /> <span aria-live="polite" data-match-line>Like a <b>Luna</b>: se ricambia, si apre la chat.</span></figcaption>
+      <figcaption><Dots text="Profili di esempio · tocca un cartello." /> <span aria-live="polite">Hai messo Mi piace a <b data-match-name>Luna</b>: se ricambia, si apre la chat.</span></figcaption>
     </figure>
   </section>
 
@@ -321,13 +321,13 @@ const posts = [
 
 <script>
   const signs = [...document.querySelectorAll<HTMLButtonElement>('[data-sign]')];
-  const line = document.querySelector<HTMLElement>('[data-match-line]')!;
+  const matchName = document.querySelector<HTMLElement>('[data-match-name]')!;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function setActive(sign: HTMLButtonElement) {
     signs.forEach((s) => s.setAttribute('aria-pressed', String(s === sign)));
     const name = sign.querySelector('.sign-name')!.textContent!.trim();
-    line.innerHTML = `Like a <b>${name}</b>: se ricambia, si apre la chat.`;
+    matchName.textContent = name;
   }
 
   function activate(sign: HTMLButtonElement) {
