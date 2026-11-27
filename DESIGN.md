@@ -251,7 +251,7 @@ Solid and plain, like the black panel of a sign.
 - **Style:** the brand sits on a small enamel plate with a green arrow mark. Links are 700-weight field-ink on green, underline on hover. The CTA is a small white arrow plate that turns yellow on hover. Below 640px only the brand and the CTA remain.
 
 ### Signpost (signature)
-A grey pole with a place-name cap; profile plates clamped to it with a dark band, alternating left and right, each with a yellow tip. A plate shows name, breed with registry, "Cerca:" purpose, and "entro N km" with city (the app's distance buckets). The active plate shows the blaze flag and a red km figure. The caption says a like opens the chat only if it is returned. Activating a plate turns it on the post (rotateY to 90deg, face swaps edge-on, turns back over 420ms); reduced motion swaps the face with no turn. The waitlist form is the last plate on the post.
+A grey pole with a place-name cap; profile plates clamped to it with a dark band, alternating left and right, each with a yellow tip. A plate shows name, breed with registry, "Cerca:" purpose, and "entro N km" with city (the app's distance buckets). The active plate shows the blaze flag and a red km figure. The caption ("Hai messo Mi piace a …") says the chat opens only if the like is returned, using the app's "Mi piace". Activating a plate turns it on the post (rotateY to 90deg, face swaps edge-on, turns back over 420ms); reduced motion swaps the face with no turn. The waitlist form is the last plate on the post.
 
 ## Do's and Don'ts
 
