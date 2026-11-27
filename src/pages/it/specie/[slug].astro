@@ -1,8 +1,8 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Waitlist from '../../components/Waitlist.astro';
-import content from '../../data/content.json';
-import Dots from '../../components/Dots.astro';
+import Base from '../../../layouts/Base.astro';
+import Waitlist from '../../../components/Waitlist.astro';
+import content from '../../../data/content.json';
+import Dots from '../../../components/Dots.astro';
 
 export function getStaticPaths() {
   return Object.entries(content.species).map(([slug, sp]) => ({ params: { slug }, props: { slug, sp } }));
@@ -11,10 +11,10 @@ const { slug, sp } = Astro.props;
 const atLaunch = slug === 'cani' || slug === 'gatti';
 const card = content.encyclopedia.find((c) => c.slug === slug);
 ---
-<Base title={`${sp.title} · Enciclopedia Lineagree`} description={sp.intro}>
+<Base title={`${sp.title} · Enciclopedia Lineagree`} description={sp.intro} lang="it">
   <section class="head wrap">
     <div class="board plate screws">
-      <a class="back" href="/enciclopedia">Enciclopedia delle razze</a>
+      <a class="back" href="/it/enciclopedia">Enciclopedia delle razze</a>
       <h1>{sp.title}</h1>
       <p class="intro">{sp.intro}</p>
       {card && <p class="ente">Enti: <Dots text={card.ente} /></p>}
@@ -54,7 +54,7 @@ const card = content.encyclopedia.find((c) => c.slug === slug);
   {atLaunch && (
     <section class="cta wrap" aria-labelledby="cta-title">
       <h2 id="cta-title">Hai un animale con pedigree? Entra in lista per l'app.</h2>
-      <div class="cta-form"><Waitlist id="specie" /></div>
+      <div class="cta-form"><Waitlist id="specie" lang="it" /></div>
     </section>
   )}
 </Base>

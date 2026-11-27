@@ -1,10 +1,10 @@
 ---
-import Base from '../../layouts/Base.astro';
-import content from '../../data/content.json';
-import Dots from '../../components/Dots.astro';
+import Base from '../../../layouts/Base.astro';
+import content from '../../../data/content.json';
+import Dots from '../../../components/Dots.astro';
 const posts = content.posts;
 ---
-<Base title="Blog · Lineagree" description="Guide su pedigree, enti di registrazione e accoppiamento responsabile per proprietari di animali di razza.">
+<Base title="Blog · Lineagree" description="Guide su pedigree, enti di registrazione e accoppiamento responsabile per proprietari di animali di razza." lang="it">
   <section class="blog wrap" aria-labelledby="blog-title">
     <div class="board plate screws">
       <h1 id="blog-title">Guide su pedigree, enti e accoppiamento.</h1>
@@ -13,7 +13,7 @@ const posts = content.posts;
     <ol class="list" role="list">
       {posts.map((p) => (
         <li>
-          <a class="post plate" href={`/blog/${p.slug}`}>
+          <a class="post plate" href={`/it/blog/${p.slug}`}>
             <span class="txt">
               <span class="meta"><Dots text={p.badge} /></span>
               <span class="t">{p.title}</span>

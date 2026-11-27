@@ -1,8 +1,8 @@
 ---
-import Base from '../../layouts/Base.astro';
-import Waitlist from '../../components/Waitlist.astro';
-import content from '../../data/content.json';
-import Dots from '../../components/Dots.astro';
+import Base from '../../../layouts/Base.astro';
+import Waitlist from '../../../components/Waitlist.astro';
+import content from '../../../data/content.json';
+import Dots from '../../../components/Dots.astro';
 
 export function getStaticPaths() {
   return content.posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
@@ -10,10 +10,10 @@ export function getStaticPaths() {
 const { post } = Astro.props;
 const others = content.posts.filter((p) => p.slug !== post.slug).slice(0, 3);
 ---
-<Base title={`${post.title} · Lineagree`} description={post.description || post.excerpt}>
+<Base title={`${post.title} · Lineagree`} description={post.description || post.excerpt} lang="it">
   <article class="article wrap">
     <header class="art-head plate screws">
-      <a class="back" href="/blog">Tutti gli articoli</a>
+      <a class="back" href="/it/blog">Tutti gli articoli</a>
       <h1>{post.title}</h1>
       <p class="meta"><Dots text={post.badge} /></p>
     </header>
@@ -23,13 +23,13 @@ const others = content.posts.filter((p) => p.slug !== post.slug).slice(0, 3);
   <aside class="more wrap" aria-labelledby="more-title">
     <h2 id="more-title">Altri articoli</h2>
     <ul role="list">
-      {others.map((p) => <li><a class="arrow" href={`/blog/${p.slug}`}>{p.title}</a></li>)}
+      {others.map((p) => <li><a class="arrow" href={`/it/blog/${p.slug}`}>{p.title}</a></li>)}
     </ul>
   </aside>
 
   <section class="cta wrap" aria-labelledby="cta-title">
     <h2 id="cta-title">Vuoi trovare un compagno di razza per il tuo animale?</h2>
-    <div class="cta-form"><Waitlist id="post" /></div>
+    <div class="cta-form"><Waitlist id="post" lang="it" /></div>
   </section>
 </Base>
 

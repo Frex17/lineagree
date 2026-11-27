@@ -1,14 +1,14 @@
 {
-  "name": "Lineagree – Matchmaking di Razza",
+  "name": "Lineagree – Pedigree matchmaking",
   "short_name": "Lineagree",
-  "description": "Matchmaking per animali di razza con pedigree.",
+  "description": "Matchmaking for pedigree dogs and cats.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#0e6b3a",
   "theme_color": "#0e6b3a",
-  "lang": "it",
+  "lang": "en",
   "icons": [
     {
       "src": "/icons/icon-96x96.png",

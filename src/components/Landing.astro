@@ -1,0 +1,421 @@
+---
+import Base from '../layouts/Base.astro';
+import Waitlist from './Waitlist.astro';
+import Dots from './Dots.astro';
+import type { Lang } from '../i18n';
+interface Props { lang: Lang; }
+const { lang } = Astro.props;
+
+// Synthetic demo profiles: labelled "example profiles" on the page.
+// km are the app's distance buckets ("within N km"), never an exact distance.
+// The launch is in Italy, so both languages show the same Italian profiles and registries.
+const profiles = [
+  { name: 'Luna', breed: 'Golden Retriever', reg: 'ENCI LOI', km: 10, city: 'Monza', dir: 'right' },
+  { name: 'Otto', breed: 'Maine Coon', reg: 'ANFI', km: 25, city: 'Bergamo', dir: 'left' },
+  { name: 'Brina', breed: { en: 'Bernese Mountain Dog', it: 'Bovaro del Bernese' }, reg: 'ENCI LOI', km: 25, city: 'Como', dir: 'right' },
+  { name: 'Ziggy', breed: 'British Shorthair', reg: 'ANFI', km: 50, city: 'Lodi', dir: 'left' },
+];
+
+// Intent names match the app's "Looking for" / "Cerco" options.
+const copy = {
+  en: {
+    title: 'Lineagree · Find a same-breed match for your dog or cat',
+    description: 'Lineagree is the app for owners of pedigree dogs and cats. Browse animals of the same breed near you, match, and chat.',
+    h1: 'Find a same-breed match near you.',
+    lede: "Lineagree is the app for people with a pedigree dog or cat. Browse animals of the same breed in your area, match, and talk in the chat. What you're looking for is up to you.",
+    figLabel: 'Example: compatible profiles near Milan',
+    cap: 'Milan',
+    wants: ['one litter', 'meet and evaluate', 'mating', 'financial agreement'],
+    looking: 'Looking for',
+    within: 'within',
+    figNote: 'Example profiles · tap a sign.',
+    liked: ['You liked', ". If it's mutual, the chat opens."],
+    trailTitle: 'Three steps, from pedigree to chat.',
+    steps: [
+      ['Create a profile with the pedigree', "Breed, registry (ENCI or ANFI), registration number and a photo of the document. Then add what you're looking for."],
+      ['Browse compatible animals', 'You only see your breed, sorted by distance and by what the other owner is looking for.'],
+      ['Match, then talk', 'If you like each other, the chat opens. Meeting up, terms and timing are up to you.'],
+    ],
+    intentsTitle: "You choose what you're looking for.",
+    intentsSub: 'Every profile says why it is there. Lineagree shows you people looking for the same thing first.',
+    intents: [
+      ['Mating', 'You want a partner of the same breed for breeding.'],
+      ['One litter', "You want one litter, done well, and that's it."],
+      ['Meet and evaluate', 'You want to meet other owners of your breed, with no commitment.'],
+      ['Financial agreement', "You work it out in the chat. Lineagree doesn't handle payments."],
+    ],
+    trustTitle: 'The badge says what was checked.',
+    declared: ['Pedigree declared', 'At launch, the owner enters the registry and number and uploads a photo of the document. Nobody has checked it yet, and the badge says so.'],
+    verified: ['Verified', 'Coming later: a moderator compares the number with the photo. Only then does this badge appear.'],
+    rules: ['We only show city and distance, never your location.', 'Adults only.', 'You can report and block anyone with one tap.'],
+    speciesTitle: 'At launch: dogs and cats.',
+    dogs: ['Dogs', 'ENCI pedigree · LOI and LOR'],
+    cats: ['Cats', 'ANFI pedigree'],
+    later: ['Later on: ', 'horses', 'rabbits', 'birds', ' and ', 'fish', '. The species guides are in Italian for now.'],
+    blogTitle: 'Read before you set off.',
+    blogNote: 'Our guides are in Italian for now.',
+    allPosts: 'All articles',
+    closeTitle: "Leave your email and we'll tell you when the app is out.",
+  },
+  it: {
+    title: 'Lineagree · Trova un compagno di razza per il tuo cane o gatto',
+    description: "Lineagree è l'app per proprietari di cani e gatti con pedigree: scorri animali della stessa razza vicino a te, fai match e parlatevi in chat.",
+    h1: 'Trova un compagno di razza vicino a te.',
+    lede: "Lineagree è l'app per chi ha un cane o un gatto con pedigree. Scorri animali della stessa razza nella tua zona, fai match e parlatevi in chat. Cosa cercate lo decidete voi.",
+    figLabel: 'Esempio: profili compatibili vicino a Milano',
+    cap: 'Milano',
+    wants: ['una cucciolata', 'conoscersi e valutare', 'accoppiamento', 'accordo economico'],
+    looking: 'Cerca',
+    within: 'entro',
+    figNote: 'Profili di esempio · tocca un cartello.',
+    liked: ['Hai messo Mi piace a', ': se ricambia, si apre la chat.'],
+    trailTitle: 'Tre tappe, dal pedigree alla chat.',
+    steps: [
+      ['Crea il profilo con il pedigree', 'Razza, ente (ENCI o ANFI), numero di registro e una foto del documento. Aggiungi cosa cerchi.'],
+      ['Scorri gli animali compatibili', "Vedi solo la tua razza, ordinata per distanza e per cosa cerca l'altro proprietario."],
+      ['Match, poi parlatevi', 'Se vi piacete a vicenda si apre la chat. Incontro, accordi e tempi li decidete voi.'],
+    ],
+    intentsTitle: 'Cosa cerchi lo scegli tu.',
+    intentsSub: 'Ogni profilo indica il motivo. Lineagree ti mostra prima chi cerca la stessa cosa.',
+    intents: [
+      ['Accoppiamento', 'Cerchi un partner della stessa razza per la monta.'],
+      ['Una cucciolata', 'Vuoi una sola cucciolata, fatta bene, e poi basta.'],
+      ['Conoscersi e valutare', 'Vuoi conoscere altri proprietari della tua razza, senza impegno.'],
+      ['Accordo economico', 'Ne parlate in chat: Lineagree non gestisce pagamenti.'],
+    ],
+    trustTitle: 'Il badge dice cosa è stato controllato.',
+    declared: ['Pedigree dichiarato', 'Al lancio: il proprietario dichiara ente e numero e carica la foto del documento. Nessuno lo ha ancora controllato, e il badge lo dice.'],
+    verified: ['Verificato', 'In arrivo: un moderatore confronta numero e foto. Solo allora compare questo badge.'],
+    rules: ['Mostriamo solo città e distanza, mai la tua posizione.', 'Solo maggiorenni.', 'Puoi segnalare e bloccare chiunque, in un tocco.'],
+    speciesTitle: 'Al lancio: cani e gatti.',
+    dogs: ['Cani', 'Pedigree ENCI · LOI e LOR'],
+    cats: ['Gatti', 'Pedigree ANFI'],
+    later: ['Più avanti: ', 'cavalli', 'conigli', 'uccelli', ' e ', 'pesci', '.'],
+    blogTitle: 'Da leggere prima di partire.',
+    blogNote: '',
+    allPosts: 'Tutti gli articoli',
+    closeTitle: "Lascia l'email: ti avvisiamo quando esce l'app.",
+  },
+}[lang];
+
+const plates = profiles.map((p, i) => ({ ...p, breed: typeof p.breed === 'string' ? p.breed : p.breed[lang], wants: copy.wants[i] }));
+
+// Blog posts and species guides exist only in Italian; on English pages their links carry lang/hreflang="it".
+const posts = [
+  ['come-leggere-un-pedigree', 'Come leggere un pedigree: guida per principianti'],
+  ['enci-anfi-unire-enti-riconoscimento', 'ENCI, ANFI, MASAF: quali enti riconoscono il tuo animale?'],
+  ['distanza-geografica-accoppiamento', "Perché la distanza geografica conta nell'accoppiamento selettivo"],
+  ['profilo-perfetto-lineagree', 'Come preparare il profilo perfetto su Lineagree'],
+];
+const itOnly = lang === 'en' ? 'it' : undefined;
+const sp = (slug: string) => `/it/specie/${slug}`;
+---
+<Base title={copy.title} description={copy.description} lang={lang} alt={lang === 'en' ? '/it' : '/'}>
+
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="title-plate plate screws">
+      <h1 id="hero-title">{copy.h1}</h1>
+    </div>
+    <p class="lede">{copy.lede}</p>
+
+    <figure class="signpost" aria-label={copy.figLabel}>
+      <div class="post">
+        <div class="pole" aria-hidden="true"></div>
+        <div class="cap" aria-hidden="true">{copy.cap}</div>
+        <ul class="plates" role="list">
+          {plates.map((p, i) => (
+            <li>
+              <button class:list={['sign', 'arrow', p.dir === 'left' && 'left']} type="button"
+                aria-pressed={i === 0 ? 'true' : 'false'} data-sign>
+                <span class="sign-main">
+                  <span class="sign-name">{p.name}
+                    <svg class="blaze" viewBox="0 0 30 21" aria-hidden="true">
+                      <rect width="30" height="7" fill="var(--blaze)"/><rect y="7" width="30" height="7" fill="#fff"/><rect y="14" width="30" height="7" fill="var(--blaze)"/>
+                    </svg>
+                  </span>
+                  <span class="sign-breed"><Dots text={`${p.breed} · ${p.reg}`} /></span>
+                  <span class="sign-wants">{copy.looking}: {p.wants}</span>
+                </span>
+                <span class="sign-km"><span class="sign-within">{copy.within}</span><b>{p.km}</b> km<span class="sign-city">{p.city}</span></span>
+              </button>
+            </li>
+          ))}
+        </ul>
+        <div id="lista" class="form-mount"><Waitlist id="hero" lang={lang} /></div>
+      </div>
+      <figcaption><Dots text={copy.figNote} /> <span aria-live="polite">{copy.liked[0]} <b data-match-name>Luna</b>{copy.liked[1]}</span></figcaption>
+    </figure>
+  </section>
+
+  <section id="come-funziona" class="trail-sec" aria-labelledby="trail-title">
+    <div class="wrap">
+      <h2 id="trail-title" class="sec-title">{copy.trailTitle}</h2>
+      <ol class="trail" role="list">
+        {copy.steps.map(([h, d]) => (
+          <li class="stop arrow">
+            <h3>{h}</h3>
+            <p>{d}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="intents-sec wrap" aria-labelledby="intents-title">
+    <h2 id="intents-title" class="sec-title">{copy.intentsTitle}</h2>
+    <p class="sec-sub">{copy.intentsSub}</p>
+    <ul class="intents" role="list">
+      {copy.intents.map(([t, d]) => (
+        <li class="intent">
+          <strong class="chip">{t}</strong>
+          <span>{d}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="trust wrap" aria-labelledby="trust-title">
+    <div class="trust-board plate screws">
+      <h2 id="trust-title">{copy.trustTitle}</h2>
+      <dl class="badges">
+        <div>
+          <dt><span class="badge">{copy.declared[0]}</span></dt>
+          <dd>{copy.declared[1]}</dd>
+        </div>
+        <div>
+          <dt><span class="badge badge-ok">{copy.verified[0]}</span></dt>
+          <dd>{copy.verified[1]}</dd>
+        </div>
+      </dl>
+      <ul class="rules" role="list">
+        {copy.rules.map((r) => <li>{r}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section id="specie" class="species wrap" aria-labelledby="species-title">
+    <h2 id="species-title" class="sec-title">{copy.speciesTitle}</h2>
+    <div class="species-row">
+      <a class="sp arrow" href={sp('cani')} hreflang={itOnly}><strong>{copy.dogs[0]}</strong><span><Dots text={copy.dogs[1]} /></span></a>
+      <a class="sp arrow" href={sp('gatti')} hreflang={itOnly}><strong>{copy.cats[0]}</strong><span>{copy.cats[1]}</span></a>
+    </div>
+    <p class="later">{copy.later[0]}<a href={sp('cavalli')} hreflang={itOnly}>{copy.later[1]}</a>, <a href={sp('conigli')} hreflang={itOnly}>{copy.later[2]}</a>, <a href={sp('uccelli')} hreflang={itOnly}>{copy.later[3]}</a>{copy.later[4]}<a href={sp('pesci')} hreflang={itOnly}>{copy.later[5]}</a>{copy.later[6]}</p>
+  </section>
+
+  <section class="blog-sec wrap" aria-labelledby="blog-title">
+    <div class="dest plate screws">
+      <h2 id="blog-title">{copy.blogTitle}</h2>
+      {copy.blogNote && <p class="blog-note">{copy.blogNote}</p>}
+      <ul class="posts" role="list">
+        {posts.map(([slug, t]) => (
+          <li><a href={`/it/blog/${slug}`} lang={itOnly} hreflang={itOnly}>{t}</a></li>
+        ))}
+      </ul>
+      <a class="all arrow" href="/it/blog" hreflang={itOnly}>{copy.allPosts}</a>
+    </div>
+  </section>
+
+  <section class="close wrap" aria-labelledby="close-title">
+    <h2 id="close-title" class="sec-title">{copy.closeTitle}</h2>
+    <div class="close-form"><Waitlist id="close" lang={lang} /></div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas: "title post" "lede post";
+    grid-template-rows: auto 1fr;
+    gap: calc(var(--u) * 3) calc(var(--u) * 6);
+    padding-block: calc(var(--u) * 3) calc(var(--u) * 10);
+  }
+  .title-plate { grid-area: title; padding: calc(var(--u) * 4) calc(var(--u) * 4) calc(var(--u) * 3.5); align-self: start; margin-top: calc(var(--u) * 6); }
+  .title-plate h1 { font-size: clamp(2.25rem, 5.2vw, 4.5rem); }
+  .lede { grid-area: lede; font-size: 1.25rem; max-width: 34ch; margin: 0; color: var(--field-ink); }
+
+  /* Signpost: a flat graphic post, plates clamped to it, the form as the last plate */
+  .signpost { grid-area: post; margin: 0; }
+  .post { position: relative; padding-top: calc(var(--u) * 6); display: grid; gap: calc(var(--u) * 2); }
+  .pole {
+    position: absolute; top: calc(var(--u) * 2); bottom: 0; left: 50%; width: 16px; translate: -50% 0;
+    background: var(--pole); border-radius: 3px 3px 0 0;
+  }
+  .cap {
+    position: absolute; top: 0; left: 50%; translate: -50% 0; z-index: 2;
+    background: var(--plate); color: var(--ink); border: 3px solid var(--ink); border-radius: 6px;
+    padding: 4px calc(var(--u) * 2) 1px;
+    font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.875rem;
+  }
+  .plates { list-style: none; margin: 0; padding: 0; display: grid; gap: calc(var(--u) * 2); perspective: 900px; }
+  .plates li { display: flex; position: relative; }
+  .plates li:nth-child(odd) { justify-content: flex-start; padding-left: 10%; }
+  .plates li:nth-child(even) { justify-content: flex-end; padding-right: 10%; }
+  .plates li::after { /* clamp band over the plate at the pole */
+    content: ""; position: absolute; left: 50%; translate: -50% 0; top: 6px; bottom: 6px; width: 22px;
+    border-block: 4px solid var(--ink); z-index: 1; pointer-events: none;
+  }
+  .sign {
+    --point: calc(var(--u) * 5);
+    position: relative;
+    width: min(100%, 400px);
+    display: grid; grid-template-columns: 1fr auto; align-items: center; gap: calc(var(--u) * 2);
+    min-height: calc(var(--u) * 10);
+    padding-block: calc(var(--u) * 1.25);
+    padding-left: calc(var(--u) * 2.5);
+    border: 0; font: inherit; text-align: left; cursor: pointer;
+    filter: drop-shadow(0 2px 2px rgb(6 38 20 / 0.35)) drop-shadow(0 10px 14px rgb(6 38 20 / 0.3));
+    transition: transform 260ms cubic-bezier(0.55, 0, 1, 0.45);
+  }
+  .sign.left { padding-left: calc(var(--point) + var(--u) * 2); }
+  .sign::after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: calc(var(--point) * 0.55); background: var(--tip); }
+  .sign.left::after { right: auto; left: 0; }
+  .sign-main { display: grid; gap: 2px; min-width: 0; }
+  .sign-name { display: flex; align-items: center; gap: var(--u); font-weight: 900; font-size: 1.5rem; line-height: 1; }
+  .sign-breed { font-weight: 700; font-size: 0.9375rem; }
+  .sign-wants { font-size: 0.875rem; color: var(--ink-soft); }
+  .sign-km { text-align: right; font-weight: 700; font-size: 0.875rem; line-height: 1.1; display: grid; }
+  .sign-km b { font-size: 2rem; font-weight: 900; line-height: 1; }
+  .sign-city { color: var(--ink-soft); font-weight: 600; }
+  .sign-within { color: var(--ink-soft); font-weight: 600; }
+  .blaze { width: 24px; height: 17px; flex: none; visibility: hidden; outline: 1px solid var(--plate-edge); }
+  .sign[aria-pressed="true"] .blaze { visibility: visible; }
+  .sign[aria-pressed="true"] .sign-km b { color: var(--blaze); }
+  .sign:hover:not([aria-pressed="true"]) { background: #f3f7f4; }
+  /* Signature: the plate turns on the post; the face swaps at 90deg */
+  .sign.turn-out { transform: rotateY(90deg); }
+  .sign.turn-in { transition: transform 420ms var(--ease); }
+  .form-mount { position: relative; z-index: 1; scroll-margin-top: calc(var(--u) * 4); }
+  .signpost figcaption { margin-top: calc(var(--u) * 2); font-size: 0.9375rem; color: var(--field-soft); font-weight: 600; text-align: center; }
+  .signpost figcaption b { color: var(--plate); }
+
+  /* Sections */
+  .sec-title { font-size: clamp(2rem, 4vw, 3.25rem); max-width: 20ch; }
+  .sec-sub { font-size: 1.25rem; max-width: 52ch; color: var(--field-soft); margin: calc(var(--u) * 2) 0 0; }
+
+  .trail-sec { background: var(--field-deep); padding-block: calc(var(--u) * 12); }
+  .trail {
+    list-style: none; padding: 0 0 calc(var(--u) * 5); margin: calc(var(--u) * 6) 0 0;
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: calc(var(--u) * 2);
+    position: relative;
+  }
+  .trail::after { /* the trail the stops stand on */
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px;
+    background: repeating-linear-gradient(90deg, var(--plate) 0 28px, transparent 28px 44px);
+  }
+  .stop {
+    padding-block: calc(var(--u) * 3.5) calc(var(--u) * 4); padding-left: calc(var(--u) * 3.5);
+    filter: drop-shadow(0 2px 2px rgb(6 38 20 / 0.35)) drop-shadow(0 10px 14px rgb(6 38 20 / 0.3));
+  }
+  .stop:nth-child(2) { margin-top: calc(var(--u) * 3); }
+  .stop:nth-child(3) { margin-top: calc(var(--u) * 6); }
+  .stop h3 { font-size: 1.5rem; margin: 0 0 var(--u); }
+  .stop p { margin: 0; color: var(--ink-soft); }
+
+  .intents-sec { padding-block: calc(var(--u) * 12) calc(var(--u) * 4); }
+  /* Intents are the app's "Cerco" chips: status options, not directions, so no arrow. */
+  .intents { list-style: none; padding: 0; margin: calc(var(--u) * 5) 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(var(--u) * 4) calc(var(--u) * 6); max-width: 960px; }
+  .intent { display: grid; justify-items: start; gap: calc(var(--u) * 1.5); }
+  .chip {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 2px calc(var(--u) * 2) 0;
+    background: var(--plate); color: var(--ink); border: 2px solid var(--ink); border-radius: 6px;
+    font-weight: 900; font-size: 1.25rem; box-shadow: var(--shadow);
+  }
+  .intent span { color: var(--field-ink); max-width: 40ch; }
+
+  .trust { padding-block: calc(var(--u) * 8); }
+  .trust-board { padding: calc(var(--u) * 6) calc(var(--u) * 5); display: grid; grid-template-columns: 1.1fr 1fr; gap: calc(var(--u) * 4) calc(var(--u) * 6); }
+  .trust-board h2 { font-size: clamp(1.875rem, 3.4vw, 2.75rem); grid-column: 1 / -1; max-width: 22ch; }
+  .badges { margin: 0; display: grid; gap: calc(var(--u) * 3); }
+  .badges dd { margin: var(--u) 0 0; color: var(--ink-soft); max-width: 46ch; }
+  /* Badges stay pills: they are status chips, not directions. */
+  .badge { display: inline-block; font-weight: 800; font-size: 0.9375rem; padding: 4px 12px 2px; border: 2px solid var(--ink); border-radius: 999px; }
+  .badge-ok { background: var(--field); border-color: var(--field); color: #fff; }
+  .rules { margin: 0; padding: 0; list-style: none; display: grid; gap: calc(var(--u) * 2); align-content: start; }
+  .rules li { font-weight: 700; font-size: 1.0625rem; padding-left: calc(var(--u) * 4); position: relative; }
+  .rules li::before {
+    content: ""; position: absolute; left: 0; top: 0.3em; width: 20px; height: 14px; background: var(--field);
+    clip-path: polygon(0 0, 65% 0, 100% 50%, 65% 100%, 0 100%);
+  }
+
+  .species { padding-block: calc(var(--u) * 8); }
+  .species-row { display: flex; flex-wrap: wrap; gap: calc(var(--u) * 3); margin-top: calc(var(--u) * 4); }
+  .sp {
+    display: grid; gap: 2px; text-decoration: none; min-width: min(100%, 320px);
+    padding-block: calc(var(--u) * 2.5); padding-left: calc(var(--u) * 3);
+    filter: drop-shadow(0 2px 2px rgb(6 38 20 / 0.35)) drop-shadow(0 10px 14px rgb(6 38 20 / 0.3));
+    transition: transform 200ms var(--ease);
+  }
+  .sp:hover { transform: translateX(6px); }
+  .sp strong { font-size: 2rem; font-weight: 900; line-height: 1.05; }
+  .sp span { color: var(--ink-soft); font-weight: 600; }
+  .later { margin-top: calc(var(--u) * 3); color: var(--field-soft); }
+  .later a { color: var(--field-ink); font-weight: 700; }
+
+  /* Blog: a destination board, one ruled line per destination */
+  .blog-sec { padding-block: calc(var(--u) * 8); }
+  .dest { padding: calc(var(--u) * 5) calc(var(--u) * 5) calc(var(--u) * 4); }
+  .dest h2 { font-size: clamp(1.875rem, 3.4vw, 2.75rem); }
+  .blog-note { margin: var(--u) 0 0; color: var(--ink-soft); }
+  .posts { list-style: none; padding: 0; margin: calc(var(--u) * 3) 0 calc(var(--u) * 3); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: calc(var(--u) * 5); }
+  .posts li { border-bottom: 2px solid var(--plate-edge); }
+  .posts a { display: block; padding: calc(var(--u) * 2) 0; font-weight: 700; font-size: 1.0625rem; text-decoration: none; color: var(--ink); }
+  .posts a:hover { color: var(--field); text-decoration: underline; }
+  .all { display: inline-flex; align-items: center; min-height: 44px; font-weight: 800; text-decoration: none; background: var(--field); color: #fff; padding-left: calc(var(--u) * 2); --point: calc(var(--u) * 2.5); }
+  .all:hover { background: var(--field-deep); }
+
+  .close { padding-block: calc(var(--u) * 10) 0; display: grid; gap: calc(var(--u) * 4); }
+  .close .sec-title { max-width: 24ch; }
+  .close-form { max-width: 640px; }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; grid-template-areas: "title" "lede" "post"; grid-template-rows: auto; padding-bottom: calc(var(--u) * 6); }
+    .title-plate { margin-top: 0; }
+    .trail { grid-template-columns: 1fr; padding-bottom: 0; }
+    .stop:nth-child(n) { margin-top: 0; }
+    .trail::after { display: none; }
+    .trust-board { grid-template-columns: 1fr; padding: calc(var(--u) * 4) calc(var(--u) * 3); }
+    .intents, .posts { grid-template-columns: 1fr; }
+    .dest { padding: calc(var(--u) * 4) calc(var(--u) * 3); }
+  }
+  @media (max-width: 520px) {
+    .plates li:nth-child(n+3) { display: none; } /* two plates keep the post in the first screen */
+    .plates li:nth-child(odd), .plates li:nth-child(even) { padding-inline: 0; }
+    .title-plate { padding: calc(var(--u) * 2.5) calc(var(--u) * 2.5) calc(var(--u) * 2); }
+    .title-plate h1 { font-size: 2.25rem; }
+    .post { padding-top: calc(var(--u) * 5); gap: calc(var(--u) * 1.5); }
+    .sign { min-height: calc(var(--u) * 8.5); }
+    .sign-name { font-size: 1.25rem; }
+    .sign-km b { font-size: 1.5rem; }
+  }
+</style>
+
+<script>
+  const signs = [...document.querySelectorAll<HTMLButtonElement>('[data-sign]')];
+  const matchName = document.querySelector<HTMLElement>('[data-match-name]')!;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setActive(sign: HTMLButtonElement) {
+    signs.forEach((s) => s.setAttribute('aria-pressed', String(s === sign)));
+    const name = sign.querySelector('.sign-name')!.textContent!.trim();
+    matchName.textContent = name;
+  }
+
+  function activate(sign: HTMLButtonElement) {
+    if (reduce) return setActive(sign);
+    sign.classList.remove('turn-in');
+    sign.classList.add('turn-out');
+    let done = false;
+    const swap = () => {
+      if (done) return;
+      done = true;
+      setActive(sign); // face swaps edge-on, at 90deg
+      sign.classList.replace('turn-out', 'turn-in');
+    };
+    sign.addEventListener('transitionend', swap, { once: true });
+    setTimeout(swap, 400); // never leave a plate edge-on if transitionend is lost (hidden tab, cancelled transition)
+  }
+  signs.forEach((s) => s.addEventListener('click', () => activate(s)));
+  // The one authored moment: the first plate turns as the match lands.
+  if (!reduce) setTimeout(() => activate(signs[0]), 900);
+</script>
