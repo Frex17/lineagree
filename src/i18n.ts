@@ -22,7 +22,7 @@ export const t = {
       label: 'Your email for early access to the app',
       placeholder: 'name@example.com',
       button: 'Join the list',
-      hint: "No spam. We only write when the app is ready.",
+      hint: 'No spam. We only email you when the app is ready.',
       invalid: "That email doesn't look right. Check it and try again.",
       sending: 'Sending…',
       ok: "You're on the list. We'll email you as soon as the app is in the stores.",

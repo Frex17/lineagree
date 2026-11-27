@@ -91,7 +91,8 @@ const it = lang === 'it' ? canonical : alt && url(alt);
     .site-head nav { column-gap: calc(var(--u) * 1.5); }
     .brand { font-size: 1.0625rem; }
   }
-  @media (max-width: 380px) {
+  /* Blog stays in the footer; below 440px the header keeps only the language switch and the CTA. */
+  @media (max-width: 440px) {
     .site-head nav .nav-keep { display: none; }
   }
   .site-foot { background: var(--field-deep); margin-top: calc(var(--u) * 12); }
