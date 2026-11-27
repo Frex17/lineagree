@@ -20,7 +20,7 @@ const cards = content.encyclopedia;
           <a class:list={['sp', 'arrow', i % 2 === 1 && 'left']} href={`/specie/${c.slug}`}>
             <span class="top"><strong>{c.name}</strong><span class="ente"><Dots text={c.ente} /></span></span>
             <span class="desc">{c.desc}</span>
-            <span class="stats">{c.stats.map((s, j) => <>{j > 0 && <>{' '}<span class="sep" aria-hidden="true"></span>{' '}</>}{s}</>)}</span>
+            <span class="stats">{c.stats.map((s, j) => <>{j > 0 && <>{' '}<span class="sep">·</span>{' '}</>}{s}</>)}</span>
           </a>
         </li>
       ))}

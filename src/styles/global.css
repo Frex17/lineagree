@@ -115,7 +115,7 @@ p, dd, li { text-wrap: pretty; }
 .btn[disabled] { opacity: 0.6; cursor: progress; transform: none; }
 
 /* Overpass draws its middot high; a drawn dot keeps separators centred. */
-.sep { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-inline: 0.15rem; }
+.sep { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-inline: 0.15rem; font-size: 0; }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
