@@ -2,12 +2,12 @@
   "species": {
     "cani": {
       "title": "Il mondo dei cani di razza",
-      "intro": "La FCI riconosce oltre 360 razze di cani, ognuna con la sua storia, il suo carattere e uno standard preciso.",
+      "intro": "La FCI riconosce oltre 360 razze di cani. Ognuna ha uno standard scritto che descrive misure, mantello e carattere.",
       "breeds": [
         {
           "name": "Labrador Retriever",
           "origin": "Canada · ENCI/FCI",
-          "desc": "Docile, intelligente e instancabile. È tra le razze più diffuse al mondo, sia in famiglia sia come cane da lavoro.",
+          "desc": "È tra le razze più diffuse al mondo, in famiglia e come cane da lavoro. Ha molta energia e impara in fretta.",
           "tags": [
             "Taglia grande",
             "Pelo corto",
@@ -47,7 +47,7 @@
         {
           "name": "Bulldog Francese",
           "origin": "Francia · ENCI/FCI",
-          "desc": "Compatto, giocoso e affettuoso. Ha bisogno di poco movimento e per questo si adatta bene alla vita in appartamento.",
+          "desc": "Piccolo e compatto, ha bisogno di poco movimento e per questo si adatta bene alla vita in appartamento.",
           "tags": [
             "Taglia piccola",
             "Appartamento",
@@ -86,7 +86,7 @@
     },
     "cavalli": {
       "title": "Il mondo dei cavalli di razza",
-      "intro": "Razze millenarie, selezionate per lo sport, il lavoro e la bellezza. Il pedigree equino è uno dei più antichi al mondo.",
+      "intro": "Il pedigree equino è uno dei più antichi al mondo: alcuni libri genealogici hanno più di due secoli.",
       "breeds": [
         {
           "name": "Purosangue Inglese",
@@ -111,7 +111,7 @@
         {
           "name": "Andaluso (PRE)",
           "origin": "Spagna · ANCCE",
-          "desc": "Pura Raza Española: elegante, potente e sensibile. Adatto al dressage barocco e al lavoro in libertà.",
+          "desc": "Pura Raza Española. Molto usato nel dressage barocco e nel lavoro in libertà.",
           "tags": [
             "Dressage",
             "Barocco",
@@ -195,7 +195,7 @@
         {
           "name": "Rex",
           "origin": "Francia · ANCI",
-          "desc": "Ha un pelo cortissimo e morbido come velluto. Taglia media, carattere tranquillo e molto socievole.",
+          "desc": "Ha un pelo cortissimo e morbido come velluto. Taglia media e carattere tranquillo.",
           "tags": [
             "Velluto",
             "Taglia media",
@@ -234,7 +234,7 @@
     },
     "gatti": {
       "title": "Il mondo dei gatti di razza",
-      "intro": "Il numero di razze feline dipende dalla federazione: la TICA ne riconosce oltre 70, la FIFe circa 50. Ognuna ha la sua storia e le sue caratteristiche.",
+      "intro": "Il numero di razze feline dipende dalla federazione: la TICA ne riconosce oltre 70, la FIFe circa 50.",
       "breeds": [
         {
           "name": "Maine Coon",
@@ -259,7 +259,7 @@
         {
           "name": "British Shorthair",
           "origin": "Inghilterra · ANFI/WCF",
-          "desc": "Robusto, tranquillo e indipendente. È il classico gatto inglese, con pelo folto e occhi grandi e rotondi.",
+          "desc": "Il classico gatto inglese: robusto, con pelo folto e occhi grandi e rotondi. Sta bene anche da solo.",
           "tags": [
             "Taglia media",
             "Pelo corto",
@@ -279,7 +279,7 @@
         {
           "name": "Siamese",
           "origin": "Thailandia · ANFI/WCF",
-          "desc": "Vocale, curioso e molto legato a chi se ne prende cura. È una delle razze più antiche e riconoscibili.",
+          "desc": "Miagola molto ed è legato a chi se ne prende cura. È una delle razze più antiche e riconoscibili.",
           "tags": [
             "Taglia media",
             "Pelo corto",
@@ -397,7 +397,7 @@
         {
           "name": "Ara Macao",
           "origin": "America Centrale · CITES",
-          "desc": "Grande, vivace e coloratissimo, è il pappagallo più riconoscibile. Può vivere oltre 50 anni.",
+          "desc": "Rosso, giallo e blu, è il pappagallo più riconoscibile. Può vivere oltre 50 anni.",
           "tags": [
             "Taglia grande",
             "Colorato",
@@ -417,7 +417,7 @@
         {
           "name": "Parrocchetto Ondulato",
           "origin": "Australia · FOI",
-          "desc": "Il pappagallo da compagnia più diffuso al mondo. Socievole, facile da allevare e longevo.",
+          "desc": "Il pappagallo da compagnia più diffuso al mondo, ed è facile da allevare.",
           "tags": [
             "Taglia piccola",
             "Sociale",
@@ -450,7 +450,7 @@
       "slug": "cani",
       "name": "Cani",
       "ente": "ENCI · FCI",
-      "desc": "La FCI riconosce oltre 360 razze, dal Chihuahua al San Bernardo, ognuna con il suo standard e il suo pedigree.",
+      "desc": "La FCI riconosce oltre 360 razze, dal Chihuahua al San Bernardo.",
       "stats": [
         "360+ razze",
         "Pedigree LOI",
@@ -461,7 +461,7 @@
       "slug": "gatti",
       "name": "Gatti",
       "ente": "ANFI · WCF",
-      "desc": "Oltre 70 razze per la TICA, circa 50 per la FIFe, dal Siamese al Maine Coon, ognuna con la sua storia e il suo carattere.",
+      "desc": "Oltre 70 razze per la TICA, circa 50 per la FIFe, dal Siamese al Maine Coon.",
       "stats": [
         "70+ razze",
         "Test HCM/PKD",
@@ -472,7 +472,7 @@
       "slug": "cavalli",
       "name": "Cavalli",
       "ente": "MASAF · FISE",
-      "desc": "Razze millenarie selezionate per lo sport, il lavoro e la bellezza, con uno dei pedigree più antichi e rigorosi al mondo.",
+      "desc": "Selezionati per le corse, lo sport e il lavoro, con uno dei pedigree più antichi al mondo.",
       "stats": [
         "Passaporto UELN",
         "Test AVE/MCE",
@@ -505,7 +505,7 @@
       "slug": "pesci",
       "name": "Pesci",
       "ente": "IKA · ZNA",
-      "desc": "Carpe Koi, Betta e Arowana, selezionati da secoli per colore, disegno e forma.",
+      "desc": "Carpe Koi, Betta e Arowana, selezionati da secoli per colore e disegno.",
       "stats": [
         "Standard ZNA",
         "CITES",
@@ -536,7 +536,7 @@
       "badge": "Guida · 5 min",
       "description": "Cosa c'è scritto in un pedigree e come si legge, dall'albero genealogico ai titoli.",
       "excerpt": "Il pedigree è la carta d'identità genealogica di un animale di razza. Riporta nome, razza, data di nascita, sesso e colore del mantello e, soprattutto, l'albero genealogico, che risale di diverse generazioni.…",
-      "body": "<p>Il pedigree è la carta d'identità genealogica di un animale di razza. Riporta nome, razza, data di nascita, sesso e colore del mantello e, soprattutto, l'albero genealogico, che risale di diverse generazioni. Saperlo leggere serve a chi vuole avvicinarsi all'allevamento, ma anche a chi vuole semplicemente capire meglio il proprio animale.</p> <p>In Italia il pedigree è rilasciato dall'ente di riferimento per ogni specie: l'ENCI per i cani, l'ANFI per i gatti, il MASAF per i cavalli da corsa. Ogni animale registrato riceve un numero di matricola che lo accompagna per tutta la vita.</p> <h2>Come si legge l'albero genealogico</h2> <p>L'animale a cui si riferisce il pedigree compare a sinistra. Andando verso destra si trovano i due genitori, poi i quattro nonni, gli otto bisnonni e così via, a seconda di quante generazioni riporta il documento.</p> <p>Di solito la linea paterna (il padre, in inglese \"sire\") sta nella metà superiore e quella materna (la madre, \"dam\") nella metà inferiore. Accanto a ogni antenato trovi spesso sigle e numeri: sono i titoli e i punteggi morfologici ottenuti nelle esposizioni ufficiali.</p> <h2>Titoli e sigle più comuni</h2> <p>I titoli raccontano la carriera espositiva di un animale e quanto è selezionata la sua linea. I più diffusi sono <strong>CH</strong> (Campione), <strong>INT CH</strong> (Campione Internazionale), <strong>JCH</strong> (Campione Giovane), <strong>CAC</strong> e <strong>CACIB</strong> (certificati di attitudine al campionato, nazionale e internazionale). In Italia l'ENCI assegna il titolo di Campione solo quando il soggetto ha raccolto un numero minimo di CAC sotto giudici diversi.</p> <p>Più titoli ci sono nelle generazioni vicine, più la linea è considerata selezionata. Un albero pieno di campioni però non garantisce né la salute né un buon carattere.</p> <h2>I test sanitari</h2> <p>Un buon pedigree è quasi sempre accompagnato da certificati sanitari. A seconda della razza si tratta di esami per la displasia dell'anca e del gomito, test oculistici, controlli cardiologici e test del DNA per le malattie ereditarie tipiche di quella razza.</p> <p>Spesso questi documenti contano più dei titoli di bellezza, perché mostrano che chi ha allevato quella linea ha investito nella sua salute, e riducono il rischio di trasmettere malattie. Su Lineagree, al lancio, il proprietario indica ente e numero di registro e carica una foto del pedigree: il badge \"Pedigree caricato\" dice esattamente questo. Più avanti arriverà la verifica da parte di un moderatore, con il suo badge.</p> <h2>Come riconoscere un pedigree autentico</h2> <p>Un pedigree vero porta il logo e il timbro dell'ente che lo ha rilasciato, un numero di registro verificabile e i dati dell'allevatore. Se hai dubbi puoi contattare l'ente e chiedere conferma della registrazione. Diffida dei documenti senza numero di matricola e dei \"pedigree\" rilasciati da associazioni che non sono riconosciute a livello nazionale o internazionale.</p>"
+      "body": "<p>Il pedigree è la carta d'identità genealogica di un animale di razza. Riporta nome, razza, data di nascita, sesso e colore del mantello e, soprattutto, l'albero genealogico, che risale di diverse generazioni. Saperlo leggere serve a chi vuole avvicinarsi all'allevamento, ma anche a chi vuole semplicemente capire meglio il proprio animale.</p> <p>In Italia il pedigree è rilasciato dall'ente di riferimento per ogni specie: l'ENCI per i cani, l'ANFI per i gatti, il MASAF per i cavalli da corsa. Ogni animale registrato riceve un numero di matricola che lo accompagna per tutta la vita.</p> <h2>Come si legge l'albero genealogico</h2> <p>L'animale a cui si riferisce il pedigree compare a sinistra. Andando verso destra si trovano i due genitori, poi i quattro nonni, gli otto bisnonni e così via, a seconda di quante generazioni riporta il documento.</p> <p>Di solito la linea paterna (il padre, in inglese \"sire\") sta nella metà superiore e quella materna (la madre, \"dam\") nella metà inferiore. Accanto a ogni antenato trovi spesso sigle e numeri: sono i titoli e i punteggi morfologici ottenuti nelle esposizioni ufficiali.</p> <h2>Titoli e sigle più comuni</h2> <p>I titoli raccontano la carriera espositiva di un animale e quanto è selezionata la sua linea. I più diffusi sono <strong>CH</strong> (Campione), <strong>INT CH</strong> (Campione Internazionale), <strong>JCH</strong> (Campione Giovane), <strong>CAC</strong> e <strong>CACIB</strong> (certificati di attitudine al campionato, nazionale e internazionale). In Italia l'ENCI assegna il titolo di Campione solo quando il soggetto ha raccolto un numero minimo di CAC sotto giudici diversi.</p> <p>Più titoli ci sono nelle generazioni vicine, più la linea è considerata selezionata. Un albero pieno di campioni però non garantisce né la salute né un buon carattere.</p> <h2>I test sanitari</h2> <p>Un buon pedigree è quasi sempre accompagnato da certificati sanitari. A seconda della razza si tratta di esami per la displasia dell'anca e del gomito, test oculistici, controlli cardiologici e test del DNA per le malattie ereditarie tipiche di quella razza.</p> <p>Spesso questi documenti contano più dei titoli di bellezza, perché mostrano che chi ha allevato quella linea ha investito nella sua salute, e riducono il rischio di trasmettere malattie. Su Lineagree, al lancio, il proprietario indica ente e numero di registro e carica una foto del pedigree: il badge \"Pedigree dichiarato\" dice esattamente questo. Più avanti arriverà la verifica da parte di un moderatore, con il suo badge.</p> <h2>Come riconoscere un pedigree autentico</h2> <p>Un pedigree vero porta il logo e il timbro dell'ente che lo ha rilasciato, un numero di registro verificabile e i dati dell'allevatore. Se hai dubbi puoi contattare l'ente e chiedere conferma della registrazione. Diffida dei documenti senza numero di matricola e dei \"pedigree\" rilasciati da associazioni che non sono riconosciute a livello nazionale o internazionale.</p>"
     },
     {
       "slug": "distanza-geografica-accoppiamento",

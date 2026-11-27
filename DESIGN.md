@@ -14,6 +14,7 @@ colors:
   tip: "#f2c200"
   pole: "#6e756f"
   error: "#b0231a"
+  placeholder: "#5d7466"
 typography:
   display:
     fontFamily: "Overpass, system-ui, sans-serif"
@@ -110,6 +111,12 @@ components:
     backgroundColor: "{colors.field}"
     textColor: "{colors.plate}"
     rounded: "{rounded.pill}"
+  chip:
+    backgroundColor: "{colors.plate}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.control}"
+    padding: "2px 16px 0"
+    height: "44px"
 ---
 
 # Design System: Lineagree
@@ -125,6 +132,8 @@ Density is low and confident. Large green regions carry the page; plates are the
 This is the owners' format. The breeders' "Ring d'expo" format (show-ring rosettes, armband numbers) is a future variant held in PRODUCT.md; it is not part of this system and nothing here should anticipate it.
 
 Blog, species and encyclopedia pages are built in this system (src/pages/blog, src/pages/specie, src/pages/enciclopedia.astro; content in src/data/content.json). The old swipe demo (matches.html) was removed; matching lives in the app.
+
+The site and the mobile app share these tokens and the same words: the "Cerco" options (Accoppiamento, Una cucciolata, Conoscersi e valutare, Accordo economico), the badge "Pedigree dichiarato", and distance as a bucket ("entro 25 km"), never an exact figure. When the app renames something, the site follows.
 
 **Key Characteristics:**
 - Green field, white enamel plates, black lettering; nothing else carries large area.
@@ -156,7 +165,8 @@ Four material colours from real signage (green, white, black, red), plus a yello
 - **Green-Tinted Light** (field-ink): body text on green.
 - **Green-Tinted Soft** (field-soft): secondary text on green; tinted, never grey, and kept at 4.5:1 or better on the field.
 - **Pole Steel** (pole): the signpost pole only.
-- **Error Red** (error): validation and failure messages under the form.
+- **Error Red** (error): validation and failure messages under the form. Not for notices or drafts.
+- **Placeholder Green-Grey** (placeholder): input placeholders, same value as the app.
 
 ### Named Rules
 **The Blaze Rule.** Blaze red marks the active match and nothing else. If a screen has no active match, it has no blaze.
@@ -174,7 +184,7 @@ Four material colours from real signage (green, white, black, red), plus a yello
 - **Display** (900, clamp(2.25rem, 5.2vw, 4.5rem), 1.02): the hero headline, always on its own white plate.
 - **Headline** (900, clamp(2rem, 4vw, 3.25rem), 1.02): section titles set on the green field, max 20ch.
 - **Headline Board** (900, clamp(1.875rem, 3.4vw, 2.75rem), 1.02): titles inside a large enamel board (trust, blog).
-- **Title** (900, 1.5rem, 1): plate names, step titles, intent names. Species plates go up to 2rem.
+- **Title** (900, 1.5rem, 1): plate names, step titles, breed names. Species plates go up to 2rem.
 - **Lede** (400, 1.25rem, 1.55): the hero lede, max 34ch.
 - **Body** (400, 1.0625rem, 1.55): running text, 46 to 68ch.
 - **Meta** (700, 0.9375rem): breed and registry lines, captions, badge text, form messages.
@@ -208,7 +218,7 @@ Plates are physical objects bolted to a flat field: one soft shadow, no layering
 
 Two silhouettes. The **enamel plate** has gently rounded corners (10px), a white margin, then a 2px black inner border inset 3px from the edge, like a stamped sign; large boards add two screw heads at the top corners. The **arrow plate** is a rectangle with a pointed end (point depth 32px, 40px on the signpost, 16 to 20px on small links), pointing right by default and left as a variant. Controls (button, input) are 6px. Status badges are full pills.
 
-**The Arrow Means Direction Rule.** A plate is cut as an arrow only when it leads somewhere or represents a step along the way. Status (pedigree caricato, verificato) is a pill, because a badge reports what was checked; it does not point.
+**The Arrow Means Direction Rule.** A plate is cut as an arrow only when it leads somewhere or represents a step along the way. Status (pedigree dichiarato, verificato) is a pill, because a badge reports what was checked; it does not point. Options a user picks (the "Cerco" intents) are chips, as in the app.
 
 ## Components
 
@@ -221,11 +231,16 @@ Solid and plain, like the black panel of a sign.
 
 ### Chips (status badges)
 - **Style:** outline pill, 2px ink border, 800 weight, meta size.
-- **Verified:** filled field green with white text. Only shown for what a moderator actually checked.
+- **Verified:** filled field green with white text. Only shown for what a moderator actually checked. Any other status (for example "Disponibile nell'app al lancio") stays an outline pill.
 
 ### Cards / Containers
 - **Enamel plate:** 10px corners, white, plate shadow, inset black border; screws on large boards. Internal padding 32 to 48px (24px on phones).
-- **Arrow plate:** white, arrow shadow, 20 to 32px padding with extra room on the pointed side. Used for trail steps, intent plates, species links, the waitlist form.
+- **Arrow plate:** white, arrow shadow, 20 to 32px padding with extra room on the pointed side. Used for trail steps, species links, the waitlist form.
+- **Register board:** one enamel plate holding a ruled list (one plate-edge rule per row). Used for blog lists on the home page and the breeds on species pages, instead of a grid of identical cards.
+
+### Chips
+- **Style:** white, 2px ink border, 6px corners, 44px tall, Overpass 900. Same shape as the app's "Cerco" chips; selected (app only) is ink-filled with white text.
+- **Use:** options and purposes, never navigation.
 
 ### Inputs / Fields
 - **Style:** white, 2px ink border, 6px corners, 48px tall, placeholder in a mid green-grey.
@@ -236,7 +251,7 @@ Solid and plain, like the black panel of a sign.
 - **Style:** the brand sits on a small enamel plate with a green arrow mark. Links are 700-weight field-ink on green, underline on hover. The CTA is a small white arrow plate that turns yellow on hover. Below 640px only the brand and the CTA remain.
 
 ### Signpost (signature)
-A grey pole with a place-name cap; profile plates clamped to it with a dark band, alternating left and right, each with a yellow tip. A plate shows name, breed with registry, "Cerca:" purpose, and km with city. The active plate shows the blaze flag and a red km figure. Activating a plate turns it on the post (rotateY to 90deg, face swaps edge-on, turns back over 420ms); reduced motion swaps the face with no turn. The waitlist form is the last plate on the post.
+A grey pole with a place-name cap; profile plates clamped to it with a dark band, alternating left and right, each with a yellow tip. A plate shows name, breed with registry, "Cerca:" purpose, and "entro N km" with city (the app's distance buckets). The active plate shows the blaze flag and a red km figure. The caption says a like opens the chat only if it is returned. Activating a plate turns it on the post (rotateY to 90deg, face swaps edge-on, turns back over 420ms); reduced motion swaps the face with no turn. The waitlist form is the last plate on the post.
 
 ## Do's and Don'ts
 
@@ -245,6 +260,7 @@ A grey pole with a place-name cap; profile plates clamped to it with a dark band
 - **Do** put content on white enamel or arrow plates; let the green field carry the space between them.
 - **Do** cut a plate as an arrow when it leads somewhere or marks a step; keep status as a pill.
 - **Do** label synthetic profiles as examples ("profili di esempio").
+- **Do** use the app's words for purposes, badges and distance.
 - **Do** keep secondary text on green in the tinted soft green at 4.5:1 or better.
 
 ### Don't:
@@ -253,3 +269,4 @@ A grey pole with a place-name cap; profile plates clamped to it with a dark band
 - **Don't** introduce a second typeface or set headings below weight 900.
 - **Don't** add motion beyond the plate turn and small hover shifts; the turn must have a no-motion fallback.
 - **Don't** use neutral black shadows; shadows are field-tinted.
+- **Don't** use AI-generated photos or stock that pretends to be real (certificates, animals, people). No image beats a fake one; real photos only, with rights.

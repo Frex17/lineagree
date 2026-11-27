@@ -3,4 +3,4 @@
 const { text } = Astro.props as { text: string };
 const parts = text.split(/\s*·\s*/);
 ---
-{parts.map((p, i) => <>{i > 0 && <span class="sep"> · </span>}{p}</>)}
+{parts.map((p, i) => <>{i > 0 && <>{' '}<span class="sep">·</span>{' '}</>}{p}</>)}

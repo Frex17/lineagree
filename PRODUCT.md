@@ -32,7 +32,7 @@ Unlike Facebook groups and classified ads, every Lineagree profile is built arou
 
 - Each animal profile has a "Cosa cerco" multi-select (monta, una cucciolata, conoscersi, accordo economico) used for ranking and filtering.
 - Distance in km is the main filter; only city and distance are shown, never a precise location.
-- Pedigree at launch: self-declared plus a photo of the pedigree document ("pedigree caricato" badge). Later: manual moderator check of the LOI/LOO number and photo ("verificato" badge). No ENCI/ANFI API exists.
+- Pedigree at launch: self-declared plus a photo of the pedigree document ("Pedigree dichiarato" badge, same wording as the app). Later: manual moderator check of the LOI/LOO number and photo ("verificato" badge). No ENCI/ANFI API exists.
 - The app does not handle payments or contracts between owners.
 
 ## Capabilities and Constraints
@@ -52,7 +52,7 @@ Unlike Facebook groups and classified ads, every Lineagree profile is built arou
 
 ## Evidence on Hand
 
-- Blog articles and images: `blog/*.html`, `blog/images/*.jpg`.
+- Blog articles: `src/data/content.json`. The old cover images were AI-generated and were removed on 2026-11-27; covers return only as real photos.
 - Species and encyclopedia copy: `specie/*.html`, `enciclopedia.html`.
 - No real users, waitlist numbers, reviews, partners, or real owner/animal photos yet. The site must not show invented numbers, testimonials, partners or "verified" claims.
 

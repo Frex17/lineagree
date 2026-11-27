@@ -6,7 +6,7 @@ const { id } = Astro.props;
   <label for={`${id}-email`}>La tua email per l'accesso anticipato all'app</label>
   <div class="row">
     <input id={`${id}-email`} name="email" type="email" autocomplete="email" inputmode="email"
-      placeholder="nome@esempio.it" required aria-describedby={`${id}-msg`} />
+      placeholder="nome@esempio.it" spellcheck="false" autocapitalize="off" required aria-describedby={`${id}-msg`} />
     <button class="btn" type="submit">Entra in lista</button>
   </div>
   <p id={`${id}-msg`} class="msg" role="status" aria-live="polite">Niente spam: ti scriviamo solo quando l'app è pronta.</p>
@@ -28,7 +28,7 @@ const { id } = Astro.props;
     border: 2px solid var(--ink); border-radius: calc(var(--u) * 0.75);
     background: #fff; color: var(--ink);
   }
-  input::placeholder { color: #5b655f; }
+  input::placeholder { color: var(--placeholder); }
   input[aria-invalid="true"] { border-color: #b0231a; }
   .msg { margin: 0; font-size: 0.9375rem; color: var(--ink-soft); }
   .msg[data-state="error"] { color: #b0231a; font-weight: 700; }
@@ -62,8 +62,16 @@ const { id } = Astro.props;
           body: JSON.stringify({ email }),
         });
         if (!res.ok) throw new Error(String(res.status));
-        form.querySelector('.row')!.remove();
-        say("Sei in lista. Ti scriviamo appena l'app è sugli store.", 'ok');
+        // Close this form, plus untouched ones so they don't invite a duplicate sign-up.
+        // A form with its own email typed or in flight stays as it is.
+        document.querySelectorAll<HTMLFormElement>('form[data-waitlist]').forEach((f) => {
+          const i = f.querySelector('input');
+          if (f !== form && (!i || i.value.trim() || f.querySelector('button')?.disabled)) return;
+          f.querySelector('.row')?.remove();
+          const m = f.querySelector('.msg') as HTMLElement;
+          m.textContent = "Sei in lista. Ti scriviamo appena l'app è sugli store.";
+          m.dataset.state = 'ok';
+        });
       } catch {
         btn.disabled = false;
         say("Non siamo riusciti a salvare l'email. Riprova tra poco.", 'error');

@@ -32,7 +32,7 @@ const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site)
     <nav aria-label="Principale">
       <a href="/#come-funziona">Come funziona</a>
       <a href="/#specie">Specie</a>
-      <a href="/blog">Blog</a>
+      <a class="nav-keep" href="/blog">Blog</a>
       <a class="nav-cta arrow" href="/#lista">Entra in lista</a>
     </nav>
   </header>
@@ -41,8 +41,7 @@ const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site)
   </main>
   <footer class="site-foot">
     <div class="wrap foot-row">
-      <span class="foot-brand">Lineagree</span>
-      <nav aria-label="Note legali">
+      <nav aria-label="Link utili">
         <a href="/privacy">Privacy</a>
         <a href="/termini">Termini</a>
         <a href="/enciclopedia">Enciclopedia delle razze</a>
@@ -75,7 +74,13 @@ const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site)
   }
   .site-head nav .nav-cta:hover { text-decoration: none; background: var(--tip); }
   @media (max-width: 640px) {
-    .site-head nav a:not(.nav-cta) { display: none; }
+    .site-head nav a:not(.nav-cta):not(.nav-keep) { display: none; }
+    .site-head { column-gap: calc(var(--u) * 1.5); }
+    .site-head nav { column-gap: calc(var(--u) * 1.5); }
+    .brand { font-size: 1.0625rem; }
+  }
+  @media (max-width: 380px) {
+    .site-head nav .nav-keep { display: none; }
   }
   .site-foot { background: var(--field-deep); margin-top: calc(var(--u) * 12); }
   .foot-row {
@@ -83,7 +88,6 @@ const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site)
     padding-block: calc(var(--u) * 5);
     color: var(--field-soft);
   }
-  .foot-brand { font-weight: 900; color: var(--field-ink); font-size: 1.125rem; }
   .foot-row nav { display: flex; flex-wrap: wrap; gap: calc(var(--u) * 3); }
   .foot-row a { color: var(--field-ink); }
 </style>
