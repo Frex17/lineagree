@@ -51,7 +51,8 @@ const copy = {
     speciesTitle: 'At launch: dogs and cats.',
     dogs: ['Dogs', 'ENCI pedigree · LOI and LOR'],
     cats: ['Cats', 'ANFI pedigree'],
-    later: ['Later on: ', 'horses', 'rabbits', 'birds', ' and ', 'fish', '. The species guides are in Italian for now.'],
+    speciesNote: 'The species guides are in Italian for now.',
+    later: ['Later on: ', 'horses', 'rabbits', 'birds', ' and ', 'fish', '.'],
     blogTitle: 'Read before you set off.',
     blogNote: 'Our guides are in Italian for now.',
     allPosts: 'All articles',
@@ -90,6 +91,7 @@ const copy = {
     speciesTitle: 'Al lancio: cani e gatti.',
     dogs: ['Cani', 'Pedigree ENCI · LOI e LOR'],
     cats: ['Gatti', 'Pedigree ANFI'],
+    speciesNote: '',
     later: ['Più avanti: ', 'cavalli', 'conigli', 'uccelli', ' e ', 'pesci', '.'],
     blogTitle: 'Da leggere prima di partire.',
     blogNote: '',
@@ -195,6 +197,7 @@ const sp = (slug: string) => `/it/specie/${slug}`;
 
   <section id="specie" class="species wrap" aria-labelledby="species-title">
     <h2 id="species-title" class="sec-title">{copy.speciesTitle}</h2>
+    {copy.speciesNote && <p class="sec-sub">{copy.speciesNote}</p>}
     <div class="species-row">
       <a class="sp arrow" href={sp('cani')} hreflang={itOnly}><strong>{copy.dogs[0]}</strong><span><Dots text={copy.dogs[1]} /></span></a>
       <a class="sp arrow" href={sp('gatti')} hreflang={itOnly}><strong>{copy.cats[0]}</strong><span>{copy.cats[1]}</span></a>

@@ -15,8 +15,8 @@ export const t = {
     foot: [
       ['/privacy', 'Privacy'],
       ['/terms', 'Terms'],
-      ['/it/blog', 'Blog (in Italian)'],
-      ['/it/enciclopedia', 'Breed encyclopedia (in Italian)'],
+      ['/it/blog', 'Blog (in Italian)', 'it'],
+      ['/it/enciclopedia', 'Breed encyclopedia (in Italian)', 'it'],
     ],
     waitlist: {
       label: 'Your email for early access to the app',

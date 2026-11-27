@@ -56,7 +56,7 @@ const it = lang === 'it' ? canonical : alt && url(alt);
   <footer class="site-foot">
     <div class="wrap foot-row">
       <nav aria-label={c.footLabel}>
-        {c.foot.map(([href, label]) => <a href={href}>{label}</a>)}
+        {c.foot.map(([href, label, hl]) => <a href={href} hreflang={hl}>{label}</a>)}
       </nav>
       <small>© 2026 Lineagree</small>
     </div>

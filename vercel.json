@@ -34,11 +34,6 @@
       "permanent": true
     },
     {
-      "source": "/blog/index.html",
-      "destination": "/it/blog",
-      "permanent": true
-    },
-    {
       "source": "/blog/:slug",
       "destination": "/it/blog/:slug",
       "permanent": true
