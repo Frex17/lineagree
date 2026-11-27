@@ -1,19 +1,22 @@
 ---
 import Base from '../layouts/Base.astro';
 import Waitlist from '../components/Waitlist.astro';
+import Dots from '../components/Dots.astro';
 
 // Synthetic demo profiles: labelled "profili di esempio" on the page.
+// km are the app's distance buckets ("entro N km"), never an exact distance.
 const plates = [
-  { name: 'Luna', breed: 'Golden Retriever', reg: 'ENCI LOI', km: 8, city: 'Monza', wants: 'una cucciolata', dir: 'right' },
-  { name: 'Otto', breed: 'Maine Coon', reg: 'ANFI', km: 14, city: 'Bergamo', wants: 'conoscersi', dir: 'left' },
-  { name: 'Brina', breed: 'Bovaro del Bernese', reg: 'ENCI LOI', km: 23, city: 'Como', wants: 'monta', dir: 'right' },
-  { name: 'Ziggy', breed: 'British Shorthair', reg: 'ANFI', km: 31, city: 'Lodi', wants: 'accordo economico', dir: 'left' },
+  { name: 'Luna', breed: 'Golden Retriever', reg: 'ENCI LOI', km: 10, city: 'Monza', wants: 'una cucciolata', dir: 'right' },
+  { name: 'Otto', breed: 'Maine Coon', reg: 'ANFI', km: 25, city: 'Bergamo', wants: 'conoscersi e valutare', dir: 'left' },
+  { name: 'Brina', breed: 'Bovaro del Bernese', reg: 'ENCI LOI', km: 25, city: 'Como', wants: 'accoppiamento', dir: 'right' },
+  { name: 'Ziggy', breed: 'British Shorthair', reg: 'ANFI', km: 50, city: 'Lodi', wants: 'accordo economico', dir: 'left' },
 ];
 
+// Same names as the app's "Cerco" options.
 const intents = [
-  { t: 'Monta', d: 'Cerchi un partner della stessa razza per un accoppiamento.' },
+  { t: 'Accoppiamento', d: 'Cerchi un partner della stessa razza per la monta.' },
   { t: 'Una cucciolata', d: 'Vuoi una sola cucciolata, fatta bene, e poi basta.' },
-  { t: 'Conoscersi', d: 'Vuoi conoscere altri proprietari della tua razza, senza impegno.' },
+  { t: 'Conoscersi e valutare', d: 'Vuoi conoscere altri proprietari della tua razza, senza impegno.' },
   { t: 'Accordo economico', d: 'Ne parlate in chat: Lineagree non gestisce pagamenti.' },
 ];
 
@@ -22,8 +25,6 @@ const posts = [
   ['enci-anfi-unire-enti-riconoscimento', 'ENCI, ANFI, MASAF: quali enti riconoscono il tuo animale?'],
   ['distanza-geografica-accoppiamento', "Perché la distanza geografica conta nell'accoppiamento selettivo"],
   ['profilo-perfetto-lineagree', 'Come preparare il profilo perfetto su Lineagree'],
-  ['allevamento-selettivo-responsabile', 'Allevamento selettivo responsabile: cosa significa davvero'],
-  ['carpe-koi-pedigree-acqua', "Carpe Koi: il pedigree dell'acqua"],
 ];
 ---
 <Base
@@ -55,17 +56,17 @@ const posts = [
                       <rect width="30" height="7" fill="var(--blaze)"/><rect y="7" width="30" height="7" fill="#fff"/><rect y="14" width="30" height="7" fill="var(--blaze)"/>
                     </svg>
                   </span>
-                  <span class="sign-breed">{p.breed} <span class="sep">·</span> {p.reg}</span>
+                  <span class="sign-breed"><Dots text={`${p.breed} · ${p.reg}`} /></span>
                   <span class="sign-wants">Cerca: {p.wants}</span>
                 </span>
-                <span class="sign-km"><b>{p.km}</b> km<span class="sign-city">{p.city}</span></span>
+                <span class="sign-km"><span class="sign-within">entro</span><b>{p.km}</b> km<span class="sign-city">{p.city}</span></span>
               </button>
             </li>
           ))}
         </ul>
         <div id="lista" class="form-mount"><Waitlist id="hero" /></div>
       </div>
-      <figcaption>Profili di esempio <span class="sep">·</span> tocca un cartello. <span aria-live="polite" data-match-line>Match con <b>Luna</b>: si apre la chat.</span></figcaption>
+      <figcaption><Dots text="Profili di esempio · tocca un cartello." /> <span aria-live="polite" data-match-line>Like a <b>Luna</b>: se ricambia, si apre la chat.</span></figcaption>
     </figure>
   </section>
 
@@ -93,9 +94,9 @@ const posts = [
     <h2 id="intents-title" class="sec-title">Cosa cerchi lo scegli tu.</h2>
     <p class="sec-sub">Ogni profilo indica il motivo. Lineagree ti mostra prima chi cerca la stessa cosa.</p>
     <ul class="intents" role="list">
-      {intents.map((x, i) => (
-        <li class:list={['intent', 'arrow', i % 2 === 1 && 'left']}>
-          <strong>{x.t}</strong>
+      {intents.map((x) => (
+        <li class="intent">
+          <strong class="chip">{x.t}</strong>
           <span>{x.d}</span>
         </li>
       ))}
@@ -104,10 +105,10 @@ const posts = [
 
   <section class="trust wrap" aria-labelledby="trust-title">
     <div class="trust-board plate screws">
-      <h2 id="trust-title">Il pedigree prima di tutto. E detto chiaro.</h2>
+      <h2 id="trust-title">Il badge dice cosa è stato controllato.</h2>
       <dl class="badges">
         <div>
-          <dt><span class="badge">Pedigree caricato</span></dt>
+          <dt><span class="badge">Pedigree dichiarato</span></dt>
           <dd>Al lancio: il proprietario dichiara ente e numero e carica la foto del documento. Nessuno lo ha ancora controllato, e il badge lo dice.</dd>
         </div>
         <div>
@@ -126,7 +127,7 @@ const posts = [
   <section id="specie" class="species wrap" aria-labelledby="species-title">
     <h2 id="species-title" class="sec-title">Al lancio: cani e gatti.</h2>
     <div class="species-row">
-      <a class="sp arrow" href="/specie/cani"><strong>Cani</strong><span>Pedigree ENCI <span class="sep">·</span> LOI e LOR</span></a>
+      <a class="sp arrow" href="/specie/cani"><strong>Cani</strong><span><Dots text="Pedigree ENCI · LOI e LOR" /></span></a>
       <a class="sp arrow" href="/specie/gatti"><strong>Gatti</strong><span>Pedigree ANFI</span></a>
     </div>
     <p class="later">Più avanti: <a href="/specie/cavalli">cavalli</a>, <a href="/specie/conigli">conigli</a>, <a href="/specie/uccelli">uccelli</a> e <a href="/specie/pesci">pesci</a>.</p>
@@ -145,7 +146,7 @@ const posts = [
   </section>
 
   <section class="close wrap" aria-labelledby="close-title">
-    <h2 id="close-title" class="sec-title">L'app arriva sugli store. Entra in lista e parti per primo.</h2>
+    <h2 id="close-title" class="sec-title">Lascia l'email: ti avvisiamo quando esce l'app.</h2>
     <div class="close-form"><Waitlist id="close" /></div>
   </section>
 </Base>
@@ -182,7 +183,7 @@ const posts = [
   .plates li:nth-child(even) { justify-content: flex-end; padding-right: 10%; }
   .plates li::after { /* clamp band over the plate at the pole */
     content: ""; position: absolute; left: 50%; translate: -50% 0; top: 6px; bottom: 6px; width: 22px;
-    border-block: 4px solid #2b312d; z-index: 1; pointer-events: none;
+    border-block: 4px solid var(--ink); z-index: 1; pointer-events: none;
   }
   .sign {
     --point: calc(var(--u) * 5);
@@ -206,7 +207,8 @@ const posts = [
   .sign-km { text-align: right; font-weight: 700; font-size: 0.875rem; line-height: 1.1; display: grid; }
   .sign-km b { font-size: 2rem; font-weight: 900; line-height: 1; }
   .sign-city { color: var(--ink-soft); font-weight: 600; }
-  .blaze { width: 24px; height: 17px; flex: none; visibility: hidden; outline: 1px solid #c9d2cc; }
+  .sign-within { color: var(--ink-soft); font-weight: 600; }
+  .blaze { width: 24px; height: 17px; flex: none; visibility: hidden; outline: 1px solid var(--plate-edge); }
   .sign[aria-pressed="true"] .blaze { visibility: visible; }
   .sign[aria-pressed="true"] .sign-km b { color: var(--blaze); }
   .sign:hover:not([aria-pressed="true"]) { background: #f3f7f4; }
@@ -219,7 +221,7 @@ const posts = [
 
   /* Sections */
   .sec-title { font-size: clamp(2rem, 4vw, 3.25rem); max-width: 20ch; }
-  .sec-sub { font-size: 1.1875rem; max-width: 52ch; color: var(--field-soft); margin: calc(var(--u) * 2) 0 0; }
+  .sec-sub { font-size: 1.25rem; max-width: 52ch; color: var(--field-soft); margin: calc(var(--u) * 2) 0 0; }
 
   .trail-sec { background: var(--field-deep); padding-block: calc(var(--u) * 12); }
   .trail {
@@ -241,14 +243,15 @@ const posts = [
   .stop p { margin: 0; color: var(--ink-soft); }
 
   .intents-sec { padding-block: calc(var(--u) * 12) calc(var(--u) * 4); }
-  .intents { list-style: none; padding: 0; margin: calc(var(--u) * 5) 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(var(--u) * 2) calc(var(--u) * 4); }
-  .intent {
-    display: grid; gap: 4px; padding-block: calc(var(--u) * 2.5); padding-left: calc(var(--u) * 3);
-    filter: drop-shadow(0 2px 2px rgb(6 38 20 / 0.35)) drop-shadow(0 10px 14px rgb(6 38 20 / 0.3));
+  /* Intents are the app's "Cerco" chips: status options, not directions, so no arrow. */
+  .intents { list-style: none; padding: 0; margin: calc(var(--u) * 5) 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: calc(var(--u) * 4) calc(var(--u) * 6); max-width: 960px; }
+  .intent { display: grid; justify-items: start; gap: calc(var(--u) * 1.5); }
+  .chip {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 2px calc(var(--u) * 2) 0;
+    background: var(--plate); color: var(--ink); border: 2px solid var(--ink); border-radius: 6px;
+    font-weight: 900; font-size: 1.25rem; box-shadow: var(--shadow);
   }
-  .intent.left { padding-left: calc(var(--point) + var(--u) * 2); }
-  .intent strong { font-size: 1.5rem; font-weight: 900; }
-  .intent span { color: var(--ink-soft); }
+  .intent span { color: var(--field-ink); max-width: 40ch; }
 
   .trust { padding-block: calc(var(--u) * 8); }
   .trust-board { padding: calc(var(--u) * 6) calc(var(--u) * 5); display: grid; grid-template-columns: 1.1fr 1fr; gap: calc(var(--u) * 4) calc(var(--u) * 6); }
@@ -259,7 +262,7 @@ const posts = [
   .badge { display: inline-block; font-weight: 800; font-size: 0.9375rem; padding: 4px 12px 2px; border: 2px solid var(--ink); border-radius: 999px; }
   .badge-ok { background: var(--field); border-color: var(--field); color: #fff; }
   .rules { margin: 0; padding: 0; list-style: none; display: grid; gap: calc(var(--u) * 2); align-content: start; }
-  .rules li { font-weight: 700; font-size: 1.125rem; padding-left: calc(var(--u) * 4); position: relative; }
+  .rules li { font-weight: 700; font-size: 1.0625rem; padding-left: calc(var(--u) * 4); position: relative; }
   .rules li::before {
     content: ""; position: absolute; left: 0; top: 0.3em; width: 20px; height: 14px; background: var(--field);
     clip-path: polygon(0 0, 65% 0, 100% 50%, 65% 100%, 0 100%);
@@ -285,16 +288,17 @@ const posts = [
   .dest h2 { font-size: clamp(1.875rem, 3.4vw, 2.75rem); }
   .posts { list-style: none; padding: 0; margin: calc(var(--u) * 3) 0 calc(var(--u) * 3); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: calc(var(--u) * 5); }
   .posts li { border-bottom: 2px solid var(--plate-edge); }
-  .posts a { display: block; padding: calc(var(--u) * 2) 0; font-weight: 700; font-size: 1.125rem; text-decoration: none; color: var(--ink); }
+  .posts a { display: block; padding: calc(var(--u) * 2) 0; font-weight: 700; font-size: 1.0625rem; text-decoration: none; color: var(--ink); }
   .posts a:hover { color: var(--field); text-decoration: underline; }
   .all { display: inline-flex; align-items: center; min-height: 44px; font-weight: 800; text-decoration: none; background: var(--field); color: #fff; padding-left: calc(var(--u) * 2); --point: calc(var(--u) * 2.5); }
   .all:hover { background: var(--field-deep); }
 
   .close { padding-block: calc(var(--u) * 10) 0; display: grid; gap: calc(var(--u) * 4); }
+  .close .sec-title { max-width: 24ch; }
   .close-form { max-width: 640px; }
 
   @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; grid-template-areas: "title" "post" "lede"; grid-template-rows: auto; padding-bottom: calc(var(--u) * 6); }
+    .hero { grid-template-columns: 1fr; grid-template-areas: "title" "lede" "post"; grid-template-rows: auto; padding-bottom: calc(var(--u) * 6); }
     .title-plate { margin-top: 0; }
     .trail { grid-template-columns: 1fr; padding-bottom: 0; }
     .stop:nth-child(n) { margin-top: 0; }
@@ -307,11 +311,11 @@ const posts = [
     .plates li:nth-child(n+3) { display: none; } /* two plates keep the post in the first screen */
     .plates li:nth-child(odd), .plates li:nth-child(even) { padding-inline: 0; }
     .title-plate { padding: calc(var(--u) * 2.5) calc(var(--u) * 2.5) calc(var(--u) * 2); }
-    .title-plate h1 { font-size: 2.125rem; }
+    .title-plate h1 { font-size: 2.25rem; }
     .post { padding-top: calc(var(--u) * 5); gap: calc(var(--u) * 1.5); }
     .sign { min-height: calc(var(--u) * 8.5); }
     .sign-name { font-size: 1.25rem; }
-    .sign-km b { font-size: 1.625rem; }
+    .sign-km b { font-size: 1.5rem; }
   }
 </style>
 
@@ -323,7 +327,7 @@ const posts = [
   function setActive(sign: HTMLButtonElement) {
     signs.forEach((s) => s.setAttribute('aria-pressed', String(s === sign)));
     const name = sign.querySelector('.sign-name')!.textContent!.trim();
-    line.innerHTML = `Match con <b>${name}</b>: si apre la chat.`;
+    line.innerHTML = `Like a <b>${name}</b>: se ricambia, si apre la chat.`;
   }
 
   function activate(sign: HTMLButtonElement) {

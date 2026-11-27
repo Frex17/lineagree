@@ -29,6 +29,7 @@
   --blaze: #d52b1e;         /* CAI red: active match only */
   --tip: #f2c200;           /* signpost arrow tips only */
   --pole: #6e756f;
+  --placeholder: #5d7466;   /* input placeholder, same as the app */
   --radius: calc(var(--u) * 1.25);
   --shadow: 0 2px 3px rgb(6 38 20 / 0.35), 0 10px 24px -8px rgb(6 38 20 / 0.45);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -62,6 +63,7 @@ h1, h2, h3 {
   text-wrap: balance;
   margin: 0;
 }
+p, dd, li { text-wrap: pretty; }
 
 .wrap { width: min(100% - 32px, 1200px); margin-inline: auto; }
 
@@ -113,9 +115,15 @@ h1, h2, h3 {
 .btn[disabled] { opacity: 0.6; cursor: progress; transform: none; }
 
 /* Overpass draws its middot high; a drawn dot keeps separators centred. */
-.sep { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-inline: 0.4rem; font-size: 0; }
+.sep { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: currentColor; vertical-align: middle; margin-inline: 0.15rem; }
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+/* The skip link shows itself when focused. */
+.sr-only:focus-visible {
+  width: auto; height: auto; margin: 0; clip: auto; overflow: visible; z-index: 10;
+  top: var(--u); left: var(--u); padding: var(--u) calc(var(--u) * 2);
+  background: var(--plate); color: var(--ink); font-weight: 800; border-radius: 6px;
 }

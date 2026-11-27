@@ -17,12 +17,11 @@ const others = content.posts.filter((p) => p.slug !== post.slug).slice(0, 3);
       <h1>{post.title}</h1>
       <p class="meta"><Dots text={post.badge} /></p>
     </header>
-    <img class="cover" src={`/blog/images/${post.slug}.jpg`} alt="" width="1200" height="630" loading="eager" />
     <div class="prose plate" set:html={post.body} />
   </article>
 
   <aside class="more wrap" aria-labelledby="more-title">
-    <h2 id="more-title">Altri sentieri</h2>
+    <h2 id="more-title">Altri articoli</h2>
     <ul role="list">
       {others.map((p) => <li><a class="arrow" href={`/blog/${p.slug}`}>{p.title}</a></li>)}
     </ul>
@@ -40,14 +39,14 @@ const others = content.posts.filter((p) => p.slug !== post.slug).slice(0, 3);
   .art-head h1 { font-size: clamp(2rem, 4vw, 3.25rem); margin-top: calc(var(--u) * 2); }
   .back { font-weight: 800; color: var(--field); }
   .meta { margin: calc(var(--u) * 2) 0 0; font-weight: 700; color: var(--ink-soft); }
-  .cover { width: 100%; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; border-radius: var(--radius); margin: calc(var(--u) * 3) 0; box-shadow: var(--shadow); }
+  .prose { margin-top: calc(var(--u) * 3); }
   .prose { padding: calc(var(--u) * 5); font-size: 1.0625rem; line-height: 1.65; }
-  .prose :global(p) { margin: 0 0 calc(var(--u) * 2.5); max-width: 68ch; color: var(--ink); }
+  .prose :global(p) { margin: 0 0 calc(var(--u) * 2.5); max-width: 34em; color: var(--ink); }
   .prose :global(h2) { font-size: 1.5rem; margin: calc(var(--u) * 5) 0 calc(var(--u) * 1.5); }
   .prose :global(h2:first-child) { margin-top: 0; }
   .prose :global(strong) { font-weight: 800; }
   .prose :global(a) { color: var(--field); font-weight: 700; }
-  .prose :global(ul), .prose :global(ol) { padding-left: 1.25em; max-width: 66ch; }
+  .prose :global(ul), .prose :global(ol) { padding-left: 1.25em; max-width: 33em; }
   .prose :global(li) { margin-bottom: var(--u); }
   .more { max-width: 860px; padding-top: calc(var(--u) * 8); }
   .more h2 { font-size: clamp(1.875rem, 3.4vw, 2.75rem); }
