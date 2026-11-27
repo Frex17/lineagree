@@ -31,7 +31,7 @@ export default async function handler(req, res) {
   // Plain HTML form post (no JavaScript): send the visitor back to the page instead of raw JSON.
   if (String(req.headers?.['content-type']).startsWith('application/x-www-form-urlencoded')) {
     // Fixed paths only: the form's lang field never builds the URL.
-    res.setHeader('Location', req.body.lang === 'it' ? '/it/#lista' : '/#lista');
+    res.setHeader('Location', req.body.lang === 'it' ? '/it#lista' : '/#lista');
     return res.status(303).end();
   }
   return res.status(201).json({ ok: true });
