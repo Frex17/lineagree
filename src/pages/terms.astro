@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Terms · Lineagree" description="Terms of use for the Lineagree website and waiting list." lang="en" alt="/it/termini">
+  <article class="legal wrap plate">
+    <h1>Terms</h1>
+    <p class="draft">Draft, to be reviewed by a legal adviser before launch. Translated from the Italian version.</p>
+    <h2>The service</h2>
+    <p>Lineagree puts owners of pedigree animals in touch with each other. It does not sell animals, does not handle payments and is not a party to agreements between owners.</p>
+    <h2>Pedigree</h2>
+    <p>At launch, the pedigree is declared by the owner. The "Pedigree declared" badge only means that a photo of the document has been uploaded, not that it has been checked.</p>
+    <h2>Who can use it</h2>
+    <p>Only adults resident in Italy.</p>
+    <h2>Conduct</h2>
+    <p>You can report and block other users. We remove profiles that break these rules or animal welfare law.</p>
+  </article>
+</Base>
+
+<style>
+  .legal { max-width: 760px; padding: calc(var(--u) * 6) calc(var(--u) * 5); margin-top: calc(var(--u) * 4); }
+  .legal h1 { font-size: clamp(2.25rem, 5.2vw, 4.5rem); }
+  .legal h2 { font-size: 1.5rem; margin: calc(var(--u) * 4) 0 var(--u); }
+  .legal p { margin: 0; max-width: 68ch; color: var(--ink-soft); }
+  .draft { margin-top: calc(var(--u) * 2) !important; font-weight: 800; color: var(--ink) !important; }
+  @media (max-width: 520px) { .legal { padding: calc(var(--u) * 4) calc(var(--u) * 2.5); } }
+</style>

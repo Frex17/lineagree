@@ -1,15 +1,20 @@
 ---
-interface Props { id: string; }
-const { id } = Astro.props;
+import { t, type Lang } from '../i18n';
+interface Props { id: string; lang: Lang; }
+const { id, lang } = Astro.props;
+const w = t[lang].waitlist;
 ---
-<form class="waitlist arrow" data-waitlist action="/api/waitlist" method="post" novalidate>
-  <label for={`${id}-email`}>La tua email per l'accesso anticipato all'app</label>
+<form class="waitlist arrow" data-waitlist action="/api/waitlist" method="post" novalidate
+  data-invalid={w.invalid} data-sending={w.sending} data-ok={w.ok} data-failed={w.failed}>
+  <input type="hidden" name="lang" value={lang} />
+  <label for={`${id}-email`}>{w.label}</label>
   <div class="row">
     <input id={`${id}-email`} name="email" type="email" autocomplete="email" inputmode="email"
-      placeholder="nome@esempio.it" spellcheck="false" autocapitalize="off" required aria-describedby={`${id}-msg`} />
-    <button class="btn" type="submit">Entra in lista</button>
+      placeholder={w.placeholder} spellcheck="false" autocapitalize="off" required aria-describedby={`${id}-msg`} />
+    <button class="btn" type="submit">{w.button}</button>
   </div>
-  <p id={`${id}-msg`} class="msg" role="status" aria-live="polite">Niente spam: ti scriviamo solo quando l'app è pronta.</p>
+  <p id={`${id}-msg`} class="msg" role="status" aria-live="polite">{w.hint}</p>
+  <p class="fine"><a href={w.privacy[0]}>{w.privacy[1]}</a></p>
 </form>
 
 <style>
@@ -32,13 +37,16 @@ const { id } = Astro.props;
   input[aria-invalid="true"] { border-color: #b0231a; }
   .msg { margin: 0; font-size: 0.9375rem; color: var(--ink-soft); }
   .msg[data-state="error"] { color: #b0231a; font-weight: 700; }
+  .fine { margin: 0; font-size: 0.875rem; }
+  .fine a { color: var(--ink-soft); }
   .msg[data-state="ok"] { color: var(--field); font-weight: 800; }
 </style>
 
 <script>
   import { validEmail } from '../../api/waitlist.js';
   document.querySelectorAll<HTMLFormElement>('form[data-waitlist]').forEach((form) => {
-    const input = form.querySelector('input')!;
+    const input = form.querySelector<HTMLInputElement>('input[type=email]')!;
+    const copy = form.dataset;
     const btn = form.querySelector('button')!;
     const msg = form.querySelector('.msg') as HTMLElement;
     const say = (text: string, state: string) => { msg.textContent = text; msg.dataset.state = state; };
@@ -48,13 +56,13 @@ const { id } = Astro.props;
       const email = input.value.trim();
       if (!validEmail(email)) {
         input.setAttribute('aria-invalid', 'true');
-        say("Questa email non sembra valida: controlla e riprova.", 'error');
+        say(copy.invalid!, 'error');
         input.focus();
         return;
       }
       input.removeAttribute('aria-invalid');
       btn.disabled = true;
-      say('Invio in corso…', 'loading');
+      say(copy.sending!, 'loading');
       try {
         const res = await fetch('/api/waitlist', {
           method: 'POST',
@@ -65,16 +73,16 @@ const { id } = Astro.props;
         // Close this form, plus untouched ones so they don't invite a duplicate sign-up.
         // A form with its own email typed or in flight stays as it is.
         document.querySelectorAll<HTMLFormElement>('form[data-waitlist]').forEach((f) => {
-          const i = f.querySelector('input');
+          const i = f.querySelector<HTMLInputElement>('input[type=email]');
           if (f !== form && (!i || i.value.trim() || f.querySelector('button')?.disabled)) return;
           f.querySelector('.row')?.remove();
           const m = f.querySelector('.msg') as HTMLElement;
-          m.textContent = "Sei in lista. Ti scriviamo appena l'app è sugli store.";
+          m.textContent = f.dataset.ok!;
           m.dataset.state = 'ok';
         });
       } catch {
         btn.disabled = false;
-        say("Non siamo riusciti a salvare l'email. Riprova tra poco.", 'error');
+        say(copy.failed!, 'error');
       }
     });
   });

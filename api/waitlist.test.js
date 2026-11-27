@@ -43,3 +43,13 @@ test('plain form post redirects back to the page', async () => {
   assert.equal(res.code, 303);
   assert.equal(res.headers.Location, '/#lista');
 });
+
+test('form post redirects back by language', async () => {
+  globalThis.fetch = async () => ({ ok: true });
+  for (const [lang, to] of [['it', '/it#lista'], ['en', '/#lista'], ['//evil.com', '/#lista'], [undefined, '/#lista']]) {
+    const res = mockRes();
+    res.end = function () { return this; };
+    await handler({ method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded' }, body: { email: 'anna@esempio.it', lang } }, res);
+    assert.equal(res.headers.Location, to, `lang=${lang}`);
+  }
+});

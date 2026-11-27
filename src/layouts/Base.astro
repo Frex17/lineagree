@@ -1,18 +1,31 @@
 ---
 import '../styles/global.css';
-interface Props { title: string; description: string; }
-const { title, description } = Astro.props;
+import { t, home, type Lang } from '../i18n';
+// alt: the same page in the other language, if one exists.
+interface Props { title: string; description: string; lang: Lang; alt?: string; }
+const { title, description, lang, alt } = Astro.props;
+const other: Lang = lang === 'en' ? 'it' : 'en';
+const c = t[lang];
 // build.format 'file' yields /x.html; Vercel cleanUrls serves /x, so canonical must match.
-const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site);
+const url = (p: string) => new URL(p.replace(/\.html$/, ''), Astro.site).href;
+const canonical = url(Astro.url.pathname);
+const en = lang === 'en' ? canonical : alt && url(alt);
+const it = lang === 'it' ? canonical : alt && url(alt);
 ---
 <!doctype html>
-<html lang="it">
+<html lang={lang}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
+  {alt && <>
+    <link rel="alternate" hreflang="en" href={en} />
+    <link rel="alternate" hreflang="it" href={it} />
+    <link rel="alternate" hreflang="x-default" href={en} />
+  </>}
+  <meta property="og:locale" content={lang === 'en' ? 'en_GB' : 'it_IT'} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
@@ -23,17 +36,18 @@ const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site)
   <link rel="preload" href="/fonts/overpass-latin.woff2" as="font" type="font/woff2" crossorigin />
 </head>
 <body>
-  <a class="sr-only" href="#main">Vai al contenuto</a>
+  <a class="sr-only" href="#main">{c.skip}</a>
   <header class="site-head wrap">
-    <a class="brand plate" href="/" aria-label="Lineagree, home">
+    <a class="brand plate" href={home[lang]} aria-label={c.brandLabel}>
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 6h13l5 6-5 6H3z" fill="var(--field)"/></svg>
       Lineagree
     </a>
-    <nav aria-label="Principale">
-      <a href="/#come-funziona">Come funziona</a>
-      <a href="/#specie">Specie</a>
-      <a class="nav-keep" href="/blog">Blog</a>
-      <a class="nav-cta arrow" href="/#lista">Entra in lista</a>
+    <nav aria-label={c.navLabel}>
+      <a href={`${home[lang]}#come-funziona`}>{c.nav.how}</a>
+      <a href={`${home[lang]}#specie`}>{c.nav.species}</a>
+      {lang === 'it' && <a class="nav-keep" href="/it/blog">Blog</a>}
+      <a class="nav-lang" href={alt ?? home[other]} hreflang={other} lang={other} aria-label={`${c.switchTo.short}, ${c.switchTo.label}`}>{c.switchTo.short}</a>
+      <a class="nav-cta arrow" href={`${home[lang]}#lista`}>{c.nav.cta}</a>
     </nav>
   </header>
   <main id="main">
@@ -41,11 +55,8 @@ const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site)
   </main>
   <footer class="site-foot">
     <div class="wrap foot-row">
-      <nav aria-label="Link utili">
-        <a href="/blog">Blog</a>
-        <a href="/privacy">Privacy</a>
-        <a href="/termini">Termini</a>
-        <a href="/enciclopedia">Enciclopedia delle razze</a>
+      <nav aria-label={c.footLabel}>
+        {c.foot.map(([href, label, hl]) => <a href={href} hreflang={hl}>{label}</a>)}
       </nav>
       <small>© 2026 Lineagree</small>
     </div>
@@ -75,12 +86,13 @@ const canonical = new URL(Astro.url.pathname.replace(/\.html$/, ''), Astro.site)
   }
   .site-head nav .nav-cta:hover { text-decoration: none; background: var(--tip); }
   @media (max-width: 640px) {
-    .site-head nav a:not(.nav-cta):not(.nav-keep) { display: none; }
+    .site-head nav a:not(.nav-cta):not(.nav-keep):not(.nav-lang) { display: none; }
     .site-head { column-gap: calc(var(--u) * 1.5); }
     .site-head nav { column-gap: calc(var(--u) * 1.5); }
     .brand { font-size: 1.0625rem; }
   }
-  @media (max-width: 380px) {
+  /* Blog stays in the footer; below 440px the header keeps only the language switch and the CTA. */
+  @media (max-width: 440px) {
     .site-head nav .nav-keep { display: none; }
   }
   .site-foot { background: var(--field-deep); margin-top: calc(var(--u) * 12); }

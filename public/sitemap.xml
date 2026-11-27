@@ -1,84 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lineagree.vercel.app/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lineagree.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://lineagree.vercel.app/it"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lineagree.vercel.app/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/enciclopedia</loc>
+    <loc>https://lineagree.vercel.app/it</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lineagree.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://lineagree.vercel.app/it"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lineagree.vercel.app/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://lineagree.vercel.app/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lineagree.vercel.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://lineagree.vercel.app/it/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lineagree.vercel.app/privacy"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://lineagree.vercel.app/it/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lineagree.vercel.app/privacy"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://lineagree.vercel.app/it/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lineagree.vercel.app/privacy"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://lineagree.vercel.app/terms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lineagree.vercel.app/terms"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://lineagree.vercel.app/it/termini"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lineagree.vercel.app/terms"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://lineagree.vercel.app/it/termini</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lineagree.vercel.app/terms"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://lineagree.vercel.app/it/termini"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lineagree.vercel.app/terms"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://lineagree.vercel.app/it/enciclopedia</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/blog</loc>
+    <loc>https://lineagree.vercel.app/it/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Pagine specie / enciclopedia -->
   <url>
-    <loc>https://lineagree.vercel.app/specie/cani</loc>
+    <loc>https://lineagree.vercel.app/it/specie/cani</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/specie/gatti</loc>
+    <loc>https://lineagree.vercel.app/it/specie/cavalli</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/specie/cavalli</loc>
+    <loc>https://lineagree.vercel.app/it/specie/conigli</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/specie/conigli</loc>
+    <loc>https://lineagree.vercel.app/it/specie/gatti</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/specie/uccelli</loc>
+    <loc>https://lineagree.vercel.app/it/specie/pesci</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/specie/pesci</loc>
+    <loc>https://lineagree.vercel.app/it/specie/uccelli</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <!-- Articoli del blog -->
   <url>
-    <loc>https://lineagree.vercel.app/blog/come-leggere-un-pedigree</loc>
+    <loc>https://lineagree.vercel.app/it/blog/allevamento-selettivo-responsabile</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/blog/distanza-geografica-accoppiamento</loc>
+    <loc>https://lineagree.vercel.app/it/blog/carpe-koi-pedigree-acqua</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/blog/enci-anfi-unire-enti-riconoscimento</loc>
+    <loc>https://lineagree.vercel.app/it/blog/come-leggere-un-pedigree</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/blog/profilo-perfetto-lineagree</loc>
+    <loc>https://lineagree.vercel.app/it/blog/distanza-geografica-accoppiamento</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/blog/carpe-koi-pedigree-acqua</loc>
+    <loc>https://lineagree.vercel.app/it/blog/enci-anfi-unire-enti-riconoscimento</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://lineagree.vercel.app/blog/allevamento-selettivo-responsabile</loc>
+    <loc>https://lineagree.vercel.app/it/blog/profilo-perfetto-lineagree</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-
 </urlset>

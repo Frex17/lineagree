@@ -1,10 +1,10 @@
 ---
-import Base from '../layouts/Base.astro';
-import content from '../data/content.json';
-import Dots from '../components/Dots.astro';
+import Base from '../../layouts/Base.astro';
+import content from '../../data/content.json';
+import Dots from '../../components/Dots.astro';
 const cards = content.encyclopedia;
 ---
-<Base title="Enciclopedia delle razze · Lineagree" description="Schede sulle principali razze con pedigree riconosciute in Italia: origini, caratteristiche ed enti certificatori.">
+<Base title="Enciclopedia delle razze · Lineagree" description="Schede sulle principali razze con pedigree riconosciute in Italia: origini, caratteristiche ed enti certificatori." lang="it">
   <section class="head wrap">
     <div class="board plate screws">
       <h1>Ogni razza, la sua storia.</h1>
@@ -17,7 +17,7 @@ const cards = content.encyclopedia;
     <ul role="list">
       {cards.map((c, i) => (
         <li>
-          <a class:list={['sp', 'arrow', i % 2 === 1 && 'left']} href={`/specie/${c.slug}`}>
+          <a class:list={['sp', 'arrow', i % 2 === 1 && 'left']} href={`/it/specie/${c.slug}`}>
             <span class="top"><strong>{c.name}</strong><span class="ente"><Dots text={c.ente} /></span></span>
             <span class="desc">{c.desc}</span>
             <span class="stats">{c.stats.map((s, j) => <>{j > 0 && <>{' '}<span class="sep">·</span>{' '}</>}{s}</>)}</span>

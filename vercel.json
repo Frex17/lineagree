@@ -14,13 +14,33 @@
   ],
   "redirects": [
     {
-      "source": "/blog/index.html",
-      "destination": "/blog",
+      "source": "/index.html",
+      "destination": "/",
       "permanent": true
     },
     {
-      "source": "/index.html",
-      "destination": "/",
+      "source": "/termini",
+      "destination": "/it/termini",
+      "permanent": true
+    },
+    {
+      "source": "/enciclopedia",
+      "destination": "/it/enciclopedia",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/it/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/it/blog/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/specie/:slug",
+      "destination": "/it/specie/:slug",
       "permanent": true
     }
   ]
